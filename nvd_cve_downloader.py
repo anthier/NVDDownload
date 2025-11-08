@@ -100,15 +100,20 @@ class NVDDownloader:
             description = descriptions[0].get('value', '').replace('\n', ' ').replace('\r', ' ')
         
         # Extract CVSS scores
-        metrics = cve.get('metrics', {})
+        metrics = cve.get('metrics', {})        
         cvss_v2 = ''
+        cvss_v2_vector = ''
         cvss_v3 = ''
+        cvss_v3_vector = ''
         cvss_v4 = ''
+        cvss_v4_vector = ''
+        cisa_required_action = ''
         
         # CVSS v2
         if 'cvssMetricV2' in metrics and metrics['cvssMetricV2']:
             try:
                 cvss_v2 = str(metrics['cvssMetricV2'][0]['cvssData']['baseScore'])
+                cvss_v2_vector = str(metrics['cvssMetricV2'][0]['cvssData']['vectorString'])
             except (KeyError, IndexError):
                 pass
         
@@ -116,11 +121,13 @@ class NVDDownloader:
         if 'cvssMetricV31' in metrics and metrics['cvssMetricV31']:
             try:
                 cvss_v3 = str(metrics['cvssMetricV31'][0]['cvssData']['baseScore'])
+                cvss_v3_vector = str(metrics['cvssMetricV31'][0]['cvssData']['vectorString'])
             except (KeyError, IndexError):
                 pass
         elif 'cvssMetricV30' in metrics and metrics['cvssMetricV30']:
             try:
                 cvss_v3 = str(metrics['cvssMetricV30'][0]['cvssData']['baseScore'])
+                cvss_v3_vector = str(metrics['cvssMetricV30'][0]['cvssData']['vectorString'])
             except (KeyError, IndexError):
                 pass
         
@@ -128,95 +135,28 @@ class NVDDownloader:
         if 'cvssMetricV40' in metrics and metrics['cvssMetricV40']:
             try:
                 cvss_v4 = str(metrics['cvssMetricV40'][0]['cvssData']['baseScore'])
+                cvss_v4_vector = str(metrics['cvssMetricV40'][0]['cvssData']['vectorString'])
             except (KeyError, IndexError):
                 pass
+        
+        # CISA required action        
+        try:
+            cisa_required_action = str(cve.get('cisaRequiredAction', ''))
+        except (KeyError, IndexError):
+            pass
         
         return {
             'cve': cve_id,
             'description': description,
             'cvss_v2': cvss_v2,
+            'cvss_v2_vector': cvss_v2_vector,
             'cvss_v3': cvss_v3,
-            'cvss_v4': cvss_v4
+            'cvss_v3_vector': cvss_v3_vector,
+            'cvss_v4': cvss_v4,
+            'cvss_v4_vector': cvss_v4_vector,
+            'cisa_required_action': cisa_required_action
         }
         
-    def get_cvss_scores(self, cve) -> Dict[str, str]:
-        """
-        Extract CVSS scores from CVE object
-        
-        Args:
-            cve: CVE object from nvdlib
-            
-        Returns:
-            Dictionary with CVSS v2, v3, and v4 scores
-        """
-        cvss_scores = {
-            'cvss_v2': '',
-            'cvss_v3': '',
-            'cvss_v4': ''
-        }
-        
-        # CVSS v2
-        if hasattr(cve, 'v2score') and cve.v2score:
-            cvss_scores['cvss_v2'] = str(cve.v2score)
-            
-        # CVSS v3 (v3.0 or v3.1)
-        if hasattr(cve, 'v31score') and cve.v31score:
-            cvss_scores['cvss_v3'] = str(cve.v31score)
-        elif hasattr(cve, 'v3score') and cve.v3score:
-            cvss_scores['cvss_v3'] = str(cve.v3score)
-            
-        # CVSS v4 (if available)
-        if hasattr(cve, 'v4score') and cve.v4score:
-            cvss_scores['cvss_v4'] = str(cve.v4score)
-                
-        return cvss_scores
-    
-    def process_cve(self, cve) -> Dict[str, str]:
-        """
-        Process a single CVE object and extract required fields
-        
-        Args:
-            cve: CVE object from nvdlib
-            
-        Returns:
-            Dictionary with processed CVE information
-        """
-        # Extract CVE ID
-        cve_id = getattr(cve, 'id', '')
-        
-        # Extract description - nvdlib provides this as a list of dict-like objects
-        description = ''
-        if hasattr(cve, 'descriptions') and cve.descriptions:
-            # Find English description
-            for desc in cve.descriptions:
-                # desc is a dict-like object from nvdlib
-                if isinstance(desc, dict) and desc.get('lang') == 'en':
-                    description = desc.get('value', '').replace('\n', ' ').replace('\r', ' ')
-                    break
-                # Handle if it's an object with attributes
-                elif hasattr(desc, 'lang') and hasattr(desc, 'value'):
-                    if getattr(desc, 'lang', '') == 'en':
-                        description = getattr(desc, 'value', '').replace('\n', ' ').replace('\r', ' ')
-                        break
-            
-            # Fallback to first description
-            if not description and cve.descriptions:
-                first_desc = cve.descriptions[0]
-                if isinstance(first_desc, dict):
-                    description = first_desc.get('value', '').replace('\n', ' ').replace('\r', ' ')
-                else:
-                    description = str(first_desc).replace('\n', ' ').replace('\r', ' ')
-        
-        # Extract CVSS scores
-        cvss_scores = self.get_cvss_scores(cve)
-        
-        return {
-            'cve': cve_id,
-            'description': description,
-            'cvss_v2': cvss_scores['cvss_v2'],
-            'cvss_v3': cvss_scores['cvss_v3'],
-            'cvss_v4': cvss_scores['cvss_v4']
-        }
     
     def download_all_cves(self, output_file: str = 'nvd_cves.csv') -> None:
         """
@@ -231,7 +171,16 @@ class NVDDownloader:
         logger.info(f"Results per page: {self.results_per_page}")
         
         # CSV headers
-        headers = ['CVE', 'Description', 'CVSS v2', 'CVSS v3', 'CVSS v4']
+        headers = [
+            'CVE', 
+            'Description', 
+            'CVSS v2', 
+            'CVSS v2 Vector', 
+            'CVSS v3', 
+            'CVSS v3 Vector', 
+            'CVSS v4', 
+            'CVSS v4 Vector', 
+            'CISA Required Action']
         
         with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
@@ -270,8 +219,12 @@ class NVDDownloader:
                                 cve_info['cve'],
                                 cve_info['description'],
                                 cve_info['cvss_v2'],
+                                cve_info['cvss_v2_vector'],
                                 cve_info['cvss_v3'],
-                                cve_info['cvss_v4']
+                                cve_info['cvss_v3_vector'],
+                                cve_info['cvss_v4'],
+                                cve_info['cvss_v4_vector'],
+                                cve_info['cisa_required_action'],
                             ])
                             processed_count += 1
                             
@@ -307,60 +260,6 @@ class NVDDownloader:
         logger.info(f"Download complete! Processed {processed_count:,} CVEs")
         logger.info(f"Results saved to: {output_file}")
 
-    def download_sample_cves(self, num_cves: int = 100, output_file: str = 'sample_cves.csv') -> None:
-        """
-        Download a sample of CVEs for testing
-        
-        Args:
-            num_cves: Number of CVEs to download
-            output_file: Path to output CSV file
-        """
-        logger.info(f"Downloading sample of {num_cves} CVEs using nvdlib...")
-        
-        # CSV headers
-        headers = ['CVE', 'Description', 'CVSS v2', 'CVSS v3', 'CVSS v4']
-        
-        with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(headers)
-            
-            try:
-                # Use nvdlib to get sample CVEs
-                if self.api_key:
-                    cves = nvdlib.searchCVE(
-                        limit=num_cves,
-                        key=self.api_key
-                    )
-                else:
-                    cves = nvdlib.searchCVE(
-                        limit=num_cves
-                    )
-                
-                logger.info(f"Retrieved {len(cves)} CVEs from NVD API")
-                
-                processed_count = 0
-                for cve in cves:
-                    try:
-                        cve_info = self.process_cve(cve)
-                        writer.writerow([
-                            cve_info['cve'],
-                            cve_info['description'],
-                            cve_info['cvss_v2'],
-                            cve_info['cvss_v3'],
-                            cve_info['cvss_v4']
-                        ])
-                        processed_count += 1
-                        
-                    except Exception as e:
-                        logger.warning(f"Error processing CVE {getattr(cve, 'id', 'unknown')}: {e}")
-                        continue
-                
-                logger.info(f"Successfully downloaded {processed_count} CVEs to {output_file}")
-                
-            except Exception as e:
-                logger.error(f"Error downloading sample CVEs: {e}")
-                raise
-
 def main():
     """Main function to run the CVE downloader"""
     parser = argparse.ArgumentParser(description='Download all CVEs from NVD API using nvdlib')
@@ -373,27 +272,15 @@ def main():
         '--output',
         help='Output CSV file path',
         default='nvd_cves.csv'
-    )
-    parser.add_argument(
-        '--sample',
-        type=int,
-        help='Download only a sample of N CVEs for testing',
-        default=None
-    )
+    )   
     
     args = parser.parse_args()
     
     # Create downloader instance
     downloader = NVDDownloader(api_key=args.api_key)
     
-    try:
-        if args.sample:
-            # Download sample
-            downloader.download_sample_cves(num_cves=args.sample, output_file=args.output)
-        else:
-            # Download all CVEs
-            downloader.download_all_cves(output_file=args.output)
-        
+    try:        
+        downloader.download_all_cves(output_file=args.output)
     except KeyboardInterrupt:
         logger.info("Download interrupted by user")
     except Exception as e:

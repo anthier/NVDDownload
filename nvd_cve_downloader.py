@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """
-NVD CVE Downloader Script - AI generated
+NVD CVE Downloader Script
 Downloads all CVEs from the National Vulnerability Database (NVD) API
 and saves them to a CSV file with CVE ID, description, and CVSS scores.
-Uses the nvdlib package for simplified API interaction.
 """
 
-import nvdlib
 import requests
 import csv
 import time
@@ -38,7 +36,7 @@ class NVDDownloader:
         self.api_key = api_key
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
         
-        # Rate limiting parameters - nvdlib handles this internally but we still add delays
+        # Rate limiting parameters
         self.rate_limit_delay = 6.0 if not api_key else 0.6  # seconds between requests
         self.results_per_page = 2000  # Maximum allowed by NVD API
     
@@ -262,7 +260,7 @@ class NVDDownloader:
 
 def main():
     """Main function to run the CVE downloader"""
-    parser = argparse.ArgumentParser(description='Download all CVEs from NVD API using nvdlib')
+    parser = argparse.ArgumentParser(description='Download all CVEs from NVD API')
     parser.add_argument(
         '--api-key',
         help='NVD API key for higher rate limits (optional)',

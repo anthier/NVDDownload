@@ -2,12 +2,12 @@
 
 A Python script to download all CVEs (Common Vulnerabilities and Exposures) from the National Vulnerability Database (NVD) API and save them to a CSV file.
 
-Written primarily by AI.
+Written initially by AI, then reviewed, updated, and tested by a human.
 
 ## Features
 
 - Downloads all available CVEs from the NVD API
-- Extracts CVE ID, description, and CVSS scores (v2, v3, v4)
+- Extracts CVE ID, description, CVSS scores (v2, v3, v4) with vectors, and CISA required actions
 - Handles API rate limiting automatically
 - Supports optional API key for higher rate limits
 - Comprehensive error handling and logging
@@ -17,11 +17,7 @@ Written primarily by AI.
 ## Installation
 
 1. Install Python 3.7 or higher
-2. Install required dependencies:
-
-```bash
-pip install nvdlib
-```
+Note: no additional libraries required.
 
 ## Usage
 
@@ -56,9 +52,12 @@ The script generates a CSV file with the following columns:
 
 - **CVE**: CVE identifier (e.g., CVE-2023-12345)
 - **Description**: English description of the vulnerability
-- **CVSS v2**: CVSS version 2 base score (if available)
+- **CVSS v2**: CVSS version 2.0 base score (if available)
+- **CVSS v2 Vector String**: CVSS version 2 vector string (if available)
 - **CVSS v3**: CVSS version 3.0/3.1 base score (if available)
+- **CVSS v3 Vector String**: CVSS version 3.0/3.1 vector string (if available)
 - **CVSS v4**: CVSS version 4.0 base score (if available)
+- **CVSS v4 Vector String**: CVSS version 4.0 vector string (if available)
 
 ## Rate Limiting
 
@@ -78,7 +77,7 @@ The script creates a log file (`nvd_download.log`) and displays progress informa
 
 ## Error Handling
 
-The script includes robust error handling for:
+The script includes error handling for:
 
 - Network connectivity issues
 - API rate limit violations
@@ -92,14 +91,14 @@ If an error occurs, the script will retry automatically after a delay.
 - **Without API key**: Approximately 10 CVEs per minute
 - **With API key**: Approximately 100 CVEs per minute
 
-The total download time depends on the number of CVEs in the database (currently 200,000+).
+The total download time depends on the number of CVEs in the database (currently 300,000+), which may be in excess of 30 minutes.
 
 ## Example Output
 
 ```csv
-CVE,Description,CVSS v2,CVSS v3,CVSS v4
-CVE-2023-12345,"Buffer overflow vulnerability in example software",7.5,9.8,
-CVE-2023-12346,"SQL injection in web application",6.8,8.1,7.3
+CVE,Description,CVSS v2,CVSS v2 Vector,CVSS v3,CVSS v3 Vector,CVSS v4,CVSS v4 Vector,CISA Required Action
+CVE-2007-0671,"Unspecified vulnerability in Microsoft Excel 2000, XP, 2003, and 2004 for Mac, and possibly other Office products, allows remote user-assisted attackers to execute arbitrary code via unknown attack vectors, as demonstrated by Exploit-MSExcel.h in targeted zero-day attacks.",9.3,AV:N/AC:M/Au:N/C:C/I:C/A:C,8.8,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,,,"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."
+CVE-2021-44228,"Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",9.3,AV:N/AC:M/Au:N/C:C/I:C/A:C,10.0,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H,,,"For all affected software assets for which updates exist, the only acceptable remediation actions are: 1) Apply updates; OR 2) remove affected assets from agency networks. Temporary mitigations using one of the measures provided at https://www.cisa.gov/uscert/ed-22-02-apache-log4j-recommended-mitigation-measures are only acceptable until updates are available."
 ```
 
 ## Troubleshooting
@@ -108,9 +107,9 @@ CVE-2023-12346,"SQL injection in web application",6.8,8.1,7.3
 
 1. **Rate Limit Errors**: The script handles these automatically. If you see frequent rate limit errors, consider getting an API key.
 
-2. **Network Timeouts**: The script will retry failed requests. Ensure you have a stable internet connection.
+2. **Network Timeouts**: The script will retry failed requests. Ensure you have a stable internet connection. Consider retrying later, in case the NVD server is experiencing issues.
 
-3. **Large File Size**: The complete CVE database is large (several GB when complete). Ensure you have sufficient disk space.
+3. **Large File Size**: The complete CVE database is large (100MB+ when complete). Ensure you have sufficient disk space.
 
 ### Getting Help
 

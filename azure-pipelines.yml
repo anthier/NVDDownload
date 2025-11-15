@@ -1,0 +1,20 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: python nvd_cve_downloader.py --output $(Build.ArtifactStagingDirectory)/nvd_all_cves.csv
+  displayName: 'Download all CVEs to a csv file'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish CSV as an artifact'
+  inputs:
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: 'nvd_all_cves'

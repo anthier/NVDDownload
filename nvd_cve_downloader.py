@@ -154,13 +154,13 @@ class NVDDownloader:
     
     def download_all_cves(self, output_file: str = 'nvd_cves.csv') -> None:
         """
-        Download all CVEs from NVD and save to CSV file
-        Uses direct API calls with resultsPerPage and startIndex for proper pagination
+        Download all CVEs available in the NVD API and save to CSV file
+        Uses direct API calls with resultsPerPage and startIndex for pagination
         
         Args:
             output_file: Path to output CSV file
         """
-        logger.info("Starting NVD CVE download using direct API with pagination...")
+        logger.info("Starting CVE download through NVD API...")
         logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests")
         logger.info(f"Results per page: {self.results_per_page}")
         
@@ -176,25 +176,24 @@ class NVDDownloader:
             'CVSS v4 Vector', 
             'CISA Required Action']
         
-        with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.writer(csvfile)
+        with open(output_file, 'w', newline='', encoding='utf-8') as csv_file:
+            writer = csv.writer(csv_file)
             writer.writerow(headers)
             
             processed_count = 0
             start_index = 0
-            total_results = None
+            total_cve_count = None
             
             while True:
-                try:
-                    logger.info(f"Fetching CVEs from index {start_index}...")
-                    
+                try:                    
                     # Fetch page from API
+                    logger.info(f"Fetching CVEs from index {start_index}...")
                     response_data = self.fetch_cve_page(start_index)
                     
-                    # Get total results on first request
-                    if total_results is None:
-                        total_results = response_data.get('totalResults', 0)
-                        logger.info(f"Total CVEs in database: {total_results:,}")
+                    # Get total results (on first request only)
+                    if total_cve_count is None:
+                        total_cve_count = response_data.get('totalResults', 0)
+                        logger.info(f"Total CVE count reported by NVD API: {total_cve_count:,}")
                     
                     # Get vulnerabilities from response
                     vulnerabilities = response_data.get('vulnerabilities', [])
@@ -227,18 +226,21 @@ class NVDDownloader:
                             logger.warning(f"Error processing CVE {cve_id}: {e}")
                             continue
                     
-                    logger.info(f"Progress: {processed_count:,}/{total_results:,} CVEs ({100*processed_count/total_results:.1f}%)")
-                    csvfile.flush()  # Flush to disk after each page
+                    # Log progress
+                    logger.info(f"Progress: {processed_count:,}/{total_cve_count:,} CVEs ({100*processed_count/total_cve_count:.1f}%)")
+
+                    # Flush results so far to disk
+                    csv_file.flush()  
                     
-                    # Check if we've processed all results
-                    if start_index + len(vulnerabilities) >= total_results:
+                    # Break if we've processed all results
+                    if start_index + len(vulnerabilities) >= total_cve_count:
                         logger.info("Reached end of CVE database")
                         break
                     
-                    # Move to next page
+                    # Set index for next page
                     start_index += len(vulnerabilities)
                     
-                    # Rate limiting - sleep between requests
+                    # Rate limiting (sleep between requests)
                     logger.info(f"Rate limiting: waiting {self.rate_limit_delay} seconds...")
                     time.sleep(self.rate_limit_delay)
                     
@@ -255,7 +257,7 @@ class NVDDownloader:
         logger.info(f"Results saved to: {output_file}")
 
 def main():
-    """Main function to run the CVE downloader"""
+    # Configure and parse arguments    
     parser = argparse.ArgumentParser(description='Download all CVEs from NVD API')
     parser.add_argument(
         '--api-key',
@@ -266,13 +268,12 @@ def main():
         '--output',
         help='Output CSV file path',
         default='nvd_cves.csv'
-    )   
+    )      
     
     args = parser.parse_args()
     
-    # Create downloader instance
-    downloader = NVDDownloader(api_key=args.api_key)
-    
+    # Download CVEs
+    downloader = NVDDownloader(api_key=args.api_key)    
     try:        
         downloader.download_all_cves(output_file=args.output)
     except KeyboardInterrupt:

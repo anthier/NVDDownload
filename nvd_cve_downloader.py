@@ -2,7 +2,7 @@
 """
 NVD CVE Downloader Script
 Downloads all CVEs from the National Vulnerability Database (NVD) API
-and saves them to a CSV file with CVE ID, description, and CVSS scores.
+and saves them to a CSV file with CVE ID, description, CVSS v2/v3/v4 vector strings and scores, and CISA required actions.
 """
 
 import requests
@@ -17,38 +17,35 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('nvd_download.log'),
+        logging.FileHandler('nvd_cve_downloader.log'),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 
 class NVDDownloader:
-    """Class to handle downloading CVE data from NVD API using direct API calls with pagination"""
-    
     def __init__(self, api_key: Optional[str] = None):
         """
-        Initialize the NVD downloader
-        
         Args:
             api_key: Optional NVD API key for higher rate limits
         """
         self.api_key = api_key
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
         
-        # Rate limiting parameters
-        self.rate_limit_delay = 6.0 if not api_key else 0.6  # seconds between requests
-        self.results_per_page = 2000  # Maximum allowed by NVD API
+        # Rate limiting parameters (set based on NVD API docs)
+        self.rate_limit_delay = 6.0 if not api_key else 1.0
+        self.results_per_page = 2000  
     
-    def fetch_cves_page(self, start_index: int = 0) -> Dict:
+    def fetch_cve_page(self, start_index: int = 0) -> Dict:
         """
-        Fetch a page of CVEs directly from NVD API using resultsPerPage and startIndex
+        Fetch a page of CVEs from start_index, with a number of rows equal to results_per_page
+        Note: Max results_per_page may be limited by NVD API.
         
         Args:
-            start_index: Starting index for pagination
+            start_index: Index of first CVE to be grabbed (in NVD's order). This is not a CVE number.
             
         Returns:
-            API response as dictionary
+            API response as dict
         """
         headers = {}
         if self.api_key:
@@ -61,7 +58,7 @@ class NVDDownloader:
         
         try:
             response = requests.get(
-                self.base_url,
+                url=self.base_url,
                 headers=headers,
                 params=params,
                 timeout=60
@@ -72,7 +69,7 @@ class NVDDownloader:
             logger.error(f"API request failed: {e}")
             raise
     
-    def parse_cve_from_api(self, vuln_data: Dict) -> Dict[str, str]:
+    def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """
         Parse CVE data from raw API response
         
@@ -193,7 +190,7 @@ class NVDDownloader:
                     logger.info(f"Fetching CVEs from index {start_index}...")
                     
                     # Fetch page from API
-                    response_data = self.fetch_cves_page(start_index)
+                    response_data = self.fetch_cve_page(start_index)
                     
                     # Get total results on first request
                     if total_results is None:

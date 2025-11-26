@@ -209,7 +209,7 @@ class NVDDownloader:
                     # Process each CVE in this page
                     for vuln in vulnerabilities:
                         try:
-                            cve_info = self.parse_cve_from_api(vuln)
+                            cve_info = self.parse_cve(vuln)
                             writer.writerow([
                                 cve_info['cve'],
                                 cve_info['description'],

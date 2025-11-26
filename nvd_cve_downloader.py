@@ -71,30 +71,30 @@ class NVDDownloader:
     
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """
-        Parse CVE data from raw API response
+        Parse CVE data from raw NVD API response
         
         Args:
-            vuln_data: Vulnerability data from API response
+            vuln_data: Raw data on a single vulnerability (assumes NVD API format)
             
         Returns:
-            Dictionary with processed CVE information
+            Dictionary with final CVE data as processed
         """
         cve = vuln_data.get('cve', {})
-        
-        # Extract CVE ID
+
+        # Get CVE ID and description
         cve_id = cve.get('id', '')
-        
-        # Extract description
         descriptions = cve.get('descriptions', [])
         description = ''
         for desc in descriptions:
+            # Always get English if available
             if desc.get('lang') == 'en':
                 description = desc.get('value', '').replace('\n', ' ').replace('\r', ' ')
-                break
-        if not description and descriptions:
+                break       
+        # Use first description if we couldn't find English 
+        if (not description) and descriptions: 
             description = descriptions[0].get('value', '').replace('\n', ' ').replace('\r', ' ')
         
-        # Extract CVSS scores
+        # Extract any available metrics
         metrics = cve.get('metrics', {})        
         cvss_v2 = ''
         cvss_v2_vector = ''
@@ -104,7 +104,7 @@ class NVDDownloader:
         cvss_v4_vector = ''
         cisa_required_action = ''
         
-        # CVSS v2
+        # -- CVSS v2
         if 'cvssMetricV2' in metrics and metrics['cvssMetricV2']:
             try:
                 cvss_v2 = str(metrics['cvssMetricV2'][0]['cvssData']['baseScore'])
@@ -112,7 +112,7 @@ class NVDDownloader:
             except (KeyError, IndexError):
                 pass
         
-        # CVSS v3.x
+        # -- CVSS v3.1 if present, otherwise V3.0
         if 'cvssMetricV31' in metrics and metrics['cvssMetricV31']:
             try:
                 cvss_v3 = str(metrics['cvssMetricV31'][0]['cvssData']['baseScore'])
@@ -126,7 +126,7 @@ class NVDDownloader:
             except (KeyError, IndexError):
                 pass
         
-        # CVSS v4.0
+        # -- CVSS v4.0
         if 'cvssMetricV40' in metrics and metrics['cvssMetricV40']:
             try:
                 cvss_v4 = str(metrics['cvssMetricV40'][0]['cvssData']['baseScore'])
@@ -134,7 +134,7 @@ class NVDDownloader:
             except (KeyError, IndexError):
                 pass
         
-        # CISA required action        
+        # Extract any available CISA required action
         try:
             cisa_required_action = str(cve.get('cisaRequiredAction', ''))
         except (KeyError, IndexError):
@@ -151,7 +151,6 @@ class NVDDownloader:
             'cvss_v4_vector': cvss_v4_vector,
             'cisa_required_action': cisa_required_action
         }
-        
     
     def download_all_cves(self, output_file: str = 'nvd_cves.csv') -> None:
         """

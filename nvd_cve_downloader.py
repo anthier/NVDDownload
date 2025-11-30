@@ -12,6 +12,7 @@ from typing import Dict, Optional
 import argparse
 from argparse import RawTextHelpFormatter
 import logging
+import sys
 
 # Configure logging
 logging.basicConfig(
@@ -348,19 +349,27 @@ class NVDDownloader:
         logger.info(f"Results saved to: {output_file}")
 
 def comma_separated_list(arg_string):
-    return arg_string.split(',')
+    return arg_string.replace(' ', '').split(',')
+
+def parse_args_from_file(parser: argparse.ArgumentParser, file_path: str) -> argparse.Namespace:
+    with open(file_path, 'r', encoding='utf-8') as f:
+        # Split on whitespace – this mimics how the shell parses arguments.
+        # If you need quoted strings or comments, use shlex.split instead.
+        raw_args = f.read().split()
+    return parser.parse_args(raw_args)
 
 def main():
     # Configure and parse arguments    
     parser = argparse.ArgumentParser(
         description='Download all CVEs from NVD API \n\n' \
             'Notes:\n' \
-            '- Only outputs English description when available\n' 
-            '- Only outputs the CVSS data from primary source\n' 
-            '- Only outputs one CVSS v3.x score, v3.1 if available\n'
-            '- Fields not returned by NVD are left blank (many fields will be blank)',
+            '- Only outputs English description when available.\n' 
+            '- Only outputs the CVSS data from primary source.\n' 
+            '- Only outputs one CVSS v3.x score, v3.1 if available.\n'
+            '- Fields not returned by NVD are left blank (many fields will be blank).\n'
+            '- Arguments can be provided by text file. To do this, set the first arg to the file name.',
         formatter_class=RawTextHelpFormatter
-    )
+    )    
     parser.add_argument(
         '--api-key',
         help='NVD API key for higher rate limits (optional)',
@@ -378,7 +387,10 @@ def main():
         default='nvd_cves.csv'
     )      # TODO add argument to set line feed behavior. I.e. remove, replace with specific character.
     
-    args = parser.parse_args()
+    if len(sys.argv) > 1 and sys.argv[1].startswith('--'):
+        args = parser.parse_args()
+    else:
+        args = parse_args_from_file(parser, sys.argv[1])    
     
     # Download CVEs
     downloader = NVDDownloader(columns=args.columns, api_key=args.api_key)    

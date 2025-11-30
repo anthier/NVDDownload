@@ -275,16 +275,7 @@ class NVDDownloader:
         logger.info(f"Results per page: {self.results_per_page}")
         
         # CSV headers
-        headers = [
-            'CVE', 
-            'Description', 
-            'CVSS v2', 
-            'CVSS v2 Vector', 
-            'CVSS v3', 
-            'CVSS v3 Vector', 
-            'CVSS v4', 
-            'CVSS v4 Vector', 
-            'CISA Required Action']
+        headers = self.columns
         
         with open(output_file, 'w', newline='', encoding='utf-8') as csv_file:
             writer = csv.writer(csv_file)

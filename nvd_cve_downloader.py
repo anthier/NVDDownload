@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 # Note: JSON paths always end with the key name
 supported_columns = {
     # Top level (CVE)
-    'id': 'id',
+    'id': 'cve.id',
     'sourceId': 'cve.sourceIdentifier',
     'vulnStatus': 'cve.vulnStatus',
     'published': 'cve.published',
@@ -41,111 +41,111 @@ supported_columns = {
     'cisaRequiredAction': 'cve.cisaRequiredAction',
     'cisaVulnerabilityName': 'cve.cisaVulnerabilityName',    
     'tags': 'cve.cveTags', 
-    'description': 'cve.descriptions["en"]', # english description only, from "descriptions" node
+    'description': 'cve.descriptions.value', # english description only, from "descriptions" node
     'references': 'cve.references', # puts all formatted references in one cell
     # -CVE Metrics
     # --CVSS v2
-    'v2Source': 'cve.cvssMetricV2.source',
-    'v2BaseSeverity': 'cve.cvssMetricV2.baseSeverity',
-    'v2ExploitabilityScore': 'cve.cvssMetricV2.exploitabilityScore',
-    'v2Impact': 'cve.cvssMetricV2.impactScore',
-    'v2acInsufInfo': 'cve.cvssMetricV2.acInsufInfo',
-    'v2ObtainAllPrivilege': 'cve.cvssMetricV2.obtainAllPrivilege',
-    'v2ObtainUserPrivilege': 'cve.cvssMetricV2.obtainUserPrivilege',
-    'v2ObtainOtherPrivilege': 'cve.cvssMetricV2.obtainOtherPrivilege',
-    'v2UserInteractionRequired': 'cve.cvssMetricV2.userInteractionRequired',
-    'v2VectorString': 'cve.cvssMetricV2.cvssData.vectorString',
-    'v2AccessVector': 'cve.cvssMetricV2.cvssData.accessVector',
-    'v2AccessComplexity': 'cve.cvssMetricV2.cvssData.accessComplexity',
-    'v2Authentication': 'cve.cvssMetricV2.cvssData.authentication',
-    'v2ConfidentialityImpact': 'cve.cvssMetricV2.cvssData.confidentialityImpact',
-    'v2IntegrityImpact': 'cve.cvssMetricV2.cvssData.integrityImpact',
-    'v2AvailabilityImpact': 'cve.cvssMetricV2.cvssData.availabilityImpact',
-    'v2BaseScore': 'cve.cvssMetricV2.cvssData.baseScore',
-    'v2Exploitability': 'cve.cvssMetricV2.cvssData.exploitability',
-    'v2RemediationLevel': 'cve.cvssMetricV2.cvssData.remediationLevel',
-    'v2ReportConfidence': 'cve.cvssMetricV2.cvssData.reportConfidence',
-    'v2TemporalScore': 'cve.cvssMetricV2.cvssData.temporalScore',
-    'v2CollateralDamagePotential': 'cve.cvssMetricV2.cvssData.collateralDamagePotential',
-    'v2TargetDistribution': 'cve.cvssMetricV2.cvssData.targetDistribution',
-    'v2ConfidentialityRequirement': 'cve.cvssMetricV2.cvssData.confidentialityRequirement',
-    'v2IntegrityRequirement': 'cve.cvssMetricV2.cvssData.integrityRequirement',
-    'v2AvailabilityRequirement': 'cve.cvssMetricV2.cvssData.availabilityRequirement',
-    'v2EnvironmentalScore': 'cve.cvssMetricV2.cvssData.environmentalScore',
+    'v2Source': 'cve.metrics.cvssMetricV2.source',
+    'v2BaseSeverity': 'cve.metrics.cvssMetricV2.baseSeverity',
+    'v2ExploitabilityScore': 'cve.metrics.cvssMetricV2.exploitabilityScore',
+    'v2Impact': 'cve.metrics.cvssMetricV2.impactScore',
+    'v2acInsufInfo': 'cve.metrics.cvssMetricV2.acInsufInfo',
+    'v2ObtainAllPrivilege': 'cve.metrics.cvssMetricV2.obtainAllPrivilege',
+    'v2ObtainUserPrivilege': 'cve.metrics.cvssMetricV2.obtainUserPrivilege',
+    'v2ObtainOtherPrivilege': 'cve.metrics.cvssMetricV2.obtainOtherPrivilege',
+    'v2UserInteractionRequired': 'cve.metrics.cvssMetricV2.userInteractionRequired',
+    'v2VectorString': 'cve.metrics.cvssMetricV2.cvssData.vectorString',
+    'v2AccessVector': 'cve.metrics.cvssMetricV2.cvssData.accessVector',
+    'v2AccessComplexity': 'cve.metrics.cvssMetricV2.cvssData.accessComplexity',
+    'v2Authentication': 'cve.metrics.cvssMetricV2.cvssData.authentication',
+    'v2ConfidentialityImpact': 'cve.metrics.cvssMetricV2.cvssData.confidentialityImpact',
+    'v2IntegrityImpact': 'cve.metrics.cvssMetricV2.cvssData.integrityImpact',
+    'v2AvailabilityImpact': 'cve.metrics.cvssMetricV2.cvssData.availabilityImpact',
+    'v2BaseScore': 'cve.metrics.cvssMetricV2.cvssData.baseScore',
+    'v2Exploitability': 'cve.metrics.cvssMetricV2.cvssData.exploitability',
+    'v2RemediationLevel': 'cve.metrics.cvssMetricV2.cvssData.remediationLevel',
+    'v2ReportConfidence': 'cve.metrics.cvssMetricV2.cvssData.reportConfidence',
+    'v2TemporalScore': 'cve.metrics.cvssMetricV2.cvssData.temporalScore',
+    'v2CollateralDamagePotential': 'cve.metrics.cvssMetricV2.cvssData.collateralDamagePotential',
+    'v2TargetDistribution': 'cve.metrics.cvssMetricV2.cvssData.targetDistribution',
+    'v2ConfidentialityRequirement': 'cve.metrics.cvssMetricV2.cvssData.confidentialityRequirement',
+    'v2IntegrityRequirement': 'cve.metrics.cvssMetricV2.cvssData.integrityRequirement',
+    'v2AvailabilityRequirement': 'cve.metrics.cvssMetricV2.cvssData.availabilityRequirement',
+    'v2EnvironmentalScore': 'cve.metrics.cvssMetricV2.cvssData.environmentalScore',
     # --CVSS v3.x
-    'v3Source': 'cve.cvssMetricV3x.source',
-    'v3ExploitabilityScore': 'cve.cvssMetricV3x.exploitabilityScore',
-    'v3ImpactScore': 'cve.cvssMetricV3x.impactScore',
-    'v3VectorString': 'cve.cvssMetricV3x.cvssData.vectorString',
-    'v3AttackVector': 'cve.cvssMetricV3x.cvssData.attackVector',
-    'v3AttackComplexity': 'cve.cvssMetricV3x.cvssData.attackComplexity',
-    'v3PrivilegesRequired': 'cve.cvssMetricV3x.cvssData.privilegesRequired',
-    'v3UserInteraction': 'cve.cvssMetricV3x.cvssData.userInteraction',
-    'v3Scope': 'cve.cvssMetricV3x.cvssData.scope',
-    'v3ConfidentialityImpact': 'cve.cvssMetricV3x.cvssData.confidentialityImpact',
-    'v3IntegrityImpact': 'cve.cvssMetricV3x.cvssData.integrityImpact',
-    'v3AvailabilityImpact': 'cve.cvssMetricV3x.cvssData.availabilityImpact',
-    'v3BaseScore': 'cve.cvssMetricV3x.cvssData.baseScore',
-    'v3BaseSeverity': 'cve.cvssMetricV3x.cvssData.baseSeverity',
-    'v3ExploitCodeMaturity': 'cve.cvssMetricV3x.cvssData.exploitCodeMaturity',
-    'v3RemediationLevel': 'cve.cvssMetricV3x.cvssData.remediationLevel',
-    'v3ReportConfidence': 'cve.cvssMetricV3x.cvssData.reportConfidence',
-    'v3TemporalScore': 'cve.cvssMetricV3x.cvssData.temporalScore',
-    'v3TemporalSeverity': 'cve.cvssMetricV3x.cvssData.temporalSeverity',
-    'v3ConfidentialityRequirement': 'cve.cvssMetricV3x.cvssData.confidentialityRequirement',
-    'v3IntegrityRequirement': 'cve.cvssMetricV3x.cvssData.integrityRequirement',
-    'v3AvailabilityRequirement': 'cve.cvssMetricV3x.cvssData.availabilityRequirement',
-    'v3ModifiedAttackVector': 'cve.cvssMetricV3x.cvssData.modifiedAttackVector',
-    'v3ModifiedAttackComplexity': 'cve.cvssMetricV3x.cvssData.modifiedAttackComplexity',
-    'v3ModifiedPrivilegesRequired': 'cve.cvssMetricV3x.cvssData.modifiedPrivilegesRequired',
-    'v3ModifiedUserInteraction': 'cve.cvssMetricV3x.cvssData.modifiedUserInteraction',
-    'v3ModifiedScope': 'cve.cvssMetricV3x.cvssData.modifiedScope',
-    'v3ModifiedConfidentialityImpact': 'cve.cvssMetricV3x.cvssData.modifiedConfidentialityImpact',
-    'v3ModifiedIntegrityImpact': 'cve.cvssMetricV3x.cvssData.modifiedIntegrityImpact',
-    'v3ModifiedAvailabilityImpact': 'cve.cvssMetricV3x.cvssData.modifiedAvailabilityImpact',
-    'v3EnvironmentalScore': 'cve.cvssMetricV3x.cvssData.environmentalScore',
-    'v3EnvironmentalSeverity': 'cve.cvssMetricV3x.cvssData.environmentalSeverity',
+    'v3Source': 'cve.metrics.cvssMetricV3x.source',
+    'v3ExploitabilityScore': 'cve.metrics.cvssMetricV3x.exploitabilityScore',
+    'v3ImpactScore': 'cve.metrics.cvssMetricV3x.impactScore',
+    'v3VectorString': 'cve.metrics.cvssMetricV3x.cvssData.vectorString',
+    'v3AttackVector': 'cve.metrics.cvssMetricV3x.cvssData.attackVector',
+    'v3AttackComplexity': 'cve.metrics.cvssMetricV3x.cvssData.attackComplexity',
+    'v3PrivilegesRequired': 'cve.metrics.cvssMetricV3x.cvssData.privilegesRequired',
+    'v3UserInteraction': 'cve.metrics.cvssMetricV3x.cvssData.userInteraction',
+    'v3Scope': 'cve.metrics.cvssMetricV3x.cvssData.scope',
+    'v3ConfidentialityImpact': 'cve.metrics.cvssMetricV3x.cvssData.confidentialityImpact',
+    'v3IntegrityImpact': 'cve.metrics.cvssMetricV3x.cvssData.integrityImpact',
+    'v3AvailabilityImpact': 'cve.metrics.cvssMetricV3x.cvssData.availabilityImpact',
+    'v3BaseScore': 'cve.metrics.cvssMetricV3x.cvssData.baseScore',
+    'v3BaseSeverity': 'cve.metrics.cvssMetricV3x.cvssData.baseSeverity',
+    'v3ExploitCodeMaturity': 'cve.metrics.cvssMetricV3x.cvssData.exploitCodeMaturity',
+    'v3RemediationLevel': 'cve.metrics.cvssMetricV3x.cvssData.remediationLevel',
+    'v3ReportConfidence': 'cve.metrics.cvssMetricV3x.cvssData.reportConfidence',
+    'v3TemporalScore': 'cve.metrics.cvssMetricV3x.cvssData.temporalScore',
+    'v3TemporalSeverity': 'cve.metrics.cvssMetricV3x.cvssData.temporalSeverity',
+    'v3ConfidentialityRequirement': 'cve.metrics.cvssMetricV3x.cvssData.confidentialityRequirement',
+    'v3IntegrityRequirement': 'cve.metrics.cvssMetricV3x.cvssData.integrityRequirement',
+    'v3AvailabilityRequirement': 'cve.metrics.cvssMetricV3x.cvssData.availabilityRequirement',
+    'v3ModifiedAttackVector': 'cve.metrics.cvssMetricV3x.cvssData.modifiedAttackVector',
+    'v3ModifiedAttackComplexity': 'cve.metrics.cvssMetricV3x.cvssData.modifiedAttackComplexity',
+    'v3ModifiedPrivilegesRequired': 'cve.metrics.cvssMetricV3x.cvssData.modifiedPrivilegesRequired',
+    'v3ModifiedUserInteraction': 'cve.metrics.cvssMetricV3x.cvssData.modifiedUserInteraction',
+    'v3ModifiedScope': 'cve.metrics.cvssMetricV3x.cvssData.modifiedScope',
+    'v3ModifiedConfidentialityImpact': 'cve.metrics.cvssMetricV3x.cvssData.modifiedConfidentialityImpact',
+    'v3ModifiedIntegrityImpact': 'cve.metrics.cvssMetricV3x.cvssData.modifiedIntegrityImpact',
+    'v3ModifiedAvailabilityImpact': 'cve.metrics.cvssMetricV3x.cvssData.modifiedAvailabilityImpact',
+    'v3EnvironmentalScore': 'cve.metrics.cvssMetricV3x.cvssData.environmentalScore',
+    'v3EnvironmentalSeverity': 'cve.metrics.cvssMetricV3x.cvssData.environmentalSeverity',
     # --CVSS v4
-    'v4Source': 'cve.cvssMetricV40.source',
-    'v4VectorString': 'cve.cvssMetricV40.cvssData.vectorString',
-    'v4AttackVector': 'cve.cvssMetricV40.cvssData.attackVector',
-    'v4AttackComplexity': 'cve.cvssMetricV40.cvssData.attackComplexity',
-    'v4AttackRequirements': 'cve.cvssMetricV40.cvssData.attackRequirements',
-    'v4PrivilegesRequired': 'cve.cvssMetricV40.cvssData.privilegesRequired',
-    'v4UserInteraction': 'cve.cvssMetricV40.cvssData.userInteraction',
-    'v4VulnConfidentialityImpact': 'cve.cvssMetricV40.cvssData.vulnConfidentialityImpact',
-    'v4VulnIntegrityImpact': 'cve.cvssMetricV40.cvssData.vulnIntegrityImpact',
-    'v4VulnAvailabilityImpact': 'cve.cvssMetricV40.cvssData.vulnAvailabilityImpact',
-    'v4SubConfidentialityImpact': 'cve.cvssMetricV40.cvssData.subConfidentialityImpact',
-    'v4SubIntegrityImpact': 'cve.cvssMetricV40.cvssData.subIntegrityImpact',
-    'v4SubAvailabilityImpact': 'cve.cvssMetricV40.cvssData.subAvailabilityImpact',
-    'v4ExploitMaturity': 'cve.cvssMetricV40.cvssData.exploitMaturity',
-    'v4ConfidentialityRequirement': 'cve.cvssMetricV40.cvssData.confidentialityRequirement',
-    'v4IntegrityRequirement': 'cve.cvssMetricV40.cvssData.integrityRequirement',
-    'v4AvailabilityRequirement': 'cve.cvssMetricV40.cvssData.availabilityRequirement',
-    'v4ModifiedAttackVector': 'cve.cvssMetricV40.cvssData.modifiedAttackVector',
-    'v4ModifiedAttackComplexity': 'cve.cvssMetricV40.cvssData.modifiedAttackComplexity',
-    'v4ModifiedAttackRequirements': 'cve.cvssMetricV40.cvssData.modifiedAttackRequirements',
-    'v4ModifiedPrivilegesRequired': 'cve.cvssMetricV40.cvssData.modifiedPrivilegesRequired',
-    'v4ModifiedUserInteraction': 'cve.cvssMetricV40.cvssData.modifiedUserInteraction',
-    'v4ModifiedVulnConfidentialityImpact': 'cve.cvssMetricV40.cvssData.modifiedVulnConfidentialityImpact',
-    'v4ModifiedVulnIntegrityImpact': 'cve.cvssMetricV40.cvssData.modifiedVulnIntegrityImpact',
-    'v4ModifiedVulnAvailabilityImpact': 'cve.cvssMetricV40.cvssData.modifiedVulnAvailabilityImpact',
-    'v4ModifiedSubConfidentialityImpact': 'cve.cvssMetricV40.cvssData.modifiedSubConfidentialityImpact',
-    'v4ModifiedSubIntegrityImpact': 'cve.cvssMetricV40.cvssData.modifiedSubIntegrityImpact',
-    'v4ModifiedSubAvailabilityImpact': 'cve.cvssMetricV40.cvssData.modifiedSubAvailabilityImpact',
-    'v4Safety': 'cve.cvssMetricV40.cvssData.Safety',
-    'v4Automatable': 'cve.cvssMetricV40.cvssData.Automatable',
-    'v4Recovery': 'cve.cvssMetricV40.cvssData.Recovery',
-    'v4ValueDensity': 'cve.cvssMetricV40.cvssData.valueDensity',
-    'v4VulnResponseEffort': 'cve.cvssMetricV40.cvssData.vulnerabilityResponseEffort',
-    'v4ProviderUrgency': 'cve.cvssMetricV40.cvssData.providerUrgency'
+    'v4Source': 'cve.metrics.cvssMetricV40.source',
+    'v4VectorString': 'cve.metrics.cvssMetricV40.cvssData.vectorString',
+    'v4AttackVector': 'cve.metrics.cvssMetricV40.cvssData.attackVector',
+    'v4AttackComplexity': 'cve.metrics.cvssMetricV40.cvssData.attackComplexity',
+    'v4AttackRequirements': 'cve.metrics.cvssMetricV40.cvssData.attackRequirements',
+    'v4PrivilegesRequired': 'cve.metrics.cvssMetricV40.cvssData.privilegesRequired',
+    'v4UserInteraction': 'cve.metrics.cvssMetricV40.cvssData.userInteraction',
+    'v4VulnConfidentialityImpact': 'cve.metrics.cvssMetricV40.cvssData.vulnConfidentialityImpact',
+    'v4VulnIntegrityImpact': 'cve.metrics.cvssMetricV40.cvssData.vulnIntegrityImpact',
+    'v4VulnAvailabilityImpact': 'cve.metrics.cvssMetricV40.cvssData.vulnAvailabilityImpact',
+    'v4SubConfidentialityImpact': 'cve.metrics.cvssMetricV40.cvssData.subConfidentialityImpact',
+    'v4SubIntegrityImpact': 'cve.metrics.cvssMetricV40.cvssData.subIntegrityImpact',
+    'v4SubAvailabilityImpact': 'cve.metrics.cvssMetricV40.cvssData.subAvailabilityImpact',
+    'v4ExploitMaturity': 'cve.metrics.cvssMetricV40.cvssData.exploitMaturity',
+    'v4ConfidentialityRequirement': 'cve.metrics.cvssMetricV40.cvssData.confidentialityRequirement',
+    'v4IntegrityRequirement': 'cve.metrics.cvssMetricV40.cvssData.integrityRequirement',
+    'v4AvailabilityRequirement': 'cve.metrics.cvssMetricV40.cvssData.availabilityRequirement',
+    'v4ModifiedAttackVector': 'cve.metrics.cvssMetricV40.cvssData.modifiedAttackVector',
+    'v4ModifiedAttackComplexity': 'cve.metrics.cvssMetricV40.cvssData.modifiedAttackComplexity',
+    'v4ModifiedAttackRequirements': 'cve.metrics.cvssMetricV40.cvssData.modifiedAttackRequirements',
+    'v4ModifiedPrivilegesRequired': 'cve.metrics.cvssMetricV40.cvssData.modifiedPrivilegesRequired',
+    'v4ModifiedUserInteraction': 'cve.metrics.cvssMetricV40.cvssData.modifiedUserInteraction',
+    'v4ModifiedVulnConfidentialityImpact': 'cve.metrics.cvssMetricV40.cvssData.modifiedVulnConfidentialityImpact',
+    'v4ModifiedVulnIntegrityImpact': 'cve.metrics.cvssMetricV40.cvssData.modifiedVulnIntegrityImpact',
+    'v4ModifiedVulnAvailabilityImpact': 'cve.metrics.cvssMetricV40.cvssData.modifiedVulnAvailabilityImpact',
+    'v4ModifiedSubConfidentialityImpact': 'cve.metrics.cvssMetricV40.cvssData.modifiedSubConfidentialityImpact',
+    'v4ModifiedSubIntegrityImpact': 'cve.metrics.cvssMetricV40.cvssData.modifiedSubIntegrityImpact',
+    'v4ModifiedSubAvailabilityImpact': 'cve.metrics.cvssMetricV40.cvssData.modifiedSubAvailabilityImpact',
+    'v4Safety': 'cve.metrics.cvssMetricV40.cvssData.Safety',
+    'v4Automatable': 'cve.metrics.cvssMetricV40.cvssData.Automatable',
+    'v4Recovery': 'cve.metrics.cvssMetricV40.cvssData.Recovery',
+    'v4ValueDensity': 'cve.metrics.cvssMetricV40.cvssData.valueDensity',
+    'v4VulnResponseEffort': 'cve.metrics.cvssMetricV40.cvssData.vulnerabilityResponseEffort',
+    'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'
     # TODO: add CWEs and configs
 }
 
 
 class NVDDownloader:
-    def __init__(self, api_key: Optional[str] = None, columns: list[str] = None):
+    def __init__(self, columns: list[str], api_key: Optional[str] = None):
         """
         Args:
             api_key: Optional NVD API key for higher rate limits
@@ -154,8 +154,23 @@ class NVDDownloader:
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
         
         # Rate limiting parameters (set based on NVD API docs)
-        self.rate_limit_delay = 6.0 if not api_key else 1.0
+        self.rate_limit_delay = 6.0 if not api_key else 0.25
         self.results_per_page = 2000  
+
+        # Set columns, or a default set if none were provided
+        self.columns = columns
+        if len(columns) == 0:
+            self.columns = [
+                'id', 
+                'description', 
+                'v2BaseScore', 
+                'v2VectorString', 
+                'v3BaseScore', 
+                'v3VectorString', 
+                'v4BaseScore', 
+                'v4VectorString', 
+                'cisaRequiredAction'
+            ]
     
     def fetch_cve_page(self, start_index: int = 0) -> Dict:
         """
@@ -190,6 +205,46 @@ class NVDDownloader:
             logger.error(f"API request failed: {e}")
             raise
     
+    def get_column(self, cve, column_name) -> str:        
+        
+        # Get the list of column keys from the path string in supported_columns
+        if column_name in supported_columns:
+            column_keys = supported_columns[column_name].split('.')
+        else:
+            return ''
+        
+        # Traverse the cve dict until we've found the value of the last element of column_keys
+        current = cve        
+        for key in column_keys:
+            try:
+                # replace generic v3 metric key with latest version available before evaluating further             
+                if key == 'cvssMetricV3x':
+                    if isinstance(current, dict) and 'cvssMetricV31' in current:
+                        key = 'cvssMetricV31'
+                    else:
+                        key = 'cvssMetricV30'
+
+                if isinstance(current, dict) and key in current:
+                    current = current[key]
+                    # Look ahead to see if we just landed on a list. We need to choose an element before moving on.
+                    if isinstance(current, list) and len(current) > 0:
+                        # Look for the primary element of the list
+                        found = False
+                        for element in current:
+                            if isinstance(element, dict) and 'type' in element:
+                                if element['type'].lower() == 'primary':
+                                    current = element
+                                    found = True
+                                    break
+                        # Default to the first element if not found
+                        if not found:
+                            current = current[0]
+                else:
+                    return ''
+            except:
+                pass
+        return str(current).replace('\n', ' ').replace('\r', ' ')
+
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """
         Parse CVE data from raw NVD API response
@@ -200,78 +255,12 @@ class NVDDownloader:
         Returns:
             Dictionary with final CVE data as processed
         """
-        cve = vuln_data.get('cve', {})
+        result = []
+        
+        for column in self.columns:
+            result.append(self.get_column(vuln_data, column))            
 
-        # Get CVE ID and description
-        cve_id = cve.get('id', '')
-        descriptions = cve.get('descriptions', [])
-        description = ''
-        for desc in descriptions:
-            # Always get English if available
-            if desc.get('lang') == 'en':
-                description = desc.get('value', '').replace('\n', ' ').replace('\r', ' ')
-                break       
-        # Use first description if we couldn't find English 
-        if (not description) and descriptions: 
-            description = descriptions[0].get('value', '').replace('\n', ' ').replace('\r', ' ')
-        
-        # Extract any available metrics
-        metrics = cve.get('metrics', {})        
-        cvss_v2 = ''
-        cvss_v2_vector = ''
-        cvss_v3 = ''
-        cvss_v3_vector = ''
-        cvss_v4 = ''
-        cvss_v4_vector = ''
-        cisa_required_action = ''
-        
-        # -- CVSS v2
-        if 'cvssMetricV2' in metrics and metrics['cvssMetricV2']:
-            try:
-                cvss_v2 = str(metrics['cvssMetricV2'][0]['cvssData']['baseScore'])
-                cvss_v2_vector = str(metrics['cvssMetricV2'][0]['cvssData']['vectorString'])
-            except (KeyError, IndexError):
-                pass
-        
-        # -- CVSS v3.1 if present, otherwise V3.0
-        if 'cvssMetricV31' in metrics and metrics['cvssMetricV31']:
-            try:
-                cvss_v3 = str(metrics['cvssMetricV31'][0]['cvssData']['baseScore'])
-                cvss_v3_vector = str(metrics['cvssMetricV31'][0]['cvssData']['vectorString'])
-            except (KeyError, IndexError):
-                pass
-        elif 'cvssMetricV30' in metrics and metrics['cvssMetricV30']:
-            try:
-                cvss_v3 = str(metrics['cvssMetricV30'][0]['cvssData']['baseScore'])
-                cvss_v3_vector = str(metrics['cvssMetricV30'][0]['cvssData']['vectorString'])
-            except (KeyError, IndexError):
-                pass
-        
-        # -- CVSS v4.0
-        if 'cvssMetricV40' in metrics and metrics['cvssMetricV40']:
-            try:
-                cvss_v4 = str(metrics['cvssMetricV40'][0]['cvssData']['baseScore'])
-                cvss_v4_vector = str(metrics['cvssMetricV40'][0]['cvssData']['vectorString'])
-            except (KeyError, IndexError):
-                pass
-        
-        # Extract any available CISA required action
-        try:
-            cisa_required_action = str(cve.get('cisaRequiredAction', ''))
-        except (KeyError, IndexError):
-            pass
-        
-        return {
-            'cve': cve_id,
-            'description': description,
-            'cvss_v2': cvss_v2,
-            'cvss_v2_vector': cvss_v2_vector,
-            'cvss_v3': cvss_v3,
-            'cvss_v3_vector': cvss_v3_vector,
-            'cvss_v4': cvss_v4,
-            'cvss_v4_vector': cvss_v4_vector,
-            'cisa_required_action': cisa_required_action
-        }
+        return result
     
     def download_all_cves(self, output_file: str = 'nvd_cves.csv') -> None:
         """
@@ -329,17 +318,7 @@ class NVDDownloader:
                     for vuln in vulnerabilities:
                         try:
                             cve_info = self.parse_cve(vuln)
-                            writer.writerow([
-                                cve_info['cve'],
-                                cve_info['description'],
-                                cve_info['cvss_v2'],
-                                cve_info['cvss_v2_vector'],
-                                cve_info['cvss_v3'],
-                                cve_info['cvss_v3_vector'],
-                                cve_info['cvss_v4'],
-                                cve_info['cvss_v4_vector'],
-                                cve_info['cisa_required_action'],
-                            ])
+                            writer.writerow(cve_info)                            
                             processed_count += 1
                             
                         except Exception as e:
@@ -406,12 +385,12 @@ def main():
         '--output',
         help='Output file path',
         default='nvd_cves.csv'
-    )      
+    )      # TODO add argument to set line feed behavior. I.e. remove, replace with specific character.
     
     args = parser.parse_args()
     
     # Download CVEs
-    downloader = NVDDownloader(api_key=args.api_key, columns=args.columns)    
+    downloader = NVDDownloader(columns=args.columns, api_key=args.api_key)    
     try:        
         downloader.download_all_cves(output_file=args.output)
     except KeyboardInterrupt:

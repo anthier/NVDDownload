@@ -62,17 +62,7 @@ supported_columns = {
     'v2ConfidentialityImpact': 'cve.metrics.cvssMetricV2.cvssData.confidentialityImpact',
     'v2IntegrityImpact': 'cve.metrics.cvssMetricV2.cvssData.integrityImpact',
     'v2AvailabilityImpact': 'cve.metrics.cvssMetricV2.cvssData.availabilityImpact',
-    'v2BaseScore': 'cve.metrics.cvssMetricV2.cvssData.baseScore',
-    'v2Exploitability': 'cve.metrics.cvssMetricV2.cvssData.exploitability',
-    'v2RemediationLevel': 'cve.metrics.cvssMetricV2.cvssData.remediationLevel',
-    'v2ReportConfidence': 'cve.metrics.cvssMetricV2.cvssData.reportConfidence',
-    'v2TemporalScore': 'cve.metrics.cvssMetricV2.cvssData.temporalScore',
-    'v2CollateralDamagePotential': 'cve.metrics.cvssMetricV2.cvssData.collateralDamagePotential',
-    'v2TargetDistribution': 'cve.metrics.cvssMetricV2.cvssData.targetDistribution',
-    'v2ConfidentialityRequirement': 'cve.metrics.cvssMetricV2.cvssData.confidentialityRequirement',
-    'v2IntegrityRequirement': 'cve.metrics.cvssMetricV2.cvssData.integrityRequirement',
-    'v2AvailabilityRequirement': 'cve.metrics.cvssMetricV2.cvssData.availabilityRequirement',
-    'v2EnvironmentalScore': 'cve.metrics.cvssMetricV2.cvssData.environmentalScore',
+    'v2BaseScore': 'cve.metrics.cvssMetricV2.cvssData.baseScore',       
     # --CVSS v3.x
     'v3Source': 'cve.metrics.cvssMetricV3x.source',
     'v3ExploitabilityScore': 'cve.metrics.cvssMetricV3x.exploitabilityScore',
@@ -88,24 +78,6 @@ supported_columns = {
     'v3AvailabilityImpact': 'cve.metrics.cvssMetricV3x.cvssData.availabilityImpact',
     'v3BaseScore': 'cve.metrics.cvssMetricV3x.cvssData.baseScore',
     'v3BaseSeverity': 'cve.metrics.cvssMetricV3x.cvssData.baseSeverity',
-    'v3ExploitCodeMaturity': 'cve.metrics.cvssMetricV3x.cvssData.exploitCodeMaturity',
-    'v3RemediationLevel': 'cve.metrics.cvssMetricV3x.cvssData.remediationLevel',
-    'v3ReportConfidence': 'cve.metrics.cvssMetricV3x.cvssData.reportConfidence',
-    'v3TemporalScore': 'cve.metrics.cvssMetricV3x.cvssData.temporalScore',
-    'v3TemporalSeverity': 'cve.metrics.cvssMetricV3x.cvssData.temporalSeverity',
-    'v3ConfidentialityRequirement': 'cve.metrics.cvssMetricV3x.cvssData.confidentialityRequirement',
-    'v3IntegrityRequirement': 'cve.metrics.cvssMetricV3x.cvssData.integrityRequirement',
-    'v3AvailabilityRequirement': 'cve.metrics.cvssMetricV3x.cvssData.availabilityRequirement',
-    'v3ModifiedAttackVector': 'cve.metrics.cvssMetricV3x.cvssData.modifiedAttackVector',
-    'v3ModifiedAttackComplexity': 'cve.metrics.cvssMetricV3x.cvssData.modifiedAttackComplexity',
-    'v3ModifiedPrivilegesRequired': 'cve.metrics.cvssMetricV3x.cvssData.modifiedPrivilegesRequired',
-    'v3ModifiedUserInteraction': 'cve.metrics.cvssMetricV3x.cvssData.modifiedUserInteraction',
-    'v3ModifiedScope': 'cve.metrics.cvssMetricV3x.cvssData.modifiedScope',
-    'v3ModifiedConfidentialityImpact': 'cve.metrics.cvssMetricV3x.cvssData.modifiedConfidentialityImpact',
-    'v3ModifiedIntegrityImpact': 'cve.metrics.cvssMetricV3x.cvssData.modifiedIntegrityImpact',
-    'v3ModifiedAvailabilityImpact': 'cve.metrics.cvssMetricV3x.cvssData.modifiedAvailabilityImpact',
-    'v3EnvironmentalScore': 'cve.metrics.cvssMetricV3x.cvssData.environmentalScore',
-    'v3EnvironmentalSeverity': 'cve.metrics.cvssMetricV3x.cvssData.environmentalSeverity',
     # --CVSS v4
     'v4Source': 'cve.metrics.cvssMetricV40.source',
     'v4VectorString': 'cve.metrics.cvssMetricV40.cvssData.vectorString',
@@ -366,7 +338,8 @@ def main():
             '- Only outputs English description when available.\n' 
             '- Only outputs the CVSS data from primary source.\n' 
             '- Only outputs one CVSS v3.x score, v3.1 if available.\n'
-            '- Fields not returned by NVD are left blank (many fields will be blank).\n'
+            '- Some column options from the first.org spec are omitted because NVD has never used them (e.g. "reportConfidence")\n'
+            '- Fields not returned by NVD are left blank (this means many fields will be blank).\n'
             '- Arguments can be provided by text file. To do this, set the first arg to the file name.',
         formatter_class=RawTextHelpFormatter
     )    

@@ -387,10 +387,11 @@ def main():
         default='nvd_cves.csv'
     )      # TODO add argument to set line feed behavior. I.e. remove, replace with specific character.
     
-    if len(sys.argv) > 1 and sys.argv[1].startswith('--'):
+    if len(sys.argv) <= 1 or (len(sys.argv) > 1 and sys.argv[1].startswith('--')):
         args = parser.parse_args()
     else:
-        args = parse_args_from_file(parser, sys.argv[1])    
+        # Assume the argument is a config file when it isn't formatted like a switch (--)
+        args = parse_args_from_file(parser, sys.argv[1])   
     
     # Download CVEs
     downloader = NVDDownloader(columns=args.columns, api_key=args.api_key)    

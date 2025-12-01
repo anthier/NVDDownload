@@ -121,6 +121,7 @@ class NVDDownloader:
     def __init__(self, columns: list[str], api_key: Optional[str] = None):
         """
         Args:
+            columns: Columns to be output. Must be in supported_columns.
             api_key: Optional NVD API key for higher rate limits
         """
         self.api_key = api_key
@@ -131,19 +132,7 @@ class NVDDownloader:
         self.results_per_page = 2000  
 
         # Set columns, or a default set if none were provided
-        self.columns = columns
-        if len(columns) == 0:
-            self.columns = [
-                'id', 
-                'description', 
-                'v2BaseScore', 
-                'v2VectorString', 
-                'v3BaseScore', 
-                'v3VectorString', 
-                'v4BaseScore', 
-                'v4VectorString', 
-                'cisaRequiredAction'
-            ]
+        self.columns = columns        
     
     def fetch_cve_page(self, start_index: int = 0) -> Dict:
         """
@@ -342,7 +331,13 @@ def main():
             '- Fields not returned by NVD are left blank (this means many fields will be blank).\n'
             '- Arguments can be provided by text file. To do this, set the first arg to the file name.',
         formatter_class=RawTextHelpFormatter
-    )    
+    )      
+    parser.add_argument(
+        '--list-columns',
+        action='store_true',
+        help='Lists all available columns for the --columns parameter',
+        default=False, 
+    )
     parser.add_argument(
         '--api-key',
         help='NVD API key for higher rate limits (optional)',
@@ -351,30 +346,35 @@ def main():
     parser.add_argument( 
         '--columns',
         type=comma_separated_list,
-        help='List of columns to output, in output order. Select from the following: TBD', # TBD
-        default=[]
-    )
+        help='List of columns to output, in output order. Defaults to id, description, and v2/v3/v4 base scores and vector strings. For full list of available columns, use --list-columns.', 
+        default=['id', 'description', 'v2BaseScore', 'v2VectorString', 'v3BaseScore', 'v3VectorString', 'v4BaseScore', 'v4VectorString']
+    )    
     parser.add_argument(
         '--output',
         help='Output file path',
         default='nvd_cves.csv'
     )      # TODO add argument to set line feed behavior. I.e. remove, replace with specific character.
     
-    if len(sys.argv) <= 1 or (len(sys.argv) > 1 and sys.argv[1].startswith('--')):
+    if len(sys.argv) <= 1 or (len(sys.argv) > 1 and sys.argv[1].startswith('-')):
         args = parser.parse_args()
     else:
-        # Assume the argument is a config file when it isn't formatted like a switch (--)
+        # Assume the argument is a config file when it isn't formatted like a switch (-)
         args = parse_args_from_file(parser, sys.argv[1])   
     
-    # Download CVEs
-    downloader = NVDDownloader(columns=args.columns, api_key=args.api_key)    
-    try:        
-        downloader.download_all_cves(output_file=args.output)
-    except KeyboardInterrupt:
-        logger.info("Download interrupted by user")
-    except Exception as e:
-        logger.error(f"Download failed: {e}")
-        return 1
+    if args.list_columns:
+        print('Supported columns (separate multiple columns with commas):')
+        for column in supported_columns:
+            print(column)
+    else:
+        # Download CVEs
+        downloader = NVDDownloader(columns=args.columns, api_key=args.api_key)    
+        try:        
+            downloader.download_all_cves(output_file=args.output)
+        except KeyboardInterrupt:
+            logger.info("Download interrupted by user")
+        except Exception as e:
+            logger.error(f"Download failed: {e}")
+            return 1
     
     return 0
 

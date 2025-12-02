@@ -397,7 +397,7 @@ def main():
              '- weaknesses: output one weakness per line\n'
              '- configurations: output one configuration per line\n'
              '- vendorComments: output one vendor/comment key-value pair per line',
-        default=['id', 'description', 'v2BaseScore', 'v2VectorString', 'v3BaseScore', 'v3VectorString', 'v4BaseScore', 'v4VectorString']
+        default=[]
     )
     parser.add_argument(
         '--lf-parsing',

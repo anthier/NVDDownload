@@ -8,11 +8,12 @@ and saves them to a CSV file with CVE ID, description, CVSS v2/v3/v4 vector stri
 import requests
 import csv
 import time
-from typing import Dict, Optional
+from typing import Dict
 import argparse
 from argparse import RawTextHelpFormatter
 import logging
 import sys
+from enum import Enum
 
 # Configure logging
 logging.basicConfig(
@@ -24,6 +25,10 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+class LineParse(Enum):
+    Space=1
+    Preserve=2
 
 # List of all columns supported by NVD API, and strings representing their exact JSON paths
 # Note: JSON paths always end with the key name
@@ -117,21 +122,28 @@ supported_columns = {
 }
 
 class NVDDownloader:
-    def __init__(self, columns: list[str], api_key: Optional[str] = None):
+    def __init__(self, api_key: str, columns: list[str], lf_parsing: str):
         """
         Args:
             columns: Columns to be output. Must be in supported_columns.
             api_key: Optional NVD API key for higher rate limits
         """
         self.api_key = api_key
+        self.columns = columns 
+        if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
+            self.lf_parsing = LineParse.Space
+        elif lf_parsing.lower() == 'p' or lf_parsing.lower() == 'preserve':
+            self.lf_parsing = LineParse.Preserve
+        else:
+            logger.error(f"Invalid argument for lf_parsing: {lf_parsing}")
+            return 1
+
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
         
         # Rate limiting parameters (set based on NVD API docs)
         self.rate_limit_delay = 6.0 if not api_key else 0.25
         self.results_per_page = 2000  
-
-        # Set columns, or a default set if none were provided
-        self.columns = columns        
+       
     
     def fetch_cve_page(self, start_index: int = 0) -> Dict:
         """
@@ -166,8 +178,14 @@ class NVDDownloader:
             logger.error(f"API request failed: {e}")
             raise
     
-    def get_column(self, cve, column_name) -> str:        
-        
+    def parse_line_feeds(self, input: str) -> str:
+        match self.lf_parsing:
+            case LineParse.Space:
+                return input.replace('\n', ' ').replace('\r', ' ')
+            case LineParse.Preserve:
+                return input
+
+    def get_column(self, cve, column_name) -> str:   
         # Get the list of column keys from the path string in supported_columns
         if column_name in supported_columns:
             column_keys = supported_columns[column_name].split('.')
@@ -204,7 +222,7 @@ class NVDDownloader:
                     return ''
             except:
                 pass
-        return str(current).replace('\n', ' ').replace('\r', ' ')
+        return self.parse_line_feeds(str(current))
 
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """
@@ -374,7 +392,7 @@ def main():
             print(column)
     else:
         # Download CVEs
-        downloader = NVDDownloader(columns=args.columns, api_key=args.api_key)    
+        downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, lf_parsing=args.lf_parsing)    
         try:        
             downloader.download_all_cves(output_file=args.output)
         except KeyboardInterrupt:

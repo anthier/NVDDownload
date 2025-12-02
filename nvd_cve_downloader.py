@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 NVD CVE Downloader Script
-Downloads all CVEs from the National Vulnerability Database (NVD) API
-and saves them to a CSV file with CVE ID, description, CVSS v2/v3/v4 vector strings and scores, and CISA required actions.
+    Downloads all CVEs from the National Vulnerability Database (NVD) API and saves them to a CSV file with 
+    CVE ID, description, CVSS v2/v3/v4 vector strings and scores, and CISA required actions.
 """
 
 import requests
@@ -117,19 +117,22 @@ supported_columns = {
     'v4Recovery': 'cve.metrics.cvssMetricV40.cvssData.Recovery',
     'v4ValueDensity': 'cve.metrics.cvssMetricV40.cvssData.valueDensity',
     'v4VulnResponseEffort': 'cve.metrics.cvssMetricV40.cvssData.vulnerabilityResponseEffort',
-    'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'
-    # TODO: add CWEs and configs
+    'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
+formattable_columns = ['weaknesses', 'configurations', 'vendorComments']
+
+
 class NVDDownloader:
-    def __init__(self, api_key: str, columns: list[str], lf_parsing: str):
+    def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
         """
         Args:
             columns: Columns to be output. Must be in supported_columns.
             api_key: Optional NVD API key for higher rate limits
         """
         self.api_key = api_key
-        self.columns = columns 
+        self.columns = columns
+        self.formatters = formatters 
         if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
             self.lf_parsing = LineParse.Space
         elif lf_parsing.lower() == 'p' or lf_parsing.lower() == 'preserve':
@@ -346,7 +349,9 @@ def main():
             '- Only outputs one CVSS v3.x score (v3.1 if available).\n'
             '- Some column options from the first.org spec are omitted because NVD has never used them (e.g. "reportConfidence")\n'
             '- Fields not returned by NVD are left blank (this means many fields will be blank).\n'
-            '- Arguments can be provided by text file. To do this, set the first arg to the file name.',
+            '- Arguments can be provided by text file. To do this, set the first arg to the file name.\n'
+            '- Some fields are exported in raw NVD-style JSON, which may be malformed (e.g. single quotes instead of double quotes). '
+               'Use formatters for a human-readable representation.',
         formatter_class=RawTextHelpFormatter
     )      
     parser.add_argument(
@@ -363,14 +368,24 @@ def main():
     parser.add_argument( 
         '--columns',
         type=comma_separated_list,
-        help='list of columns to output (in order). Defaults to id,  description, base scores, and vector strings. For full list of available columns, use --list-columns.', 
+        help='list of columns to output (in order, comma-separated). Defaults to id,  description, base scores, and vector strings. For full list of available columns, use --list-columns.', 
+        default=['id', 'description', 'v2BaseScore', 'v2VectorString', 'v3BaseScore', 'v3VectorString', 'v4BaseScore', 'v4VectorString']
+    )
+    parser.add_argument( 
+        '--formatters',
+        type=comma_separated_list,
+        help='list of formatters (comma-separated) to apply to raw JSON columns (these ignore lf parsing settings):\n'
+             '- weaknesses: output one weakness per line\n'
+             '- configurations: output one configuration per line\n'
+             '- vendorComments: output one vendor/comment key-value pair per line',
         default=['id', 'description', 'v2BaseScore', 'v2VectorString', 'v3BaseScore', 'v3VectorString', 'v4BaseScore', 'v4VectorString']
     )
     parser.add_argument(
         '--lf-parsing',
-        help='- SPACE or S: replace line feeds in CVE data with spaces\n- PRESERVE or P: preserve original line feed characters.',
+        help='- SPACE or S: replace line feeds in CVE data with spaces\n'
+             '- PRESERVE or P: preserve original line feed characters.',
         default='space'
-    )
+    )    
     parser.add_argument(
         '--output',
         help='output file path',
@@ -393,7 +408,7 @@ def main():
     # Execute    
     if args.list_columns:
         # Print supported column list (no CVE processing)
-        print('Supported columns (separate multiple columns with commas):')
+        print('Supported columns:')
         for column in supported_columns:
             print(column)
     else:
@@ -401,7 +416,7 @@ def main():
             logger.addHandler(logging.FileHandler('nvd_cve_downloader.log'))
         
         # Download CVEs
-        downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, lf_parsing=args.lf_parsing)    
+        downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing)    
         try:        
             downloader.download_all_cves(output_file=args.output)
         except KeyboardInterrupt:

@@ -120,19 +120,31 @@ supported_columns = {
     'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
-formattable_columns = ['weaknesses', 'configurations', 'vendorComments']
+supported_formatters = ['weaknesses', 'configurations', 'vendorComments']
 
 
 class NVDDownloader:
     def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
         """
+        Initialize inputs, validating as appropriate
+
         Args:
-            columns: Columns to be output. Must be in supported_columns.
-            api_key: Optional NVD API key for higher rate limits
+            api_key: Optional NVD API key for higher rate limits.
+            columns: Columns to be output. Must be in supported_columns (case sensitive).
+            formatters: Selected formatters for outputs. Must be in supported_formatters (case sensitive).
+            lf_parsing: LF parsing setting in a string format (not case sensitive).
         """
         self.api_key = api_key
+        
+        # TODO: add column validation
         self.columns = columns
+
+        for formatter in formatters:
+            if not formatter in supported_formatters:
+               logger.error(f"Invalid formatter found: {formatter}")
+               return 1             
         self.formatters = formatters 
+
         if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
             self.lf_parsing = LineParse.Space
         elif lf_parsing.lower() == 'p' or lf_parsing.lower() == 'preserve':
@@ -188,6 +200,9 @@ class NVDDownloader:
             case LineParse.Preserve:
                 return input
 
+    def format_field(self, field: str) -> str:
+        return field
+
     def get_field(self, cve, column_name) -> str:   
         # Get the list of column keys from the path string in supported_columns
         if column_name in supported_columns:
@@ -199,7 +214,7 @@ class NVDDownloader:
         current = cve        
         for key in column_keys:
             try:
-                # replace generic v3 metric key with latest version available before evaluating further             
+                # Replace generic v3 metric key with latest version available before evaluating further             
                 if key == 'cvssMetricV3x':
                     if isinstance(current, dict) and 'cvssMetricV31' in current:
                         key = 'cvssMetricV31'
@@ -225,7 +240,11 @@ class NVDDownloader:
                     return ''
             except:
                 pass
-        return self.parse_line_feeds(str(current))
+        
+        if column_name in self.formatters:
+            return self.format_field(str(current))
+        else:
+            return self.parse_line_feeds(str(current))
 
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """

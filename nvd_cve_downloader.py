@@ -19,10 +19,7 @@ from enum import Enum
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('nvd_cve_downloader.log'),
-        logging.StreamHandler()
-    ]
+    handlers=[logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
 
@@ -343,7 +340,7 @@ def main():
             'Notes:\n' \
             '- Only outputs English description when available.\n' 
             '- Only outputs the CVSS data from primary source.\n' 
-            '- Only outputs one CVSS v3.x score, v3.1 if available.\n'
+            '- Only outputs one CVSS v3.x score (v3.1 if available).\n'
             '- Some column options from the first.org spec are omitted because NVD has never used them (e.g. "reportConfidence")\n'
             '- Fields not returned by NVD are left blank (this means many fields will be blank).\n'
             '- Arguments can be provided by text file. To do this, set the first arg to the file name.',
@@ -373,9 +370,15 @@ def main():
     )
     parser.add_argument(
         '--output',
-        help='Output file path',
+        help='output file path',
         default='nvd_cves.csv'
-    )      # TODO add argument to set line feed behavior. I.e. remove, replace with specific character.
+    )
+    parser.add_argument(
+        '--log-to-file',
+        action='store_true',
+        help='save log entries to file',
+        default=False
+    )
     
     # Parse arguments
     if len(sys.argv) <= 1 or (len(sys.argv) > 1 and sys.argv[1].startswith('-')):
@@ -384,13 +387,16 @@ def main():
         # Assume the argument is a config file when it isn't formatted like a switch (-)
         args = parse_args_from_file(parser, sys.argv[1])   
     
-    # Execute
+    # Execute    
     if args.list_columns:
         # Print supported column list (no CVE processing)
         print('Supported columns (separate multiple columns with commas):')
         for column in supported_columns:
             print(column)
     else:
+        if args.log_to_file:
+            logger.addHandler(logging.FileHandler('nvd_cve_downloader.log'))
+        
         # Download CVEs
         downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, lf_parsing=args.lf_parsing)    
         try:        

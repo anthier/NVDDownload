@@ -188,7 +188,7 @@ class NVDDownloader:
             case LineParse.Preserve:
                 return input
 
-    def get_column(self, cve, column_name) -> str:   
+    def get_field(self, cve, column_name) -> str:   
         # Get the list of column keys from the path string in supported_columns
         if column_name in supported_columns:
             column_keys = supported_columns[column_name].split('.')
@@ -240,7 +240,7 @@ class NVDDownloader:
         result = []
         
         for column in self.columns:
-            result.append(self.get_column(vuln_data, column))            
+            result.append(self.get_field(vuln_data, column))            
 
         return result
     

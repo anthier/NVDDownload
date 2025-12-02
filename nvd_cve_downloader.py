@@ -46,6 +46,9 @@ supported_columns = {
     'tags': 'cve.cveTags', 
     'description': 'cve.descriptions.value', # english description only, from "descriptions" node
     'references': 'cve.references', # puts all formatted references in one cell
+    'weaknesses': 'cve.weaknesses',
+    'configurations': 'cve.configurations',
+    'vendorComments': 'cve.vendorComments',
     # -CVE Metrics
     # --CVSS v2
     'v2Source': 'cve.metrics.cvssMetricV2.source',

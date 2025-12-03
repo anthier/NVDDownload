@@ -200,8 +200,31 @@ class NVDDownloader:
             case LineParse.Preserve:
                 return input
 
-    def format_field(self, field: str) -> str:
-        return field
+    def format_field(self, column_name, field) -> str:
+        result = field
+        
+        match column_name:
+            case 'weaknesses':
+                result = result           
+            case 'configurations':     
+                result = ''
+                if isinstance(field, list):                    
+                    config_number = 1                    
+                    for config in field:
+                        if 'operator' in config:
+                            result += f'Config {config_number} ({config['operator']})\n'
+                        else:
+                            result += f'Config {config_number}\n'
+                        for node in config['nodes']:   
+                            if 'operator' in node:
+                                result += f'{node['operator']}\n'
+                            for cpe in node['cpeMatch']:                            
+                                result += f'\t{str(node['negate'])}: {str(cpe['criteria'])}\n'   
+                        config_number += 1
+            case 'vendorComments':       
+                result = result         
+        return result
+        
 
     def get_field(self, cve, column_name) -> str:   
         # Get the list of column keys from the path string in supported_columns
@@ -221,10 +244,14 @@ class NVDDownloader:
                     else:
                         key = 'cvssMetricV30'
 
-                if isinstance(current, dict) and key in current:
+                if isinstance(current, dict) and key in current:                    
                     current = current[key]
                     # Look ahead to see if we just landed on a list. We need to choose an element before moving on.
-                    if isinstance(current, list) and len(current) > 0:
+                    if isinstance(current, list) and (len(current) > 0):
+                        # special case: keep the whole configurations array
+                        if column_name == 'configurations' and key == 'configurations':
+                            break
+
                         # Look for the primary element of the list
                         found = False
                         for element in current:
@@ -242,7 +269,7 @@ class NVDDownloader:
                 pass
         
         if column_name in self.formatters:
-            return self.format_field(str(current))
+            return self.format_field(column_name, current)
         else:
             return self.parse_line_feeds(str(current))
 
@@ -345,7 +372,7 @@ class NVDDownloader:
                     time.sleep(30)
                     continue
         
-        logger.info(f"Download complete! Processed {processed_count:,} CVEs")
+        logger.info(f"Download complete! Processed {processed_count:,} CVEs") # TODO: add elapsed time
         logger.info(f"Results saved to: {output_file}")
 
 def comma_separated_list(arg_string):

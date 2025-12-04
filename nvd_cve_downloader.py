@@ -120,7 +120,7 @@ supported_columns = {
     'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
-supported_formatters = ['weaknesses', 'configurations', 'vendorComments']
+formattable_columns = ['weaknesses', 'configurations', 'vendorComments']
 
 
 class NVDDownloader:
@@ -140,7 +140,7 @@ class NVDDownloader:
         self.columns = columns
 
         for formatter in formatters:
-            if not formatter in supported_formatters:
+            if not formatter in formattable_columns:
                logger.error(f"Invalid formatter found: {formatter}")
                return 1             
         self.formatters = formatters 
@@ -201,14 +201,35 @@ class NVDDownloader:
                 return input
 
     def format_field(self, column_name, field) -> str:
+        # Ignore common values that are not specific weaknesses
+        ignored_values = ['nvd-cwe-other', 'nvd-cwe-noinfo']
+        
         result = field
         
         match column_name:
-            case 'weaknesses':
-                result = result           
+            case 'weaknesses':                
+                result = ''
+                if isinstance(field, list):
+                    weaknesses: Dict[str, list[str]] = {}
+                    for weakness in field:
+                        if 'description' in weakness:
+                            for desc in weakness['description']:                                
+                                if not str(desc['value']).lower() in ignored_values:
+                                    if desc['value'] not in weaknesses:
+                                        weaknesses[desc['value']] = []                                    
+                                    weaknesses[desc['value']].append(weakness['source'])
+                if len(weaknesses) > 0:
+                    for key, value in weaknesses.items():
+                        if isinstance(value, list):                            
+                            joined = ", ".join(str(v) for v in value)
+                        else:
+                            joined = str(value)
+                        result = f'{result}\n' if result else ''
+                        result = f'{result}{key}: {joined}'                
+            
             case 'configurations':     
                 result = ''
-                if isinstance(field, list):                    
+                if isinstance(field, list):
                     config_number = 1                    
                     for config in field:
                         if 'operator' in config:
@@ -221,8 +242,10 @@ class NVDDownloader:
                             for cpe in node['cpeMatch']:                            
                                 result += f'\t{str(node['negate'])}: {str(cpe['criteria'])}\n'   
                         config_number += 1
+            
             case 'vendorComments':       
-                result = result         
+                result = result       
+
         return result
         
 
@@ -248,8 +271,8 @@ class NVDDownloader:
                     current = current[key]
                     # Look ahead to see if we just landed on a list. We need to choose an element before moving on.
                     if isinstance(current, list) and (len(current) > 0):
-                        # special case: keep the whole configurations array
-                        if column_name == 'configurations' and key == 'configurations':
+                        # special case: keep the whole array when we arrive at a formattable field
+                        if column_name in formattable_columns and key == column_name:
                             break
 
                         # Look for the primary element of the list

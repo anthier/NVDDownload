@@ -15,14 +15,11 @@ logger = logging.getLogger(__name__)
 def fetch_nvd_sources() -> Dict[str, List[str]]:
     """
     Fetch sources from NVD source API v2.
-
-    Args: 
-        logger: where logs will be added. (Required)
             
     Returns:
         Dictionary with source names as keys and sourceIdentifier lists as values
     """
-    # For logging elapsed time
+    
     start_time = time.perf_counter()
     
     base_url = "https://services.nvd.nist.gov/rest/json/source/2.0"

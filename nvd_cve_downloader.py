@@ -248,9 +248,22 @@ class NVDDownloader:
         
         match column_name:
             case 'tags':
-                if isinstance(field, list):
-                    result = ''
-                    # TODO
+                if isinstance(field, list):                
+                    result = ''                    
+                    tags: Dict[str, list[str]] = {}
+                    for tagItem in field:                        
+                        for tag in tagItem['tags']:  
+                            if tag not in tags:
+                                tags[tag] = []
+                            tags[tag].append(self.parse_source(tagItem['sourceIdentifier']))
+                    if len(tags) > 0:
+                        for key, value in tags.items():
+                            if isinstance(value, list):                            
+                                joined = ", ".join(str(v) for v in value)
+                            else:
+                                joined = str(value)
+                            result = f'{result}\n' if result else ''
+                            result = f'{result}{key}: {joined}'
 
             case 'references':
                 if isinstance(field, list):
@@ -325,8 +338,9 @@ class NVDDownloader:
                     current = current[key]
                     # Look ahead to see if we just landed on a list. We need to choose an element before moving on.
                     if isinstance(current, list) and (len(current) > 0):
-                        # special case: keep the whole array when we arrive at a formattable field
-                        if column_name in formattable_columns and key == column_name:
+                        # Special case: keep the whole list when we arrive at a formattable field
+                        # Note: need to be sure we're on the right key, and they will be in the *value* of the supported column
+                        if column_name in formattable_columns and key == supported_columns[column_name].split('.')[-1]:
                             break
 
                         # Look for the primary element of the list

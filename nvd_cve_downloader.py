@@ -128,10 +128,39 @@ class NVDDownloader:
         
         return self._sources
     
-    def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
-        # TODO: move validation outside of the init function
+    @classmethod
+    def validate_inputs(cls, columns: list[str], formatters: list[str], lf_parsing: str) -> bool:
         """
-        Initialize inputs, validating as appropriate
+        Validate inputs to class constructor that can be validated, logging errors as appropriate.
+        
+        Args: see __init__.
+
+        Returns:
+            True if validation succeeded.
+        """
+        for column in columns:
+            if not column in supported_columns:
+                logger.error(f"Unsupported or invalid column found: {column}")
+                return False
+
+        for formatter in formatters:
+            if not formatter in formattable_columns:
+               logger.error(f"Unsupported or invalid formatter found: {formatter}")
+               return False     
+
+        if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
+            pass
+        elif lf_parsing.lower() == 'p' or lf_parsing.lower() == 'preserve':
+            pass
+        else:
+            logger.error(f"Invalid argument for lf_parsing: {lf_parsing}")
+            return False
+        
+        return True
+    
+    def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
+        """
+        Initialize inputs and internal data, without validation. For validation, first call validate_inputs.
 
         Args:
             api_key: Optional NVD API key for higher rate limits.
@@ -140,26 +169,15 @@ class NVDDownloader:
             lf_parsing: LF parsing setting in a string format (not case sensitive).
         """        
         self.api_key = api_key
-        
-        # TODO: add column validation
         self.columns = columns
-
-        for formatter in formatters:
-            if not formatter in formattable_columns:
-               logger.error(f"Invalid formatter found: {formatter}")
-               return 1             
         self.formatters = formatters 
 
         if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
             self.lf_parsing = LineParse.Space
-        elif lf_parsing.lower() == 'p' or lf_parsing.lower() == 'preserve':
-            self.lf_parsing = LineParse.Preserve
         else:
-            logger.error(f"Invalid argument for lf_parsing: {lf_parsing}")
-            return 1
+            self.lf_parsing = LineParse.Preserve
 
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
-
         self._sources = None
         
         # Rate limiting parameters (set based on NVD API docs)

@@ -99,8 +99,12 @@ def main():
         if args.log_to_file:
             logging.getLogger().addHandler(logging.FileHandler('nvd_cve_downloader.log')) # add to root
         
-        # Download CVEs
-        downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing)    
+        # Validate inputs and download CVEs
+        if NVDDownloader.validate_inputs(columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing):
+            downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing)
+        else:
+            return 1
+          
         try:        
             downloader.download_all_cves(output_file=args.output)
         except KeyboardInterrupt:

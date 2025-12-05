@@ -128,7 +128,7 @@ class NVDDownloader:
         
         return self._sources
     
-    def __init__(self, logger: logging.Logger, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
+    def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
         # TODO: move validation outside of the init function
         """
         Initialize inputs, validating as appropriate

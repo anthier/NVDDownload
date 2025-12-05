@@ -299,7 +299,7 @@ class NVDDownloader:
                     result = ''                    
                     for comment in field:                        
                         result = f'{result}\n' if result else ''
-                        result = f'{result}{comment['organization']} {comment['lastModified']}: \'{str(comment['comment']).replace('\'', '')}\''
+                        result = f'{result}{self.parse_source(comment['organization'])} {comment['lastModified']}: \'{str(comment['comment']).replace('\'', '')}\''
 
         return result
         

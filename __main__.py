@@ -104,9 +104,8 @@ def main():
         try:        
             downloader.download_all_cves(output_file=args.output)
         except KeyboardInterrupt:
-            logger.info("Download interrupted by user")
+            pass
         except Exception as e:
-            logger.error(f"Download failed: {e}")
             return 1
     
     return 0

@@ -9,18 +9,11 @@ import requests
 import csv
 import time
 from typing import Dict
-import argparse
-from argparse import RawTextHelpFormatter
 import logging
-import sys
 from enum import Enum
+import nvd_source_downloader
+import uuid
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.StreamHandler()]
-)
 logger = logging.getLogger(__name__)
 
 class LineParse(Enum):
@@ -122,9 +115,21 @@ supported_columns = {
 
 formattable_columns = ['weaknesses', 'configurations', 'vendorComments']
 
-
 class NVDDownloader:
-    def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
+    @property
+    def sources(self):
+        # Build sources list on first access
+        if not self._sources:   
+            logger.info('Source info requested. Sources will be downloaded.')    
+            self._sources = nvd_source_downloader.fetch_nvd_sources()
+            # Replace "NIST" source with "NVD" for clarity and to match NVD website
+            if 'NIST' in self._sources:
+                self._sources['NVD'] = self._sources.pop('NIST')   
+        
+        return self._sources
+    
+    def __init__(self, logger: logging.Logger, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
+        # TODO: move validation outside of the init function
         """
         Initialize inputs, validating as appropriate
 
@@ -133,7 +138,7 @@ class NVDDownloader:
             columns: Columns to be output. Must be in supported_columns (case sensitive).
             formatters: Selected formatters for outputs. Must be in supported_formatters (case sensitive).
             lf_parsing: LF parsing setting in a string format (not case sensitive).
-        """
+        """        
         self.api_key = api_key
         
         # TODO: add column validation
@@ -154,6 +159,8 @@ class NVDDownloader:
             return 1
 
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
+
+        self._sources = None
         
         # Rate limiting parameters (set based on NVD API docs)
         self.rate_limit_delay = 6.0 if not api_key else 0.25
@@ -199,6 +206,24 @@ class NVDDownloader:
                 return input.replace('\n', ' ').replace('\r', ' ')
             case LineParse.Preserve:
                 return input
+    
+    def parse_source(self, input: str) -> str:
+        # Replace emails with original names
+        if '@' in input:
+            for key, value in self.sources.items():
+                if input in value:
+                    return key
+        
+        # Replace UUIDs with original names
+        try:
+            uuid.UUID(input)
+            for key, value in self.sources.items():
+                if input in value:
+                    return key
+        except (ValueError, AttributeError, TypeError):
+            pass
+
+        return input
 
     def format_field(self, column_name, field) -> str:
         # Ignore common values that are not specific weaknesses
@@ -217,7 +242,7 @@ class NVDDownloader:
                                 if not str(desc['value']).lower() in ignored_values:
                                     if desc['value'] not in weaknesses:
                                         weaknesses[desc['value']] = []                                    
-                                    weaknesses[desc['value']].append(weakness['source'])
+                                    weaknesses[desc['value']].append(self.parse_source(weakness['source']))
                 if len(weaknesses) > 0:
                     for key, value in weaknesses.items():
                         if isinstance(value, list):                            
@@ -397,104 +422,3 @@ class NVDDownloader:
         
         logger.info(f"Download complete! Processed {processed_count:,} CVEs") # TODO: add elapsed time
         logger.info(f"Results saved to: {output_file}")
-
-def comma_separated_list(arg_string):
-    return arg_string.replace(' ', '').split(',')
-
-def parse_args_from_file(parser: argparse.ArgumentParser, file_path: str) -> argparse.Namespace:
-    with open(file_path, 'r', encoding='utf-8') as f:
-        # Split on whitespace – this mimics how the shell parses arguments.
-        # If you need quoted strings or comments, use shlex.split instead.
-        raw_args = f.read().split()
-    return parser.parse_args(raw_args)
-
-def main():
-    # Configure arguments    
-    parser = argparse.ArgumentParser(
-        description='Download all CVEs from NVD API \n\n' \
-            'Notes:\n' \
-            '- Only outputs English description when available.\n' 
-            '- Only outputs the CVSS data from primary source.\n' 
-            '- Only outputs one CVSS v3.x score (v3.1 if available).\n'
-            '- Some column options from the first.org spec are omitted because NVD has never used them (e.g. "reportConfidence")\n'
-            '- Fields not returned by NVD are left blank (this means many fields will be blank).\n'
-            '- Arguments can be provided by text file. To do this, set the first arg to the file name.\n'
-            '- Some fields are exported in raw NVD-style JSON, which may be malformed (e.g. single quotes instead of double quotes). '
-               'Use formatters for a human-readable representation.',
-        formatter_class=RawTextHelpFormatter
-    )      
-    parser.add_argument(
-        '--list-columns',
-        action='store_true',
-        help='list all available columns for the --columns parameter',
-        default=False, 
-    )
-    parser.add_argument(
-        '--api-key',
-        help='NVD API key for higher rate limits (optional)',
-        default=None
-    )
-    parser.add_argument( 
-        '--columns',
-        type=comma_separated_list,
-        help='list of columns to output (in order, comma-separated). Defaults to id,  description, base scores, and vector strings. For full list of available columns, use --list-columns.', 
-        default=['id', 'description', 'v2BaseScore', 'v2VectorString', 'v3BaseScore', 'v3VectorString', 'v4BaseScore', 'v4VectorString']
-    )
-    parser.add_argument( 
-        '--formatters',
-        type=comma_separated_list,
-        help='list of formatters (comma-separated) to apply to raw JSON columns (these ignore lf parsing settings):\n'
-             '- weaknesses: output one weakness per line\n'
-             '- configurations: output one configuration per line\n'
-             '- vendorComments: output one vendor/comment key-value pair per line',
-        default=[]
-    )
-    parser.add_argument(
-        '--lf-parsing',
-        help='- SPACE or S: replace line feeds in CVE data with spaces\n'
-             '- PRESERVE or P: preserve original line feed characters.',
-        default='space'
-    )    
-    parser.add_argument(
-        '--output',
-        help='output file path',
-        default='nvd_cves.csv'
-    )
-    parser.add_argument(
-        '--log-to-file',
-        action='store_true',
-        help='save log entries to file',
-        default=False
-    )
-    
-    # Parse arguments
-    if len(sys.argv) <= 1 or (len(sys.argv) > 1 and sys.argv[1].startswith('-')):
-        args = parser.parse_args()
-    else:
-        # Assume the argument is a config file when it isn't formatted like a switch (-)
-        args = parse_args_from_file(parser, sys.argv[1])   
-    
-    # Execute    
-    if args.list_columns:
-        # Print supported column list (no CVE processing)
-        print('Supported columns:')
-        for column in supported_columns:
-            print(column)
-    else:
-        if args.log_to_file:
-            logger.addHandler(logging.FileHandler('nvd_cve_downloader.log'))
-        
-        # Download CVEs
-        downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing)    
-        try:        
-            downloader.download_all_cves(output_file=args.output)
-        except KeyboardInterrupt:
-            logger.info("Download interrupted by user")
-        except Exception as e:
-            logger.error(f"Download failed: {e}")
-            return 1
-    
-    return 0
-
-if __name__ == "__main__":
-    exit(main())

@@ -345,7 +345,9 @@ class NVDDownloader:
         
         Args:
             output_file: Path to output CSV file
-        """
+        """        
+        start_time = time.perf_counter()
+
         logger.info("Starting CVE download through NVD API...")
         logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests")
         logger.info(f"Results per page: {self.results_per_page}")
@@ -412,7 +414,7 @@ class NVDDownloader:
                     time.sleep(self.rate_limit_delay)
                     
                 except KeyboardInterrupt:
-                    logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs so far.")
+                    logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s.")
                     raise
                 except Exception as e:
                     logger.error(f"Error downloading page at index {start_index}: {e}")
@@ -420,5 +422,5 @@ class NVDDownloader:
                     time.sleep(30)
                     continue
         
-        logger.info(f"Download complete! Processed {processed_count:,} CVEs") # TODO: add elapsed time
+        logger.info(f"Download complete! Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s")
         logger.info(f"Results saved to: {output_file}")

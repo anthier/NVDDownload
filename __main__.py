@@ -59,9 +59,11 @@ def main():
         '--formatters',
         type=comma_separated_list,
         help='list of formatters (comma-separated) to apply to raw JSON columns (these ignore lf parsing settings):\n'
-             '- weaknesses: output one weakness per line\n'
-             '- configurations: output one configuration per line\n'
-             '- vendorComments: output one vendor/comment key-value pair per line',
+             '- tags: output tags separated by commas\n'
+             '- references: output references in "<reference>: <source 1>, <source n> (<tag 1>, <tag n>)" format, one per line\n'
+             '- weaknesses: output weaknesses in "<weakness>: <source 1>, <source n>" format\n'
+             '- configurations: output configurations with operators, one per line\n'
+             '- vendorComments: output in "<vendor> <date>: \'<comment>\'" format',
         default=[]
     )
     parser.add_argument(

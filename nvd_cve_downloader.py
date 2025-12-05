@@ -113,7 +113,7 @@ supported_columns = {
     'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
-formattable_columns = ['weaknesses', 'configurations', 'vendorComments']
+formattable_columns = ['tags', 'references', 'weaknesses', 'configurations', 'vendorComments']
 
 class NVDDownloader:
     @property
@@ -247,6 +247,16 @@ class NVDDownloader:
         result = field
         
         match column_name:
+            case 'tags':
+                if isinstance(field, list):
+                    result = ''
+                    # TODO
+
+            case 'references':
+                if isinstance(field, list):
+                    result = ''
+                    # TODO
+            
             case 'weaknesses':         # TODO: remove commas from sources                       
                 if isinstance(field, list):
                     result = ''
@@ -293,7 +303,6 @@ class NVDDownloader:
 
         return result
         
-
     def get_field(self, cve, column_name) -> str:   
         # Get the list of column keys from the path string in supported_columns
         if column_name in supported_columns:

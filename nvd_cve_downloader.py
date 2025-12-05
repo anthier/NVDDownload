@@ -244,15 +244,13 @@ class NVDDownloader:
         return input
 
     def format_field(self, column_name, field) -> str:
-        # Ignore common values that are not specific weaknesses
-        ignored_values = ['nvd-cwe-other', 'nvd-cwe-noinfo']
-        
         result = field
         
         match column_name:
-            case 'weaknesses':                
-                result = ''
+            case 'weaknesses':         # TODO: remove commas from sources                       
                 if isinstance(field, list):
+                    result = ''
+                    ignored_values = ['nvd-cwe-other', 'nvd-cwe-noinfo'] # Common values that are not specific weaknesses
                     weaknesses: Dict[str, list[str]] = {}
                     for weakness in field:
                         if 'description' in weakness:
@@ -261,22 +259,22 @@ class NVDDownloader:
                                     if desc['value'] not in weaknesses:
                                         weaknesses[desc['value']] = []                                    
                                     weaknesses[desc['value']].append(self.parse_source(weakness['source']))
-                if len(weaknesses) > 0:
-                    for key, value in weaknesses.items():
-                        if isinstance(value, list):                            
-                            joined = ", ".join(str(v) for v in value)
-                        else:
-                            joined = str(value)
-                        result = f'{result}\n' if result else ''
-                        result = f'{result}{key}: {joined}'                
+                    if len(weaknesses) > 0:
+                        for key, value in weaknesses.items():
+                            if isinstance(value, list):                            
+                                joined = ", ".join(str(v) for v in value)
+                            else:
+                                joined = str(value)
+                            result = f'{result}\n' if result else ''
+                            result = f'{result}{key}: {joined}'                
             
             case 'configurations':     
-                result = ''
                 if isinstance(field, list):
+                    result = ''                    
                     config_number = 1                    
                     for config in field:
                         if 'operator' in config:
-                            result += f'Config {config_number} ({config['operator']})\n'
+                            result += f'Config {config_number} ({config['operator']})\n' # TODO: remove ending line feed
                         else:
                             result += f'Config {config_number}\n'
                         for node in config['nodes']:   
@@ -287,7 +285,11 @@ class NVDDownloader:
                         config_number += 1
             
             case 'vendorComments':       
-                result = result       
+                if isinstance(field, list):
+                    result = ''                    
+                    for comment in field:                        
+                        result = f'{result}\n' if result else ''
+                        result = f'{result}{comment['organization']} {comment['lastModified']}: \'{str(comment['comment']).replace('\'', '')}\''
 
         return result
         
@@ -332,11 +334,11 @@ class NVDDownloader:
                 else:
                     return ''
             except:
-                pass
+                pass # TODO: is this appropriate?
         
         if column_name in self.formatters:
             return self.format_field(column_name, current)
-        else:
+        else: # TODO: output unformatted dicts as JSON
             return self.parse_line_feeds(str(current))
 
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
@@ -364,81 +366,85 @@ class NVDDownloader:
         Args:
             output_file: Path to output CSV file
         """        
-        start_time = time.perf_counter()
+        try:
+        
+            start_time = time.perf_counter()
 
-        logger.info("Starting CVE download through NVD API...")
-        logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests")
-        logger.info(f"Results per page: {self.results_per_page}")
-        
-        # CSV headers
-        headers = self.columns
-        
-        with open(output_file, 'w', newline='', encoding='utf-8') as csv_file:
-            writer = csv.writer(csv_file)
-            writer.writerow(headers)
+            logger.info("Starting CVE download through NVD API...")
+            logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests")
+            logger.info(f"Results per page: {self.results_per_page}")
             
-            processed_count = 0
-            start_index = 0
-            total_cve_count = None
+            # CSV headers
+            headers = self.columns        
             
-            while True:
-                try:                    
-                    # Fetch page from API
-                    logger.info(f"Fetching CVEs from index {start_index}...")
-                    response_data = self.fetch_cve_page(start_index)
-                    
-                    # Get total results (on first request only)
-                    if total_cve_count is None:
-                        total_cve_count = response_data.get('totalResults', 0)
-                        logger.info(f"Total CVE count reported by NVD API: {total_cve_count:,}")
-                    
-                    # Get vulnerabilities from response
-                    vulnerabilities = response_data.get('vulnerabilities', [])
-                    
-                    if not vulnerabilities:
-                        logger.info("No more CVEs to process")
-                        break
-                    
-                    logger.info(f"Processing {len(vulnerabilities)} CVEs from this page...")
-                    
-                    # Process each CVE in this page
-                    for vuln in vulnerabilities:
-                        try:
-                            cve_info = self.parse_cve(vuln)
-                            writer.writerow(cve_info)                            
-                            processed_count += 1
-                            
-                        except Exception as e:
-                            cve_id = vuln.get('cve', {}).get('id', 'unknown')
-                            logger.warning(f"Error processing CVE {cve_id}: {e}")
-                            continue
-                    
-                    # Log progress
-                    logger.info(f"Progress: {processed_count:,}/{total_cve_count:,} CVEs ({100*processed_count/total_cve_count:.1f}%)")
+            with open(output_file, 'w', newline='', encoding='utf-8') as csv_file:
+                writer = csv.writer(csv_file)
+                writer.writerow(headers)
+                
+                processed_count = 0
+                start_index = 0
+                total_cve_count = None
+                
+                while True:
+                    try:                    
+                        # Fetch page from API
+                        logger.info(f"Fetching CVEs from index {start_index}...")
+                        response_data = self.fetch_cve_page(start_index)
+                        
+                        # Get total results (on first request only)
+                        if total_cve_count is None:
+                            total_cve_count = response_data.get('totalResults', 0)
+                            logger.info(f"Total CVE count reported by NVD API: {total_cve_count:,}")
+                        
+                        # Get vulnerabilities from response
+                        vulnerabilities = response_data.get('vulnerabilities', [])
+                        
+                        if not vulnerabilities:
+                            logger.info("No more CVEs to process")
+                            break
+                        
+                        logger.info(f"Processing {len(vulnerabilities)} CVEs from this page...")
+                        
+                        # Process each CVE in this page
+                        for vuln in vulnerabilities:
+                            try:
+                                cve_info = self.parse_cve(vuln)
+                                writer.writerow(cve_info)                            
+                                processed_count += 1
+                                
+                            except Exception as e:
+                                cve_id = vuln.get('cve', {}).get('id', 'unknown')
+                                logger.warning(f"Error processing CVE {cve_id}: {e}")
+                                continue
+                        
+                        # Log progress
+                        logger.info(f"Progress: {processed_count:,}/{total_cve_count:,} CVEs ({100*processed_count/total_cve_count:.1f}%)")
 
-                    # Flush results so far to disk
-                    csv_file.flush()  
-                    
-                    # Break if we've processed all results
-                    if start_index + len(vulnerabilities) >= total_cve_count:
-                        logger.info("Reached end of CVE database")
-                        break
-                    
-                    # Set index for next page
-                    start_index += len(vulnerabilities)
-                    
-                    # Rate limiting (sleep between requests)
-                    logger.info(f"Rate limiting: waiting {self.rate_limit_delay} seconds...")
-                    time.sleep(self.rate_limit_delay)
-                    
-                except KeyboardInterrupt:
-                    logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s.")
-                    raise
-                except Exception as e:
-                    logger.error(f"Error downloading page at index {start_index}: {e}")
-                    logger.info("Retrying in 30 seconds...")
-                    time.sleep(30)
-                    continue
-        
-        logger.info(f"Download complete! Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s")
-        logger.info(f"Results saved to: {output_file}")
+                        # Flush results so far to disk
+                        csv_file.flush()  
+                        
+                        # Break if we've processed all results
+                        if start_index + len(vulnerabilities) >= total_cve_count:
+                            logger.info("Reached end of CVE database")
+                            break
+                        
+                        # Set index for next page
+                        start_index += len(vulnerabilities)
+                        
+                        # Rate limiting (sleep between requests)
+                        logger.info(f"Rate limiting: waiting {self.rate_limit_delay} seconds...")
+                        time.sleep(self.rate_limit_delay)
+                        
+                    except KeyboardInterrupt:
+                        logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s.")
+                        raise
+                    except Exception as e:
+                        logger.error(f"Error downloading page at index {start_index}: {e}")
+                        logger.info("Retrying in 30 seconds...")
+                        time.sleep(30)
+                        continue
+            logger.info(f"Download complete! Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s")
+            logger.info(f"Results saved to: {output_file}")
+        except Exception as e:
+            logger.error(f"Download failed: {e}")
+            raise

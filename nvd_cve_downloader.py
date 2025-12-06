@@ -113,7 +113,7 @@ supported_columns = {
     'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
-formattable_columns = ['tags', 'references', 'weaknesses', 'configurations', 'vendorComments']
+formattable_columns = ['tags', 'references', 'weaknesses', 'configurations', 'vendorComments'] # TODO: add sourceId
 
 class NVDDownloader:
     @property
@@ -124,7 +124,14 @@ class NVDDownloader:
             self._sources = nvd_source_downloader.fetch_nvd_sources()
             # Replace "NIST" source with "NVD" for clarity and to match NVD website
             if 'NIST' in self._sources:
-                self._sources['NVD'] = self._sources.pop('NIST')   
+                self._sources['NVD'] = self._sources.pop('NIST') 
+            # Remove all commas from source names to reduce ambiguous CSV output
+            comma_keys = []
+            for key, value in self._sources.items():
+                if ',' in key:
+                    comma_keys.append(key)
+            for key in comma_keys:
+                self._sources[key.replace(',', '')] = self._sources.pop(key)
         
         return self._sources
     
@@ -248,17 +255,17 @@ class NVDDownloader:
         
         match column_name:
             case 'tags':
-                if isinstance(field, list):                
-                    result = ''                    
+                if isinstance(field, list):
+                    result = ''
                     tags: Dict[str, list[str]] = {}
-                    for tagItem in field:                        
-                        for tag in tagItem['tags']:  
+                    for tagItem in field:              
+                        for tag in tagItem['tags']:
                             if tag not in tags:
                                 tags[tag] = []
                             tags[tag].append(self.parse_source(tagItem['sourceIdentifier']))
                     if len(tags) > 0:
                         for key, value in tags.items():
-                            if isinstance(value, list):                            
+                            if isinstance(value, list):            
                                 joined = ", ".join(str(v) for v in value)
                             else:
                                 joined = str(value)
@@ -285,7 +292,7 @@ class NVDDownloader:
                             result = f'{result}\n' if result else ''
                             result = f'{result}{key}: {joined}'     
             
-            case 'weaknesses':         # TODO: remove commas from sources                       
+            case 'weaknesses':
                 if isinstance(field, list):
                     result = ''
                     ignored_values = ['nvd-cwe-other', 'nvd-cwe-noinfo']    # Common values that are not specific weaknesses

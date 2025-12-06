@@ -288,7 +288,7 @@ class NVDDownloader:
             case 'weaknesses':         # TODO: remove commas from sources                       
                 if isinstance(field, list):
                     result = ''
-                    ignored_values = ['nvd-cwe-other', 'nvd-cwe-noinfo'] # Common values that are not specific weaknesses
+                    ignored_values = ['nvd-cwe-other', 'nvd-cwe-noinfo']    # Common values that are not specific weaknesses
                     weaknesses: Dict[str, list[str]] = {}
                     for weakness in field:
                         if 'description' in weakness:
@@ -312,15 +312,20 @@ class NVDDownloader:
                     config_number = 1                    
                     for config in field:
                         if 'operator' in config:
-                            result += f'Config {config_number} ({config['operator']})\n' # TODO: remove ending line feed
+                            result += f'Config {config_number} ({config['operator']})\n'
                         else:
                             result += f'Config {config_number}\n'
-                        for node in config['nodes']:   
+                        for node in config['nodes']:
                             if 'operator' in node:
                                 result += f'{node['operator']}\n'
-                            for cpe in node['cpeMatch']:                            
-                                result += f'\t{str(node['negate'])}: {str(cpe['criteria'])}\n'   
+                            for cpe in node['cpeMatch']:
+                                if node['negate'] == True:
+                                    result += f'\tNEGATE: {str(cpe['criteria'])}\n'
+                                else:
+                                    result += f'\t{str(cpe['criteria'])}\n'
                         config_number += 1
+                    if result:                        
+                        result = result[:-1]    # Remove last \n
             
             case 'vendorComments':       
                 if isinstance(field, list):

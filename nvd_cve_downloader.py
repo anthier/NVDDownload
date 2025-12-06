@@ -267,8 +267,23 @@ class NVDDownloader:
 
             case 'references':
                 if isinstance(field, list):
-                    result = ''
-                    # TODO
+                    result = ''                    
+                    references: Dict[str, list[str]] = {}
+                    for referenceItem in field:                        
+                        if referenceItem['url'] not in references:
+                            references[referenceItem['url']] = []
+                        if 'tags' in referenceItem:
+                            references[referenceItem['url']].append(f'{self.parse_source(referenceItem['source'])} ({', '.join(referenceItem['tags'])})')
+                        else:
+                            references[referenceItem['url']].append(self.parse_source(referenceItem['source']))
+                    if len(references) > 0:
+                        for key, value in references.items():                            
+                            if isinstance(value, list):                            
+                                joined = ", ".join(str(v) for v in value)
+                            else:
+                                joined = str(value)
+                            result = f'{result}\n' if result else ''
+                            result = f'{result}{key}: {joined}'     
             
             case 'weaknesses':         # TODO: remove commas from sources                       
                 if isinstance(field, list):

@@ -113,7 +113,7 @@ supported_columns = {
     'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
-formattable_columns = ['tags', 'references', 'weaknesses', 'configurations', 'vendorComments'] # TODO: add sourceId
+formattable_columns = ['sourceId', 'tags', 'references', 'weaknesses', 'configurations', 'vendorComments']
 
 class NVDDownloader:
     @property
@@ -254,6 +254,9 @@ class NVDDownloader:
         result = field
         
         match column_name:
+            case 'sourceId':
+                result = self.parse_source(field)
+            
             case 'tags':
                 if isinstance(field, list):
                     result = ''

@@ -13,6 +13,7 @@ import logging
 from enum import Enum
 import nvd_source_downloader
 import uuid
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -225,14 +226,14 @@ class NVDDownloader:
             logger.error(f"API request failed: {e}")
             raise
     
-    def parse_line_feeds(self, input: str) -> str:
+    def format_line_feeds(self, input: str) -> str:
         match self.lf_parsing:
             case LineParse.Space:
                 return input.replace('\n', ' ').replace('\r', ' ')
             case LineParse.Preserve:
                 return input
     
-    def parse_source(self, input: str) -> str:
+    def format_source(self, input: str) -> str:
         # Replace emails with original names
         if '@' in input:
             for key, value in self.sources.items():
@@ -249,13 +250,19 @@ class NVDDownloader:
             pass
 
         return input
+    
+    def format_json(self, input: str) -> str:
+        if isinstance(input, (list, dict)):
+            return json.dumps(input)
+        return input
+            
 
-    def format_field(self, column_name, field) -> str:
+    def apply_column_formatter(self, column_name, field) -> str:
         result = field
         
         match column_name:
             case 'sourceId':
-                result = self.parse_source(field)
+                result = self.format_source(field)
             
             case 'tags':
                 if isinstance(field, list):
@@ -265,7 +272,7 @@ class NVDDownloader:
                         for tag in tagItem['tags']:
                             if tag not in tags:
                                 tags[tag] = []
-                            tags[tag].append(self.parse_source(tagItem['sourceIdentifier']))
+                            tags[tag].append(self.format_source(tagItem['sourceIdentifier']))
                     if len(tags) > 0:
                         for key, value in tags.items():
                             if isinstance(value, list):            
@@ -283,9 +290,9 @@ class NVDDownloader:
                         if referenceItem['url'] not in references:
                             references[referenceItem['url']] = []
                         if 'tags' in referenceItem:
-                            references[referenceItem['url']].append(f'{self.parse_source(referenceItem['source'])} ({', '.join(referenceItem['tags'])})')
+                            references[referenceItem['url']].append(f'{self.format_source(referenceItem['source'])} ({', '.join(referenceItem['tags'])})')
                         else:
-                            references[referenceItem['url']].append(self.parse_source(referenceItem['source']))
+                            references[referenceItem['url']].append(self.format_source(referenceItem['source']))
                     if len(references) > 0:
                         for key, value in references.items():                            
                             if isinstance(value, list):                            
@@ -306,7 +313,7 @@ class NVDDownloader:
                                 if not str(desc['value']).lower() in ignored_values:
                                     if desc['value'] not in weaknesses:
                                         weaknesses[desc['value']] = []                                    
-                                    weaknesses[desc['value']].append(self.parse_source(weakness['source']))
+                                    weaknesses[desc['value']].append(self.format_source(weakness['source']))
                     if len(weaknesses) > 0:
                         for key, value in weaknesses.items():
                             if isinstance(value, list):                            
@@ -342,7 +349,7 @@ class NVDDownloader:
                     result = ''                    
                     for comment in field:                        
                         result = f'{result}\n' if result else ''
-                        result = f'{result}{self.parse_source(comment['organization'])} {comment['lastModified']}: \'{str(comment['comment']).replace('\'', '')}\''
+                        result = f'{result}{self.format_source(comment['organization'])} {comment['lastModified']}: \'{str(comment['comment']).replace('\'', '')}\''
 
         return result
         
@@ -390,9 +397,9 @@ class NVDDownloader:
                 pass # TODO: is this appropriate?
         
         if column_name in self.formatters:
-            return self.format_field(column_name, current)
-        else: # TODO: output unformatted dicts as JSON
-            return self.parse_line_feeds(str(current))
+            return self.apply_column_formatter(column_name, current)
+        else:  # TODO: option to respect 32k limit in excel cells
+            return self.format_line_feeds(self.format_json(current))
 
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """

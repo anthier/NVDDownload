@@ -27,15 +27,15 @@ def parse_args_from_file(parser: argparse.ArgumentParser, file_path: str) -> arg
 def main():    
     # Configure arguments    
     parser = argparse.ArgumentParser(
-        description='Download all CVEs from NVD API \n\n' \
-            'Notes:\n' \
+        description='Download all CVEs from NVD API \n\n' 
+            'Notes:\n' 
             '- Only outputs English CVE descriptions, when available.\n' 
             '- Only outputs CVSS data from the primary source.\n' 
             '- Only outputs one CVSS v3.x score (v3.1 if available).\n'
             '- Some column options from the first.org spec are omitted because NVD has never used them (e.g. "reportConfidence")\n'
             '- Fields not returned by the NVD API are left blank.\n'
             '- Arguments can be provided via text file by setting the first argument to the file path (no dashes).\n'
-            '- Some fields are exported in raw NVD-style JSON. Use formatters (--formatters) for a focused tabular representation.',
+            '- Some fields are exported as raw JSON by default. Use formatters (--formatters) for a focused tabular representation.',
         formatter_class=RawTextHelpFormatter
     )      
     parser.add_argument(

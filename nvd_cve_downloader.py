@@ -116,6 +116,8 @@ supported_columns = {
 
 formattable_columns = ['sourceId', 'tags', 'references', 'weaknesses', 'configurations', 'vendorComments']
 
+supported_output_opts = ['LINE_FEEDS_TO_SPACES', 'LINE_FEEDS_TO_ESCAPES', '32K_FIELD_LIMIT']
+
 class NVDDownloader:
     @property
     def sources(self):
@@ -137,7 +139,7 @@ class NVDDownloader:
         return self._sources
     
     @classmethod
-    def validate_inputs(cls, columns: list[str], formatters: list[str], lf_parsing: str) -> bool:
+    def validate_inputs(cls, columns: list[str], formatters: list[str], output_opts: list[str]) -> bool:
         """
         Validate inputs to class constructor that can be validated, logging errors as appropriate.
         
@@ -156,40 +158,33 @@ class NVDDownloader:
                logger.error(f"Unsupported or invalid formatter found: {formatter}")
                return False     
 
-        if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
-            pass
-        elif lf_parsing.lower() == 'p' or lf_parsing.lower() == 'preserve':
-            pass
-        else:
-            logger.error(f"Invalid argument for lf_parsing: {lf_parsing}")
-            return False
+        for opt in output_opts:
+            if not opt in supported_output_opts:
+                logger.error(f"Unsupported or invalid output_opt found: {opt}")
+                return False
         
         return True
     
-    def __init__(self, api_key: str, columns: list[str], formatters: list[str], lf_parsing: str):
+    def __init__(self, api_key: str, columns: list[str], formatters: list[str], output_opts: list[str]):
         """
         Initialize inputs and internal data, without validation. For validation, first call validate_inputs.
 
         Args:
             api_key: Optional NVD API key for higher rate limits.
             columns: Columns to be output. Must be in supported_columns (case sensitive).
-            formatters: Selected formatters for outputs. Must be in supported_formatters (case sensitive).
-            lf_parsing: LF parsing setting in a string format (not case sensitive).
+            formatters: Selected formatters for columns. Must be in supported_formatters (case sensitive).
+            output_opts: Selected output options. Must be in supported_output_opts (case sensitive).
         """        
         self.api_key = api_key
         self.columns = columns
         self.formatters = formatters 
-
-        if lf_parsing.lower() == 's' or lf_parsing.lower() == 'space':
-            self.lf_parsing = LineParse.Space
-        else:
-            self.lf_parsing = LineParse.Preserve
+        self.output_opts = output_opts        
 
         self.base_url = "https://services.nvd.nist.gov/rest/json/cves/2.0"
         self._sources = None
         
         # Rate limiting parameters (set based on NVD API docs)
-        self.rate_limit_delay = 6.0 if not api_key else 0.25
+        self.rate_limit_delay = 6.0 if not api_key else 0.25 # TODO: remove rate limit and messages when API key present
         self.results_per_page = 2000  
        
     
@@ -226,12 +221,20 @@ class NVDDownloader:
             logger.error(f"API request failed: {e}")
             raise
     
-    def format_line_feeds(self, input: str) -> str:
-        match self.lf_parsing:
-            case LineParse.Space:
-                return input.replace('\n', ' ').replace('\r', ' ')
-            case LineParse.Preserve:
-                return input
+    def format_by_output_opts(self, input: str) -> str:        
+        if 'LINE_FEEDS_TO_SPACES' in self.output_opts:            
+            result = str(input).replace('\n', ' ').replace('\r', ' ')
+        elif 'LINE_FEEDS_TO_ESCAPES' in self.output_opts:
+            result = str(input).replace('\n', '\\n').replace('\r', '\\r')
+        else:
+            result = str(input)
+        
+        if ('32K_FIELD_LIMIT' in self.output_opts) and (len(result) > 32768):
+            logger.error(f'Field size exceeded 32K_FIELD_LIMIT. Replaced with "NCD_ERROR_FIELD_SIZE".')
+            logger.debug(f'Field size: {len(result)}. Text:\n{result}')
+            result = 'NCD_ERROR_FIELD_SIZE'
+        
+        return result
     
     def format_source(self, input: str) -> str:
         # Replace emails with original names
@@ -255,8 +258,7 @@ class NVDDownloader:
         if isinstance(input, (list, dict)):
             return json.dumps(input)
         return input
-            
-
+           
     def apply_column_formatter(self, column_name, field) -> str:
         result = field
         
@@ -397,9 +399,9 @@ class NVDDownloader:
                 pass # TODO: is this appropriate?
         
         if column_name in self.formatters:
-            return self.apply_column_formatter(column_name, current)
-        else:  # TODO: option to respect 32k limit in excel cells
-            return self.format_line_feeds(self.format_json(current))
+            return self.format_by_output_opts(self.apply_column_formatter(column_name, current))
+        else:
+            return self.format_by_output_opts(self.format_json(current))
 
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """

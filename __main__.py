@@ -58,7 +58,7 @@ def main():
     parser.add_argument( 
         '--formatters',
         type=comma_separated_list,
-        help='list of formatters (comma-separated) to apply to raw JSON columns (these ignore lf parsing settings):\n'
+        help='list of formatters (comma-separated) to apply to columns (these ignore lf parsing settings):\n'
              '- sourceId: replace source IDs with source names (also removes embedded commas)\n'
              '- tags: output tags in "<tag>: <source 1>, <source n>" format, one per line\n'
              '- references: output references in "<reference>: <source 1>, <source n> (<tag 1>, <tag n>)" format, one per line\n'
@@ -68,11 +68,14 @@ def main():
         default=[]
     )
     parser.add_argument(
-        '--lf-parsing',
-        help='- SPACE or S: replace line feeds in CVE data with spaces\n'
-             '- PRESERVE or P: preserve original line feed characters.',
-        default='space'
-    )    
+        '--output-opts',
+        type=comma_separated_list,
+        help='list of format options to apply to output text (comma-separated)\n'
+             '- LINE_FEEDS_TO_SPACES: replace line feeds in output with spaces\n'
+             '- LINE_FEEDS_TO_ESCAPES: replace line feeds in output with text representations of escape sequences, e.g. "\\n"\n'
+             '- 32K_FIELD_LIMIT: output "NCD_ERROR_FIELD_SIZE" for fields that exceed 32,768 characters',
+        default=[]
+    )
     parser.add_argument(
         '--output',
         help='output file path',
@@ -103,8 +106,8 @@ def main():
             logging.getLogger().addHandler(logging.FileHandler('nvd_cve_downloader.log')) # add to root
         
         # Validate inputs and download CVEs
-        if NVDDownloader.validate_inputs(columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing):
-            downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, formatters=args.formatters, lf_parsing=args.lf_parsing)
+        if NVDDownloader.validate_inputs(columns=args.columns, formatters=args.formatters, output_opts=args.output_opts):
+            downloader = NVDDownloader(api_key=args.api_key, columns=args.columns, formatters=args.formatters, output_opts=args.output_opts)
         else:
             return 1
           

@@ -19,24 +19,33 @@ Note: no additional libraries required.
 
 ## Usage
 
-### Basic Usage (without API key) TODO: Update starting here.
-```bash
+### Basic Usage (without API key)
+```
 python nvd_cve_downloader.py
 ```
 
-This will download all CVEs and save them to `nvd_cves.csv` with a 6-second delay between API requests.
+This will download all CVEs and save the default fields to `nvd_cves.csv`.
 
-### With NVD API Key (recommended)
+### With NVD API Key
 ```bash
 python nvd_cve_downloader.py --api-key YOUR_API_KEY
 ```
 
-Using an API key reduces the delay between requests from 6 seconds to 0.6 seconds, significantly speeding up the download.
+Using an API key removes the 6 second delay between downloads.
 
-### Custom Output File
+### Custom Columns, Formatters, and Output File
 ```bash
-python nvd_cve_downloader.py --output my_cves.csv --api-key YOUR_API_KEY
+python nvd_cve_downloader.py --columns id,sourceId,description,weaknesses --formatters sourceId,weaknesses --output_opts LINE_FEEDS_TO_ESCAPES --output cve_weaknesses.csv
 ```
+
+All used fields in the NVD API can be chosen for column output, and complex fields as well as source fields can be formatted to improve output readability. Output options determine post-processing on all data.
+
+### Read Arguments From File
+```bash
+python nvd_cve_downloader.py args.txt
+```
+
+For easy storage and retrieval of configuration info, arguments can be read from a file instead of passed on the command line. Example argument files are included for common output scenarios.
 
 ## Getting an NVD API Key
 
@@ -121,3 +130,4 @@ python nvd_cve_downloader.py -h
 
 
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+

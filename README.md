@@ -69,12 +69,12 @@ The script generates a CSV file with any of the following columns corresponding 
 |cisaActionDue|CISA Action Due Date||
 |cisaRequiredAction|CISA Required Action||
 |cisaVulnerabilityName|CISA Vulnerability Name||
-|tags|CVE Tags|Formatter|
+|tags|CVE Tags|Formatter (JSON conversion)|
 |description|CVE Description|Default|
-|references|CVE References|Formatter|
-|weaknesses|CVE Weaknesses|Formatter|
-|configurations|CVE Configurations (CPEs)|Formatter|
-|vendorComments|CVE Vendor Comments|Formatter|
+|references|CVE References|Formatter (JSON conversion)|
+|weaknesses|CVE Weaknesses|Formatter (JSON conversion)|
+|configurations|CVE Configurations (CPEs)|Formatter (JSON conversion)|
+|vendorComments|CVE Vendor Comments|Formatter (JSON conversion)|
 |v2Source|CVSS V2 Source|Formatter (Replace ID with source name)|
 |v2BaseSeverity|CVSS V2 Base Severity||
 |v2ExploitabilityScore|CVSS V2 Exploitability Score||
@@ -207,6 +207,7 @@ python nvd_cve_downloader.py -h
 
 
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+
 
 
 

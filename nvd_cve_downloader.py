@@ -360,7 +360,8 @@ class NVDDownloader:
         if column_name in supported_columns:
             column_keys = supported_columns[column_name].split('.')
         else:
-            return ''
+            logger.error(f'Column not in supported_columns: {column_name}, NCD_ERROR_UNSUPPORTED_COL will be output')
+            return 'NCD_ERROR_UNSUPPORTED_COL'
         
         # Traverse the cve dict until we've found the value of the last element of column_keys
         current = cve        
@@ -394,9 +395,11 @@ class NVDDownloader:
                         if not found:
                             current = current[0]
                 else:
+                    # Couldn't find an element matching the key, so we assume NVD didn't output it
                     return ''
             except:
-                pass # TODO: is this appropriate?
+                logger.exception('Exception parsing field')
+                pass
         
         if column_name in self.formatters:
             return self.format_by_output_opts(self.apply_column_formatter(column_name, current))

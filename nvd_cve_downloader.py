@@ -80,6 +80,8 @@ supported_columns = {
     # --CVSS v4
     'v4Source': 'cve.metrics.cvssMetricV40.source',
     'v4VectorString': 'cve.metrics.cvssMetricV40.cvssData.vectorString',
+    'v4BaseScore': 'cve.metrics.cvssMetricV40.cvssData.baseScore',
+    'v4BaseSeverity': 'cve.metrics.cvssMetricV40.cvssData.baseSeverity',
     'v4AttackVector': 'cve.metrics.cvssMetricV40.cvssData.attackVector',
     'v4AttackComplexity': 'cve.metrics.cvssMetricV40.cvssData.attackComplexity',
     'v4AttackRequirements': 'cve.metrics.cvssMetricV40.cvssData.attackRequirements',
@@ -512,6 +514,7 @@ class NVDDownloader:
                     except Exception as e:
                         logger.error(f"Error downloading page at index {start_index}: {e}")
                         logger.info("Retrying in 30 seconds...")
+                        
                         time.sleep(30)
                         continue
             elapsed_minutes, elapsed_seconds = divmod(time.perf_counter() - start_time, 60)

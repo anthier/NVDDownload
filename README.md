@@ -2,26 +2,24 @@
 
 A Python script to download all CVEs (Common Vulnerabilities and Exposures) from the National Vulnerability Database (NVD) API and save them to a CSV file.
 
-Written initially by AI, then reviewed, updated, and tested by a human.
-
 ## Features
 
 - Downloads all available CVEs from the NVD API
-- Extracts CVE ID, description, CVSS scores (v2, v3, v4) with vectors, and CISA required actions
-- Handles API rate limiting automatically
-- Supports optional API key for higher rate limits
+- Extracts and optionally formats a customizable list of fields
+- Handles rate limiting and pagination automatically
+- Supports optional API key for removing rate limits
 - Comprehensive error handling and logging
 - Progress tracking during download
-- Saves results to CSV format
+- Saves results in a CSV format
 
 ## Installation
 
-1. Install Python 3.7 or higher
+1. Install Python 3.10 or higher
 Note: no additional libraries required.
 
 ## Usage
 
-### Basic Usage (without API key)
+### Basic Usage (without API key) TODO: Update starting here.
 ```bash
 python nvd_cve_downloader.py
 ```
@@ -120,5 +118,6 @@ python nvd_cve_downloader.py -h
 ```
 
 ## License
+
 
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.

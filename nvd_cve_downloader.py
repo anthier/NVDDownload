@@ -114,7 +114,7 @@ supported_columns = {
     'v4ProviderUrgency': 'cve.metrics.cvssMetricV40.cvssData.providerUrgency'    
 }
 
-formattable_columns = ['sourceId', 'tags', 'references', 'weaknesses', 'configurations', 'vendorComments']
+formattable_columns = ['sourceId', 'tags', 'references', 'weaknesses', 'configurations', 'vendorComments', 'v2Source', 'v3Source', 'v4Source']
 
 supported_output_opts = ['LINE_FEEDS_TO_SPACES', 'LINE_FEEDS_TO_ESCAPES', '32K_FIELD_LIMIT']
 
@@ -263,7 +263,7 @@ class NVDDownloader:
         result = field
         
         match column_name:
-            case 'sourceId':
+            case 'sourceId' | 'v2Source' | 'v3Source' | 'v4Source':
                 result = self.format_source(field)
             
             case 'tags':

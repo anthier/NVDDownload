@@ -21,41 +21,40 @@ Note: no additional libraries required.
 
 ### Basic Usage (without API key)
 ```
-python nvd_cve_downloader.py
+python nvddownload
 ```
 
 This will download all CVEs and save the default fields to `nvd_cves.csv`.
 
 ### With NVD API Key
 ```bash
-python nvd_cve_downloader.py --api-key YOUR_API_KEY
+python nvddownload --api-key YOUR_API_KEY
 ```
 
 Using an API key removes the 6 second delay between downloads.
 
 ### Custom Columns, Formatters, and Output File
 ```bash
-python nvd_cve_downloader.py --columns id,sourceId,description,weaknesses --formatters sourceId,weaknesses --output_opts LINE_FEEDS_TO_ESCAPES --output cve_weaknesses.csv
+python nvddownload --columns id,sourceId,description,weaknesses --formatters sourceId,weaknesses --output_opts LINE_FEEDS_TO_ESCAPES --output cve_weaknesses.csv
 ```
 
 All used fields in the NVD API can be chosen for column output, and complex fields as well as source fields can be formatted to improve output readability. Output options determine post-processing on all data.
 
 ### Read Arguments From File
 ```bash
-python nvd_cve_downloader.py args.txt
+python nvddownload args.txt
 ```
 
-For easy storage and retrieval of configuration info, arguments can be read from a file instead of passed on the command line. Example argument files are included for common output scenarios.
+For easy storage and retrieval of configuration info, arguments can be read from a file instead of the command line. Example argument files are included for common output scenarios.
 
 ## Getting an NVD API Key
 
-1. Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
-2. Fill out the form to request an API key
-3. Use the provided key with the `--api-key` parameter
+Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 
 ## Output Format
 
-The script generates a CSV file with the following columns:
+The script generates a CSV file with any of the following columns:
+
 
 - **CVE**: CVE identifier (e.g., CVE-2023-12345)
 - **Description**: English description of the vulnerability
@@ -130,4 +129,5 @@ python nvd_cve_downloader.py -h
 
 
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+
 

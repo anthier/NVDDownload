@@ -436,7 +436,11 @@ class NVDDownloader:
             start_time = time.perf_counter()
 
             logger.info("Starting CVE download through NVD API...")            
-            logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests")
+            if self.rate_limit_delay > 0.0:
+                logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests (required without an API key)")
+            else:
+                logger.info(f"Rate limit: 0 (API key present)")
+
             logger.info(f"Results per page: {self.results_per_page}")
             
             # CSV headers

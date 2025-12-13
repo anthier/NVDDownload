@@ -506,14 +506,16 @@ class NVDDownloader:
                             time.sleep(self.rate_limit_delay)
                         
                     except KeyboardInterrupt:
-                        logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s.")
+                        elapsed_minutes, elapsed_seconds = divmod(time.perf_counter() - start_time, 60)
+                        logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs in {elapsed_minutes:.0f}m {elapsed_seconds:.0f}s.")
                         raise
                     except Exception as e:
                         logger.error(f"Error downloading page at index {start_index}: {e}")
                         logger.info("Retrying in 30 seconds...")
                         time.sleep(30)
                         continue
-            logger.info(f"Download complete! Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s")
+            elapsed_minutes, elapsed_seconds = divmod(time.perf_counter() - start_time, 60)
+            logger.info(f"Download complete! Processed {processed_count:,} CVEs in {elapsed_minutes:.0f}m {elapsed_seconds:.0f}s")
             logger.info(f"Results saved to: {output_file}")
         except Exception as e:
             logger.error(f"Download failed: {e}")

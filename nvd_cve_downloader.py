@@ -184,7 +184,7 @@ class NVDDownloader:
         self._sources = None
         
         # Rate limiting parameters (set based on NVD API docs)
-        self.rate_limit_delay = 6.0 if not api_key else 0.25 # TODO: remove rate limit and messages when API key present
+        self.rate_limit_delay = 6.0 if not api_key else 0.0 
         self.results_per_page = 2000  
        
     
@@ -435,7 +435,7 @@ class NVDDownloader:
         
             start_time = time.perf_counter()
 
-            logger.info("Starting CVE download through NVD API...")
+            logger.info("Starting CVE download through NVD API...")            
             logger.info(f"Rate limit: {self.rate_limit_delay} seconds between requests")
             logger.info(f"Results per page: {self.results_per_page}")
             
@@ -496,9 +496,10 @@ class NVDDownloader:
                         # Set index for next page
                         start_index += len(vulnerabilities)
                         
-                        # Rate limiting (sleep between requests)
-                        logger.info(f"Rate limiting: waiting {self.rate_limit_delay} seconds...")
-                        time.sleep(self.rate_limit_delay)
+                        # Rate limiting
+                        if self.rate_limit_delay > 0.0:
+                            logger.info(f"Rate limiting: waiting {self.rate_limit_delay} seconds...")
+                            time.sleep(self.rate_limit_delay)
                         
                     except KeyboardInterrupt:
                         logger.info(f"Download interrupted by user. Processed {processed_count:,} CVEs in {time.perf_counter() - start_time:.2f}s.")

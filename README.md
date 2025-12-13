@@ -53,8 +53,95 @@ Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 
 ## Output Format
 
-The script generates a CSV file with any of the following columns:
+The script generates a CSV file with any of the following columns corresponding to the NVD API:
 
+| ID / Column Name | Description | Attributes |
+||||
+|id|CVE ID
+|sourceId|CVE Source ID
+|vulnStatus|CVE Status||
+|published|CVE Published Date/Time||
+|lastModified|CVE Last Modified Date/Time||
+|evaluatorComment|CVE Evaluator Comment||
+|evaluatorSolution|CVE Evaluator Solution||
+|evaluatorImpact|CVE Evaluator Impact (Notes)||
+|cisaExploitAdd|CISA Known Exploited Vulnerabilities Add Date||
+|cisaActionDue|CISA Action Due Date||
+|cisaRequiredAction|CISA Required Action||
+|cisaVulnerabilityName|CISA Vulnerability Name||
+|tags|CVE Tags||
+|description|CVE Description||
+|references|CVE References||
+|weaknesses|CVE Weaknesses||
+|configurations|CVE Configurations (CPEs)||
+|vendorComments|CVE Vendor Comments||
+|v2Source|CVSS V2 Source||
+|v2BaseSeverity|CVSS V2 Base Severity||
+|v2ExploitabilityScore|CVSS V2 Exploitability Score||
+|v2Impact|CVSS V2 Impact||
+|v2acInsufInfo|CVSS V2 ||
+|v2ObtainAllPrivilege|CVSS V2 ||
+|v2ObtainUserPrivilege|CVSS V2 ||
+|v2ObtainOtherPrivilege|CVSS V2 ||
+|v2UserInteractionRequired|CVSS V2 ||
+|v2VectorString|CVSS V2 ||
+|v2AccessVector|CVSS V2 ||
+|v2AccessComplexity|CVSS V2 ||
+|v2Authentication|CVSS V2 ||
+|v2ConfidentialityImpact|CVSS V2 ||
+|v2IntegrityImpact|CVSS V2 ||
+|v2AvailabilityImpact|CVSS V2 ||
+|v2BaseScore|CVSS V2 ||
+|v3Source|CVSS V3.x ||
+|v3ExploitabilityScore|CVSS V3.x ||
+|v3ImpactScore|CVSS V3.x ||
+|v3VectorString|CVSS V3.x ||
+|v3AttackVector|CVSS V3.x ||
+|v3AttackComplexity|CVSS V3.x ||
+|v3PrivilegesRequired|CVSS V3.x ||
+|v3UserInteraction|CVSS V3.x ||
+|v3Scope|CVSS V3.x ||
+|v3ConfidentialityImpact|CVSS V3.x ||
+|v3IntegrityImpact|CVSS V3.x ||
+|v3AvailabilityImpact|CVSS V3.x ||
+|v3BaseScore|CVSS V3.x ||
+|v3BaseSeverity|CVSS V3.x ||
+|v4Source|CVSS V4.0 ||
+|v4VectorString|CVSS V4.0 ||
+|v4BaseScore|CVSS V4.0 ||
+|v4BaseSeverity|CVSS V4.0 ||
+|v4AttackVector|CVSS V4.0 ||
+|v4AttackComplexity|CVSS V4.0 ||
+|v4AttackRequirements|CVSS V4.0 ||
+|v4PrivilegesRequired|CVSS V4.0 ||
+|v4UserInteraction|CVSS V4.0 ||
+|v4VulnConfidentialityImpact|CVSS V4.0 ||
+|v4VulnIntegrityImpact|CVSS V4.0 ||
+|v4VulnAvailabilityImpact|CVSS V4.0 ||
+|v4SubConfidentialityImpact|CVSS V4.0 ||
+|v4SubIntegrityImpact|CVSS V4.0 ||
+|v4SubAvailabilityImpact|CVSS V4.0 ||
+|v4ExploitMaturity|CVSS V4.0 ||
+|v4ConfidentialityRequirement|CVSS V4.0 ||
+|v4IntegrityRequirement|CVSS V4.0 ||
+|v4AvailabilityRequirement|CVSS V4.0 ||
+|v4ModifiedAttackVector|CVSS V4.0 ||
+|v4ModifiedAttackComplexity|CVSS V4.0 ||
+|v4ModifiedAttackRequirements|CVSS V4.0 ||
+|v4ModifiedPrivilegesRequired|CVSS V4.0 ||
+|v4ModifiedUserInteraction|CVSS V4.0 ||
+|v4ModifiedVulnConfidentialityImpact|CVSS V4.0 ||
+|v4ModifiedVulnIntegrityImpact|CVSS V4.0 ||
+|v4ModifiedVulnAvailabilityImpact|CVSS V4.0 ||
+|v4ModifiedSubConfidentialityImpact|CVSS V4.0 ||
+|v4ModifiedSubIntegrityImpact|CVSS V4.0 ||
+|v4ModifiedSubAvailabilityImpact|CVSS V4.0 ||
+|v4Safety|CVSS V4.0 ||
+|v4Automatable|CVSS V4.0 ||
+|v4Recovery|CVSS V4.0 ||
+|v4ValueDensity|CVSS V4.0 ||
+|v4VulnResponseEffort|CVSS V4.0 ||
+|v4ProviderUrgency|CVSS V4.0 ||
 
 - **CVE**: CVE identifier (e.g., CVE-2023-12345)
 - **Description**: English description of the vulnerability
@@ -129,5 +216,6 @@ python nvd_cve_downloader.py -h
 
 
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+
 
 

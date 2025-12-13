@@ -479,7 +479,7 @@ class NVDDownloader:
                                 
                             except Exception as e:
                                 cve_id = vuln.get('cve', {}).get('id', 'unknown')
-                                logger.warning(f"Error processing CVE {cve_id}: {e}")
+                                logger.exception(f"Error processing CVE {cve_id}")
                                 continue
                         
                         # Log progress

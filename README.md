@@ -56,7 +56,7 @@ Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 The script generates a CSV file with any of the following columns corresponding to the NVD API:
 
 | ID / Column Name | Description | Attributes |
-||||
+|---|---|---|
 |id|CVE ID
 |sourceId|CVE Source ID
 |vulnStatus|CVE Status||
@@ -79,33 +79,33 @@ The script generates a CSV file with any of the following columns corresponding 
 |v2BaseSeverity|CVSS V2 Base Severity||
 |v2ExploitabilityScore|CVSS V2 Exploitability Score||
 |v2Impact|CVSS V2 Impact||
-|v2acInsufInfo|CVSS V2 ||
-|v2ObtainAllPrivilege|CVSS V2 ||
-|v2ObtainUserPrivilege|CVSS V2 ||
-|v2ObtainOtherPrivilege|CVSS V2 ||
-|v2UserInteractionRequired|CVSS V2 ||
-|v2VectorString|CVSS V2 ||
-|v2AccessVector|CVSS V2 ||
-|v2AccessComplexity|CVSS V2 ||
-|v2Authentication|CVSS V2 ||
-|v2ConfidentialityImpact|CVSS V2 ||
-|v2IntegrityImpact|CVSS V2 ||
-|v2AvailabilityImpact|CVSS V2 ||
-|v2BaseScore|CVSS V2 ||
-|v3Source|CVSS V3.x ||
-|v3ExploitabilityScore|CVSS V3.x ||
-|v3ImpactScore|CVSS V3.x ||
-|v3VectorString|CVSS V3.x ||
-|v3AttackVector|CVSS V3.x ||
-|v3AttackComplexity|CVSS V3.x ||
-|v3PrivilegesRequired|CVSS V3.x ||
-|v3UserInteraction|CVSS V3.x ||
-|v3Scope|CVSS V3.x ||
-|v3ConfidentialityImpact|CVSS V3.x ||
-|v3IntegrityImpact|CVSS V3.x ||
-|v3AvailabilityImpact|CVSS V3.x ||
-|v3BaseScore|CVSS V3.x ||
-|v3BaseSeverity|CVSS V3.x ||
+|v2acInsufInfo|CVSS V2 acInsufInfo Flag ||
+|v2ObtainAllPrivilege|CVSS V2 obtainAllPrivilege Flag||
+|v2ObtainUserPrivilege|CVSS V2 obtainUserPrivilege Flag||
+|v2ObtainOtherPrivilege|CVSS V2 obtainOtherPrivilege Flag||
+|v2UserInteractionRequired|CVSS V2 userInteractionRequired Flag||
+|v2VectorString|CVSS V2 Vector String||
+|v2AccessVector|CVSS V2 Access Vector (AV)||
+|v2AccessComplexity|CVSS V2 Access Complexity (AC)||
+|v2Authentication|CVSS V2 Authentication (Au)||
+|v2ConfidentialityImpact|CVSS V2 Confidentiality Impact (C)||
+|v2IntegrityImpact|CVSS V2 Integrity Impact (I)||
+|v2AvailabilityImpact|CVSS V2 Availability Impact (A)||
+|v2BaseScore|CVSS V2 Base Score||
+|v3Source|CVSS V3.x Source||
+|v3ExploitabilityScore|CVSS V3.x Exploitability Score||
+|v3ImpactScore|CVSS V3.x Impact Score||
+|v3VectorString|CVSS V3.x Vector String||
+|v3AttackVector|CVSS V3.x Attack Vector (AV)||
+|v3AttackComplexity|CVSS V3.x Attack Complexity (AC)||
+|v3PrivilegesRequired|CVSS V3.x Privileges Required (PR)||
+|v3UserInteraction|CVSS V3.x User Interaction (UI)||
+|v3Scope|CVSS V3.x Scope (S)||
+|v3ConfidentialityImpact|CVSS V3.x Confidentiality Impact (C)||
+|v3IntegrityImpact|CVSS V3.x Integrity Impact (I)||
+|v3AvailabilityImpact|CVSS V3.x Availability Impact (A)||
+|v3BaseScore|CVSS V3.x Base Score||
+|v3BaseSeverity|CVSS V3.x Base Severity||
 |v4Source|CVSS V4.0 ||
 |v4VectorString|CVSS V4.0 ||
 |v4BaseScore|CVSS V4.0 ||
@@ -216,6 +216,7 @@ python nvd_cve_downloader.py -h
 
 
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+
 
 
 

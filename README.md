@@ -6,7 +6,7 @@ A Python script to download all CVEs (Common Vulnerabilities and Exposures) from
 
 - Downloads all available CVEs from the NVD API
 - Extracts and optionally formats a customizable list of fields
-- Handles rate limiting and pagination automatically
+- Handles rate limiting, pagination, and retries automatically
 - Supports optional API key for removing rate limits
 - Comprehensive error handling and logging
 - Progress tracking during download
@@ -35,7 +35,7 @@ Using an API key removes the 6 second delay between downloads.
 
 ### Custom Columns, Formatters, and Output File
 ```bash
-python nvddownload --columns id,sourceId,description,weaknesses --formatters sourceId,weaknesses --output_opts LINE_FEEDS_TO_ESCAPES --output cve_weaknesses.csv
+python nvddownload --columns id,sourceId,description,weaknesses --formatters sourceId,weaknesses --output-opts LINE_FEEDS_TO_ESCAPES --output cve_weaknesses.csv
 ```
 
 All used fields in the NVD API can be chosen for column output, and complex fields as well as source fields can be formatted to improve output readability. Output options determine post-processing on all data.
@@ -55,7 +55,7 @@ Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 
 The script generates a CSV file with any of the following columns corresponding to the NVD API:
 
-| ID / Column Name | Description | Attributes |
+| Column ID | Description | Attributes |
 |---|---|---|
 |id|CVE ID (e.g., CVE-2023-12345)|Default|
 |sourceId|CVE Source ID|Formatter (Replace ID with source name)|
@@ -147,12 +147,12 @@ The script generates a CSV file with any of the following columns corresponding 
 
 The script automatically handles NVD API rate limits:
 
-- **Without API key**: 6 seconds between requests (10 requests per minute)
-- **With API key**: 0.6 seconds between requests (100 requests per minute)
+- **Without API key**: 6 seconds between requests
+- **With API key**: No rate limit
 
 ## Logging
 
-The script creates a log file (`nvd_download.log`) and displays progress information in the console. This includes:
+The script logs progress and abnormalities, which can be optionally sent to file (--log-to-file). Logs include:
 
 - Download progress
 - Error messages
@@ -164,23 +164,20 @@ The script creates a log file (`nvd_download.log`) and displays progress informa
 The script includes error handling for:
 
 - Network connectivity issues
-- API rate limit violations
+- API access issues
 - Malformed API responses
 - File I/O errors
-
-If an error occurs, the script will retry automatically after a delay.
+- Parsing and formatting errors
+- Errors due to data format (e.g. exceeding 32,768 characters with the 32K_SIZE_LIMIT)
 
 ## Performance
 
-- **Without API key**: Approximately 10 CVEs per minute
-- **With API key**: Approximately 100 CVEs per minute
-
-The total download time depends on the number of CVEs in the database (currently 300,000+), which may be in excess of 30 minutes.
+The total download time depends on the number of CVEs in the database (currently 300,000+), options selected, processing speed, and connection speed. This may be as little as 3 minutes, or upwards of 30 minutes.
 
 ## Example Output
 
 ```csv
-CVE,Description,CVSS v2,CVSS v2 Vector,CVSS v3,CVSS v3 Vector,CVSS v4,CVSS v4 Vector,CISA Required Action
+id,description,v2BaseScore,v2VectorString,v3BaseScore,v3VectorString,v4BaseScore,v4VectorString,cisaRequiredAction
 CVE-2007-0671,"Unspecified vulnerability in Microsoft Excel 2000, XP, 2003, and 2004 for Mac, and possibly other Office products, allows remote user-assisted attackers to execute arbitrary code via unknown attack vectors, as demonstrated by Exploit-MSExcel.h in targeted zero-day attacks.",9.3,AV:N/AC:M/Au:N/C:C/I:C/A:C,8.8,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,,,"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."
 CVE-2021-44228,"Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",9.3,AV:N/AC:M/Au:N/C:C/I:C/A:C,10.0,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H,,,"For all affected software assets for which updates exist, the only acceptable remediation actions are: 1) Apply updates; OR 2) remove affected assets from agency networks. Temporary mitigations using one of the measures provided at https://www.cisa.gov/uscert/ed-22-02-apache-log4j-recommended-mitigation-measures are only acceptable until updates are available."
 ```
@@ -189,24 +186,26 @@ CVE-2021-44228,"Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security relea
 
 ### Common Issues
 
-1. **Rate Limit Errors**: The script handles these automatically. If you see frequent rate limit errors, consider getting an API key.
+1. **Network Timeouts**: The script will retry failed requests. Ensure you have a stable internet connection.
 
-2. **Network Timeouts**: The script will retry failed requests. Ensure you have a stable internet connection. Consider retrying later, in case the NVD server is experiencing issues.
+2. **Large File Size**: The complete CVE database is large (400MB+ when all columns are output). Ensure you have sufficient disk space.
+  
+3. **Display Issues In Spreadsheet Applications**: Some applications limit cell size to 32,768k and shift data erroneously to other columns beyond this limit. If data is shown in the wrong columns, try enabling 32K_FIELD_LIMIT.
 
-3. **Large File Size**: The complete CVE database is large (100MB+ when complete). Ensure you have sufficient disk space.
+4.  **Duplicate CVEs**: If duplicate rows for the same CVE are present, check the logs for retried downloads. The script may duplicate rows if a portion of the download failed and had to be retried. To fix, remove duplicates or perform the download again.
 
 ### Getting Help
 
 Run the script with `-h` for command-line help:
 
 ```bash
-python nvd_cve_downloader.py -h
+python nvddownload -h
 ```
 
 ## License
 
-
 This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+
 
 
 

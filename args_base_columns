@@ -1,0 +1,1 @@
+--api-key REPLACE_WITH_YOUR_API_KEY --columns id,vulnStatus,description,v2BaseScore,v2BaseSeverity,v2VectorString,v3BaseScore,v3BaseSeverity,v3VectorString,v4BaseScore,v4BaseSeverity,v4VectorString --log-to-file

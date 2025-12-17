@@ -204,7 +204,8 @@ python nvddownload -h
 
 ## License
 
-This script is provided as-is for educational and research purposes. Please respect the NVD API terms of service and rate limits.
+See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

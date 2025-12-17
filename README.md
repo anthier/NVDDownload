@@ -1,6 +1,14 @@
 # NVD CVE Downloader
 
-A Python script to download all CVEs (Common Vulnerabilities and Exposures) from the National Vulnerability Database (NVD) API and save them to a CSV file.
+A Python script to download all CVEs (Common Vulnerabilities and Exposures) from the National Vulnerability Database (NVD) API with a customizable list of columns, and save them in a tabular format (CSV).
+
+## Use Cases
+
+The tool is general purpose. Some example use cases:
+- Mass updates of other tabular data sets through spreadsheet software, for instance to update a large list of CVEs from another tool with the latest NVD CVE descriptions or CVSS scores.
+- Creating a flat structure for easy import into a relational database.
+- Populating vector databases quickly, for instance using [Chroma DB's pytorch-based text embeddings](https://docs.trychroma.com/docs/embeddings/embedding-functions). For vector databases, a flat structure will typically be faster and less effort to use than JSON.
+- Custom filtering, searching, or statistical analysis of NVD data.
 
 ## Features
 
@@ -15,7 +23,7 @@ A Python script to download all CVEs (Common Vulnerabilities and Exposures) from
 ## Installation
 
 1. Install Python 3.10 or higher
-Note: no additional libraries required.
+Note: no additional libraries are required.
 
 ## Usage
 
@@ -45,7 +53,7 @@ All used fields in the NVD API can be chosen for column output, and complex fiel
 python nvddownload args.txt
 ```
 
-For easy storage and retrieval of configuration info, arguments can be read from a file instead of the command line. Example argument files are included for common output scenarios.
+For easy storage and retrieval of configuration info, including API keys, it's recommendedto read arguments from a file instead of the command line. Example argument files are included for common output scenarios.
 
 ## Getting an NVD API Key
 
@@ -182,6 +190,12 @@ CVE-2007-0671,"Unspecified vulnerability in Microsoft Excel 2000, XP, 2003, and 
 CVE-2021-44228,"Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",9.3,AV:N/AC:M/Au:N/C:C/I:C/A:C,10.0,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H,,,"For all affected software assets for which updates exist, the only acceptable remediation actions are: 1) Apply updates; OR 2) remove affected assets from agency networks. Temporary mitigations using one of the measures provided at https://www.cisa.gov/uscert/ed-22-02-apache-log4j-recommended-mitigation-measures are only acceptable until updates are available."
 ```
 
+## Limitations
+
+- Currently the script outputs one monolithic CSV file, but certain fields don't fit well into a single cell. For instance, the "configurations" field is often many thousands of characters and hundreds of lines, and it sometimes exceeds the 32k size limits of common spreadsheet tools. These may be split out into a separate CSV file in future iterations of the script.
+- Only the "primary" or initial vulnerability record is exported.
+- Only the English, or first CVE description is exported.
+
 ## Troubleshooting
 
 ### Common Issues
@@ -202,9 +216,14 @@ Run the script with `-h` for command-line help:
 python nvddownload -h
 ```
 
+## Support and Contributions
+
+There's no framework right now for contributions. Start a discussion or log an issue as needed. This will remain open-ended unless significant additions are made by the community.
+
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

@@ -1,6 +1,6 @@
 # NVD CVE Downloader
 
-A Python script to download all CVEs (Common Vulnerabilities and Exposures) from the National Vulnerability Database (NVD) API and save them in a tabular format (CSV).
+A Python script to download all CVEs (Common Vulnerabilities and Exposures) from the [National Vulnerability Database (NVD)](https://nvd.nist.gov/) [API](https://nvd.nist.gov/developers/vulnerabilities) and save them in a tabular format (CSV).
 
 ## Use Cases
 
@@ -13,7 +13,7 @@ Any work that benefits from tabular CVE data. Examples:
 ## Features
 
 - Downloads all available CVEs from the NVD API
-- Extracts and optionally formats a customizable list of fields
+- Extracts and optionally formats a customizable list of fields, for instance replacing source aliases (like UUIDs and emails) with source names, and reformatting JSON data
 - Handles rate limiting, pagination, and retries automatically
 - Supports optional API key for removing rate limits
 - Comprehensive error handling and logging
@@ -23,7 +23,8 @@ Any work that benefits from tabular CVE data. Examples:
 ## Installation
 
 1. Install Python 3.10 or higher
-Note: no additional libraries are required.
+
+No additional libraries are required.
 
 ## Usage
 
@@ -223,6 +224,7 @@ There's no framework right now for contributions. Start a discussion or log an i
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

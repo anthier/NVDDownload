@@ -7,7 +7,7 @@ A Python script to download all CVEs (Common Vulnerabilities and Exposures) from
 Any work that benefits from tabular CVE data. Examples:
 - Mass updates of other tabular data sets through spreadsheet software, for instance to update a large list of CVEs from another tool with the latest NVD CVE descriptions or CVSS scores.
 - Creating a flat structure for easy import into a relational database.
-- Populating vector databases quickly, for instance using [Chroma DB's pytorch-based text embeddings](https://docs.trychroma.com/docs/embeddings/embedding-functions). For vector databases, a flat structure will typically be faster and less effort to use than JSON.
+- Populating vector databases quickly, for instance using [Chroma DB's pytorch-based text embeddings](https://docs.trychroma.com/docs/embeddings/embedding-functions). For vector databases, a flat structure is often faster and less effort to use than JSON.
 - Custom filtering, searching, or statistical analysis of NVD data.
 
 ## Features
@@ -226,6 +226,7 @@ There's no framework right now for contributions. Start a discussion or log an i
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

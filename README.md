@@ -60,13 +60,13 @@ For easy storage and retrieval of configuration info, including API keys, it's r
 
 Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 
-## Output Format
+## Output Fields
 
 The script generates a CSV file with any of the following columns corresponding to the NVD API:
 
 | Column ID | Description | Attributes |
 |---|---|---|
-|id|CVE ID (e.g., CVE-2023-12345)|Default|
+|id|CVE ID (e.g., CVE-2023-12345)|Default Column|
 |sourceId|CVE Source ID|Formatter (Replace ID with source name)|
 |vulnStatus|CVE Status||
 |published|CVE Published Date/Time||
@@ -79,7 +79,7 @@ The script generates a CSV file with any of the following columns corresponding 
 |cisaRequiredAction|CISA Required Action||
 |cisaVulnerabilityName|CISA Vulnerability Name||
 |tags|CVE Tags|Formatter (JSON conversion)|
-|description|CVE Description|Default|
+|description|CVE Description|Default Column|
 |references|CVE References|Formatter (JSON conversion)|
 |weaknesses|CVE Weaknesses|Formatter (JSON conversion)|
 |configurations|CVE Configurations (CPEs)|Formatter (JSON conversion)|
@@ -93,18 +93,18 @@ The script generates a CSV file with any of the following columns corresponding 
 |v2ObtainUserPrivilege|CVSS V2 obtainUserPrivilege Flag||
 |v2ObtainOtherPrivilege|CVSS V2 obtainOtherPrivilege Flag||
 |v2UserInteractionRequired|CVSS V2 userInteractionRequired Flag||
-|v2VectorString|CVSS V2 Vector String|Default|
+|v2VectorString|CVSS V2 Vector String|Default Column|
 |v2AccessVector|CVSS V2 Access Vector (AV)||
 |v2AccessComplexity|CVSS V2 Access Complexity (AC)||
 |v2Authentication|CVSS V2 Authentication (Au)||
 |v2ConfidentialityImpact|CVSS V2 Confidentiality Impact (C)||
 |v2IntegrityImpact|CVSS V2 Integrity Impact (I)||
 |v2AvailabilityImpact|CVSS V2 Availability Impact (A)||
-|v2BaseScore|CVSS V2 Base Score|Default|
+|v2BaseScore|CVSS V2 Base Score|Default Column|
 |v3Source|CVSS V3.x Source|Formatter (Replace ID with source name)|
 |v3ExploitabilityScore|CVSS V3.x Exploitability Score||
 |v3ImpactScore|CVSS V3.x Impact Score||
-|v3VectorString|CVSS V3.x Vector String|Default|
+|v3VectorString|CVSS V3.x Vector String|Default Column|
 |v3AttackVector|CVSS V3.x Attack Vector (AV)||
 |v3AttackComplexity|CVSS V3.x Attack Complexity (AC)||
 |v3PrivilegesRequired|CVSS V3.x Privileges Required (PR)||
@@ -113,11 +113,11 @@ The script generates a CSV file with any of the following columns corresponding 
 |v3ConfidentialityImpact|CVSS V3.x Confidentiality Impact (C)||
 |v3IntegrityImpact|CVSS V3.x Integrity Impact (I)||
 |v3AvailabilityImpact|CVSS V3.x Availability Impact (A)||
-|v3BaseScore|CVSS V3.x Base Score|Default|
+|v3BaseScore|CVSS V3.x Base Score|Default Column|
 |v3BaseSeverity|CVSS V3.x Base Severity||
 |v4Source|CVSS V4.0 Source|Formatter (Replace ID with source name)|
-|v4VectorString|CVSS V4.0 Vector String|Default|
-|v4BaseScore|CVSS V4.0 Base Score|Default|
+|v4VectorString|CVSS V4.0 Vector String|Default Column|
+|v4BaseScore|CVSS V4.0 Base Score|Default Column|
 |v4BaseSeverity|CVSS V4.0 Base Severity||
 |v4AttackVector|CVSS V4.0 Attack Vector (AV)||
 |v4AttackComplexity|CVSS V4.0 Attack Complexity (AC)||
@@ -191,6 +191,8 @@ CVE-2007-0671,"Unspecified vulnerability in Microsoft Excel 2000, XP, 2003, and 
 CVE-2021-44228,"Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default. From version 2.16.0 (along with 2.12.2, 2.12.3, and 2.3.1), this functionality has been completely removed. Note that this vulnerability is specific to log4j-core and does not affect log4net, log4cxx, or other Apache Logging Services projects.",9.3,AV:N/AC:M/Au:N/C:C/I:C/A:C,10.0,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H,,,"For all affected software assets for which updates exist, the only acceptable remediation actions are: 1) Apply updates; OR 2) remove affected assets from agency networks. Temporary mitigations using one of the measures provided at https://www.cisa.gov/uscert/ed-22-02-apache-log4j-recommended-mitigation-measures are only acceptable until updates are available."
 ```
 
+See root folder for a sample CSV with all columns formatted, and a sample log.
+
 ## Limitations
 
 - Currently the script outputs one monolithic CSV file, but certain fields don't fit well into a single cell. For instance, the "configurations" field is often many thousands of characters and hundreds of lines, and it sometimes exceeds the 32k size limits of common spreadsheet tools. These may be split out into a separate CSV file in future iterations of the script.
@@ -224,6 +226,9 @@ There's no framework right now for contributions. Start a discussion or log an i
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
+
+
 
 
 

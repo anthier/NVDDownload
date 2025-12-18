@@ -60,7 +60,7 @@ For easy storage and retrieval of configuration info, including API keys, it's r
 
 Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
 
-## Output Format
+## Output Fields
 
 The script generates a CSV file with any of the following columns corresponding to the NVD API:
 
@@ -224,6 +224,7 @@ There's no framework right now for contributions. Start a discussion or log an i
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

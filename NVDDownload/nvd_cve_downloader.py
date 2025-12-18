@@ -2,7 +2,7 @@
 """
 NVD CVE Downloader Script
     Downloads all CVEs from the National Vulnerability Database (NVD) API and saves them to a CSV file with 
-    CVE ID, description, CVSS v2/v3/v4 vector strings and scores, and CISA required actions.
+    customizable field output and text formatting.
 """
 
 import requests
@@ -21,7 +21,7 @@ class LineParse(Enum):
     Space=1
     Preserve=2
 
-# List of all columns supported by NVD API, and strings representing their exact JSON paths
+# List of all columns supported by NVD API, and strings representing their JSON paths
 # Note: JSON paths always end with the key name
 supported_columns = {
     # Top level (CVE)
@@ -143,7 +143,7 @@ class NVDDownloader:
     @classmethod
     def validate_inputs(cls, columns: list[str], formatters: list[str], output_opts: list[str]) -> bool:
         """
-        Validate inputs to class constructor that can be validated, logging errors as appropriate.
+        For pre-validating inputs to the constructor.
         
         Args: see __init__.
 
@@ -223,7 +223,10 @@ class NVDDownloader:
             logger.error(f"API request failed: {e}")
             raise
     
-    def format_by_output_opts(self, input: str) -> str:        
+    def format_by_output_opts(self, input: str) -> str:     
+        """ Format input str using current output_opts """   
+        
+        # Note: LINE_FEEDS_TO_SPACES takes precedence if both line feed styles are enabled (only one will win)
         if 'LINE_FEEDS_TO_SPACES' in self.output_opts:            
             result = str(input).replace('\n', ' ').replace('\r', ' ')
         elif 'LINE_FEEDS_TO_ESCAPES' in self.output_opts:
@@ -239,6 +242,7 @@ class NVDDownloader:
         return result
     
     def format_source(self, input: str) -> str:
+        """ Format a CVE source value by replacing any found alias with the original source name. """
         # Replace emails with original names
         if '@' in input:
             for key, value in self.sources.items():
@@ -256,12 +260,14 @@ class NVDDownloader:
 
         return input
     
-    def format_json(self, input: str) -> str:
+    def format_json(self, input) -> str:
+        """ Format any found dict or list in "input" as JSON """
         if isinstance(input, (list, dict)):
             return json.dumps(input)
         return input
            
-    def apply_column_formatter(self, column_name, field) -> str:
+    def apply_column_formatter(self, column_name: str, field) -> str:
+        """ Format a field if it's going into a supported column """
         result = field
         
         match column_name:
@@ -357,7 +363,8 @@ class NVDDownloader:
 
         return result
         
-    def get_field(self, cve, column_name) -> str:   
+    def get_field(self, cve: dict, column_name: str) -> str:   
+        """ Find and return a fully formatted field as a str if present in cve dict """
         # Get the list of column keys from the path string in supported_columns
         if column_name in supported_columns:
             column_keys = supported_columns[column_name].split('.')
@@ -410,7 +417,7 @@ class NVDDownloader:
 
     def parse_cve(self, vuln_data: Dict) -> Dict[str, str]:
         """
-        Parse CVE data from raw NVD API response
+        Parse and format all CVEs found in raw NVD API response
         
         Args:
             vuln_data: Raw data on a single vulnerability (assumes NVD API format)
@@ -428,10 +435,9 @@ class NVDDownloader:
     def download_all_cves(self, output_file: str = 'nvd_cves.csv') -> None:
         """
         Download all CVEs available in the NVD API and save to CSV file
-        Uses direct API calls with resultsPerPage and startIndex for pagination
         
         Args:
-            output_file: Path to output CSV file
+            output_file: Path to output CSV
         """        
         try:
         

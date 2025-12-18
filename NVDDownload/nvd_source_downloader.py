@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-NVD Sources Downloader
+NVD Source Downloader
 Fetches all vulnerability sources from the NVD source API v2 and organizes them by source name.
 """
 
@@ -18,8 +18,7 @@ def fetch_nvd_sources() -> Dict[str, List[str]]:
             
     Returns:
         Dictionary with source names as keys and sourceIdentifier lists as values
-    """
-    
+    """    
     start_time = time.perf_counter()
     
     base_url = "https://services.nvd.nist.gov/rest/json/source/2.0"

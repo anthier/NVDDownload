@@ -103,7 +103,11 @@ def main():
             print(column)
     else:
         if args.log_to_file:
-            logging.getLogger().addHandler(logging.FileHandler('nvd_cve_downloader.log')) # add to root
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            handler = logging.FileHandler('nvd_cve_downloader.log')
+            handler.setLevel(logging.INFO)
+            handler.setFormatter(formatter)
+            logging.getLogger().addHandler(handler) # add to root            
         
         # Validate inputs and download CVEs
         if NVDDownloader.validate_inputs(columns=args.columns, formatters=args.formatters, output_opts=args.output_opts):

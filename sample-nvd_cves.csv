@@ -1,0 +1,1232 @@
+id,sourceId,vulnStatus,published,lastModified,evaluatorComment,evaluatorSolution,evaluatorImpact,cisaExploitAdd,cisaActionDue,cisaRequiredAction,cisaVulnerabilityName,tags,description,references,weaknesses,configurations,vendorComments,v2Source,v2BaseSeverity,v2ExploitabilityScore,v2Impact,v2acInsufInfo,v2ObtainAllPrivilege,v2ObtainUserPrivilege,v2ObtainOtherPrivilege,v2UserInteractionRequired,v2VectorString,v2AccessVector,v2AccessComplexity,v2Authentication,v2ConfidentialityImpact,v2IntegrityImpact,v2AvailabilityImpact,v2BaseScore,v3Source,v3ExploitabilityScore,v3ImpactScore,v3VectorString,v3AttackVector,v3AttackComplexity,v3PrivilegesRequired,v3UserInteraction,v3Scope,v3ConfidentialityImpact,v3IntegrityImpact,v3AvailabilityImpact,v3BaseScore,v3BaseSeverity,v4Source,v4VectorString,v4BaseScore,v4BaseSeverity,v4AttackVector,v4AttackComplexity,v4AttackRequirements,v4PrivilegesRequired,v4UserInteraction,v4VulnConfidentialityImpact,v4VulnIntegrityImpact,v4VulnAvailabilityImpact,v4SubConfidentialityImpact,v4SubIntegrityImpact,v4SubAvailabilityImpact,v4ExploitMaturity,v4ConfidentialityRequirement,v4IntegrityRequirement,v4AvailabilityRequirement,v4ModifiedAttackVector,v4ModifiedAttackComplexity,v4ModifiedAttackRequirements,v4ModifiedPrivilegesRequired,v4ModifiedUserInteraction,v4ModifiedVulnConfidentialityImpact,v4ModifiedVulnIntegrityImpact,v4ModifiedVulnAvailabilityImpact,v4ModifiedSubConfidentialityImpact,v4ModifiedSubIntegrityImpact,v4ModifiedSubAvailabilityImpact,v4Safety,v4Automatable,v4Recovery,v4ValueDensity,v4VulnResponseEffort,v4ProviderUrgency
+CVE-1999-0095,MITRE,Deferred,1988-10-01T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"The debug command in Sendmail is enabled, allowing attackers to execute commands as root.","http://seclists.org/fulldisclosure/2019/Jun/16: MITRE, CVE
+http://www.openwall.com/lists/oss-security/2019/06/05/4: MITRE, CVE
+http://www.openwall.com/lists/oss-security/2019/06/06/1: MITRE, CVE
+http://www.osvdb.org/195: MITRE, CVE
+http://www.securityfocus.com/bid/1: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:a:eric_allman:sendmail:5.58:*:*:*:*:*:*:*",,NVD,HIGH,10.0,10.0,False,True,False,False,False,AV:N/AC:L/Au:N/C:C/I:C/A:C,NETWORK,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,10.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-0082,MITRE,Deferred,1988-11-11T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,CWD ~root command in ftpd allows root access.,"http://www.alw.nih.gov/Security/Docs/admin-guide-to-cracking.101.html: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:a:ftp:ftp:*:*:*:*:*:*:*:*
+	cpe:2.3:a:ftpcd:ftpcd:*:*:*:*:*:*:*:*",,NVD,HIGH,10.0,10.0,False,True,False,False,False,AV:N/AC:L/Au:N/C:C/I:C/A:C,NETWORK,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,10.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1471,MITRE,Deferred,1989-01-01T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Buffer overflow in passwd in BSD based operating systems 4.3 and earlier allows local users to gain root privileges by specifying a long shell or GECOS field.,"http://www.cert.org/advisories/CA-1989-01.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/7152.php: MITRE, CVE
+http://www.securityfocus.com/bid/4: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:o:bsd:bsd:4.2:*:*:*:*:*:*:*
+	cpe:2.3:o:bsd:bsd:4.3:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1122,MITRE,Deferred,1989-07-26T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in restore in SunOS 4.0.3 and earlier allows local users to gain privileges.,"http://www.cert.org/advisories/CA-1989-02.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.ciac.org/ciac/bulletins/ciac-08.shtml: MITRE, CVE
+http://www.securityfocus.com/bid/3: MITRE, CVE
+https://exchange.xforce.ibmcloud.com/vulnerabilities/6695: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:*:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.1:*:*:*:*:*:*:*",,NVD,MEDIUM,3.9,6.4,False,False,False,False,False,AV:L/AC:L/Au:N/C:P/I:P/A:P,LOCAL,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,4.6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1467,MITRE,Deferred,1989-10-26T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"Vulnerability in rcp on SunOS 4.0.x allows remote attackers from trusted hosts to execute arbitrary commands as root, possibly related to the configuration of the nobody user.","http://www.cert.org/advisories/CA-1989-07.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/5: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+https://exchange.xforce.ibmcloud.com/vulnerabilities/3165: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:4.0:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.1:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.2:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3c:*:*:*:*:*:*:*",,NVD,HIGH,10.0,10.0,False,True,False,False,False,AV:N/AC:L/Au:N/C:C/I:C/A:C,NETWORK,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,10.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1506,MITRE,Deferred,1990-01-29T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"Vulnerability in SMI Sendmail 4.0 and earlier, on SunOS up to 4.0.3, allows remote attackers to access user bin.","http://www.cert.org/advisories/CA-90.01.sun.sendmail.vulnerability: MITRE (Third Party Advisory, US Government Resource), CVE (Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/6: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:3.5:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.1:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.2:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3c:*:*:*:*:*:*:*",,NVD,HIGH,10.0,6.4,False,False,False,False,False,AV:N/AC:L/Au:N/C:P/I:P/A:P,NETWORK,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,7.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-0084,MITRE,Deferred,1990-05-01T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Certain NFS servers allow users to use mknod to gain privileges by creating a writable kmem device and setting the UID to 0.,"https://exchange.xforce.ibmcloud.com/vulnerabilities/78: MITRE, CVE",CWE-269: CISA-ADP,"Config 1
+OR
+	cpe:2.3:a:sun:nfs:*:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,CISA-ADP,2.5,5.9,CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,LOCAL,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.4,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2000-0388,MITRE,Deferred,1990-05-09T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Buffer overflow in FreeBSD libmytinfo library allows local users to execute commands via a long TERMCAP environmental variable.,"ftp://ftp.freebsd.org/pub/FreeBSD/CERT/advisories/FreeBSD-SA-00%3A17.libmytinfo.asc: MITRE, CVE
+http://www.securityfocus.com/bid/1185: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:freebsd:freebsd:3.0:*:*:*:*:*:*:*
+	cpe:2.3:o:freebsd:freebsd:3.1:*:*:*:*:*:*:*
+	cpe:2.3:o:freebsd:freebsd:3.2:*:*:*:*:*:*:*
+	cpe:2.3:o:freebsd:freebsd:3.3:*:*:*:*:*:*:*
+	cpe:2.3:o:freebsd:freebsd:3.4:*:*:*:*:*:*:*",,NVD,HIGH,10.0,6.4,False,False,True,False,False,AV:N/AC:L/Au:N/C:P/I:P/A:P,NETWORK,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,7.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-0209,MITRE,Deferred,1990-08-14T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,The SunView (SunTools) selection_svc facility allows remote users to read files.,"http://www.securityfocus.com/bid/8: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:3.5:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.1:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.2:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.1:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.1.1:*:*:*:*:*:*:*",,NVD,MEDIUM,10.0,2.9,False,False,False,False,False,AV:N/AC:L/Au:N/C:P/I:N/A:N,NETWORK,LOW,NONE,PARTIAL,NONE,NONE,5.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1198,MITRE,Deferred,1990-10-03T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"BuildDisk program on NeXT systems before 2.0 does not prompt users for the root password, which allows local users to gain root privileges.","http://ciac.llnl.gov/ciac/bulletins/b-01.shtml: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+http://www.cert.org/advisories/CA-1990-06.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/7141.php: MITRE, CVE
+http://www.securityfocus.com/bid/11: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:a:next:next:*:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1391,MITRE,Deferred,1990-10-03T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in NeXT 1.0a and 1.0 with publicly accessible printers allows local users to gain privileges via a combination of the npd program and weak directory permissions.,"http://ciac.llnl.gov/ciac/bulletins/b-01.shtml: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+http://www.cert.org/advisories/CA-1990-06.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/7143.php: MITRE, CVE
+http://www.securityfocus.com/bid/10: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:a:next:next:1.0:*:*:*:*:*:*:*
+	cpe:2.3:a:next:next:1.0a:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1392,MITRE,Deferred,1990-10-03T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in restore0.9 installation script in NeXT 1.0a and 1.0 allows local users to gain root privileges.,"http://ciac.llnl.gov/ciac/bulletins/b-01.shtml: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+http://www.cert.org/advisories/CA-1990-06.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/7144.php: MITRE, CVE
+http://www.securityfocus.com/bid/9: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:a:next:nex:1.0a:*:*:*:*:*:*:*
+	cpe:2.3:a:next:next:1.0:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1057,MITRE,Deferred,1990-10-25T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,VMS 4.0 through 5.3 allows local users to gain privileges via the ANALYZE/PROCESS_DUMP dcl command.,"http://ciac.llnl.gov/ciac/bulletins/b-04.shtml: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+http://www.cert.org/advisories/CA-1990-07.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/7137.php: MITRE, CVE
+http://www.securityfocus.com/bid/12: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:digital:vms:*:*:*:*:*:*:*:*",,NVD,MEDIUM,3.9,6.4,False,False,False,False,False,AV:L/AC:L/Au:N/C:P/I:P/A:P,LOCAL,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,4.6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1554,MITRE,Deferred,1990-10-31T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"/usr/sbin/Mail on SGI IRIX 3.3 and 3.3.1 does not properly set the group ID to the group ID of the user who started Mail, which allows local users to read the mail of other users.","http://www.cert.org/advisories/CA-1990-08.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/3164.php: MITRE, CVE
+http://www.securityfocus.com/bid/13: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:o:sgi:irix:3.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sgi:irix:3.3.1:*:*:*:*:*:*:*",,NVD,LOW,3.9,2.9,False,False,False,False,False,AV:L/AC:L/Au:N/C:P/I:N/A:N,LOCAL,LOW,NONE,PARTIAL,NONE,NONE,2.1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1197,MITRE,Deferred,1990-12-20T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"TIOCCONS in SunOS 4.1.1 does not properly check the permissions of a user who tries to redirect console output and input, which could allow a local user to gain privileges.","http://www.cert.org/advisories/CA-1990-12.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.iss.net/security_center/static/7140.php: MITRE, CVE
+http://www.securityfocus.com/bid/14: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:4.1.1:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1115,MITRE,Deferred,1990-12-31T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"Vulnerability in the /etc/suid_exec program in HP Apollo Domain/OS sr10.2 and sr10.3 beta, related to the Korn Shell (ksh).","http://www.cert.org/advisories/CA-1990-04.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.ciac.org/ciac/bulletins/a-30.shtml: MITRE, CVE
+http://www.iss.net/security_center/static/6721.php: MITRE, CVE
+http://www.securityfocus.com/bid/7: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:hp:apollo_domain_os:*:beta:*:*:*:*:*:*
+	cpe:2.3:o:hp:apollo_domain_os:sr10.2:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1258,MITRE,Deferred,1991-01-15T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"rpc.pwdauthd in SunOS 4.1.1 and earlier does not properly prevent remote access to the daemon, which allows remote attackers to obtain sensitive system information.","http://sunsolve.sun.com/pub-cgi/retrieve.pl?doctype=coll&doc=secbull/102: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+https://exchange.xforce.ibmcloud.com/vulnerabilities/1782: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:*:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.1:*:*:*:*:*:*:*",,NVD,MEDIUM,10.0,2.9,False,False,False,False,False,AV:N/AC:L/Au:N/C:P/I:N/A:N,NETWORK,LOW,NONE,PARTIAL,NONE,NONE,5.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1438,MITRE,Deferred,1991-02-22T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in /bin/mail in SunOS 4.1.1 and earlier allows local users to gain root privileges via certain command line arguments.,"http://sunsolve.sun.com/pub-cgi/retrieve.pl?doctype=coll&doc=secbull/105: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+http://www.cert.org/advisories/CA-91.01a.SunOS.mail.vulnerability: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/15: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:*:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.1:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1211,MITRE,Deferred,1991-03-27T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in in.telnetd in SunOS 4.1.1 and earlier allows local users to gain root privileges.,"http://www.cert.org/advisories/CA-1991-02.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+https://exchange.xforce.ibmcloud.com/vulnerabilities/574: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:*:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1212,MITRE,Deferred,1991-03-27T05:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in in.rlogind in SunOS 4.0.3 and 4.0.3c allows local users to gain root privileges.,"http://www.cert.org/advisories/CA-1991-02.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+https://exchange.xforce.ibmcloud.com/vulnerabilities/574: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:4.0.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.0.3c:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1194,MITRE,Deferred,1991-05-01T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"chroot in Digital Ultrix 4.1 and 4.0 is insecurely installed, which allows local users to gain privileges.","http://www.cert.org/advisories/CA-1991-05.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/17: MITRE, CVE
+https://exchange.xforce.ibmcloud.com/vulnerabilities/577: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:digital:ultrix:4.0:*:*:*:*:*:*:*
+	cpe:2.3:o:digital:ultrix:4.1:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1193,MITRE,Deferred,1991-05-14T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"The ""me"" user in NeXT NeXTstep 2.1 and earlier has wheel group privileges, which could allow the me user to use the su command to become root.","http://www.cert.org/advisories/CA-1991-06.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/20: MITRE, CVE
+https://exchange.xforce.ibmcloud.com/vulnerabilities/581: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:a:next:next:*:*:*:*:*:*:*:*",,NVD,HIGH,10.0,10.0,False,True,False,False,False,AV:N/AC:L/Au:N/C:C/I:C/A:C,NETWORK,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,10.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1123,MITRE,Deferred,1991-05-20T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,The installation of Sun Source (sunsrc) tapes allows local users to gain root privileges via setuid root programs (1) makeinstall or (2) winstall.,"http://sunsolve.sun.com/pub-cgi/retrieve.pl?doctype=coll&doc=secbull/107&type=0&nav=sec.sba: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+http://www.cert.org/advisories/CA-1991-07.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/21: MITRE, CVE
+http://www.securityfocus.com/bid/22: MITRE, CVE
+https://exchange.xforce.ibmcloud.com/vulnerabilities/582: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:sun:sunos:4.0.3:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.1:*:*:*:*:*:*:*
+	cpe:2.3:o:sun:sunos:4.1.1:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1034,MITRE,Deferred,1991-05-23T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in login in AT&T System V Release 4 allows local users to gain privileges.,"http://www.cert.org/advisories/CA-1991-08.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.ciac.org/ciac/bulletins/b-28.shtml: MITRE, CVE
+http://www.securityfocus.com/bid/23: MITRE (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+https://exchange.xforce.ibmcloud.com/vulnerabilities/583: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:att:svr4:4.0:*:*:*:*:*:*:*",,NVD,HIGH,3.9,10.0,False,True,False,False,False,AV:L/AC:L/Au:N/C:C/I:C/A:C,LOCAL,LOW,NONE,COMPLETE,COMPLETE,COMPLETE,7.2,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1415,MITRE,Deferred,1991-08-23T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,Vulnerability in /usr/bin/mail in DEC ULTRIX before 4.2 allows local users to gain privileges.,"http://www.cert.org/advisories/CA-91.13.Ultrix.mail.vulnerability: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+http://www.securityfocus.com/bid/27: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:o:digital:ultrix:*:*:*:*:*:*:*:*",,NVD,MEDIUM,3.9,6.4,False,False,False,False,False,AV:L/AC:L/Au:N/C:P/I:P/A:P,LOCAL,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,4.6,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-1999-1090,MITRE,Deferred,1991-09-10T04:00:00.000,2025-04-03T01:03:51.193,,,,,,,,,"The default configuration of NCSA Telnet package for Macintosh and PC enables FTP, even though it does not include an ""ftp=yes"" line, which allows remote attackers to read and modify arbitrary files.","http://www.cert.org/advisories/CA-1991-15.html: MITRE (Patch, Third Party Advisory, US Government Resource), CVE (Patch, Third Party Advisory, US Government Resource)
+https://exchange.xforce.ibmcloud.com/vulnerabilities/1844: MITRE, CVE",,"Config 1
+OR
+	cpe:2.3:a:ncsa:telnet:*:*:*:*:*:*:*:*",,NVD,HIGH,10.0,6.4,False,False,False,False,False,AV:N/AC:L/Au:N/C:P/I:P/A:P,NETWORK,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,7.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-1324,JPCERT/CC,Deferred,2011-05-09T19:55:03.507,2025-04-11T00:51:21.963,,,,,,,,,"Multiple cross-site request forgery (CSRF) vulnerabilities in the management screen on Buffalo WHR, WZR2, WZR, WER, and BBR series routers with firmware 1.x; BHR-4RV and FS-G54 routers with firmware 2.x; and AS-100 routers allow remote attackers to hijack the authentication of administrators for requests that modify settings, as demonstrated by changing the login password.","http://buffalo.jp/support_s/20080808/csrf.html: JPCERT/CC, CVE
+http://jvn.jp/en/jp/JVN50505257/index.html: JPCERT/CC, CVE",CWE-352: NVD,"Config 1
+OR
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.02:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.04:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.04:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.10:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.10:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.11:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.12:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.20:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.20:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.30:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.30:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.31:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.32:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.32:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4hg_firmware:1.33:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.00:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.01:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.03:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.04:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.04:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.10:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.10:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.11:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.12:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.20:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.20:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.30:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.30:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.31:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.32:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.32:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.33:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bbr-4mg_firmware:1.33:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bhr-4rv_firmware:2.31:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bhr-4rv_firmware:2.32:prebeta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bhr-4rv_firmware:2.33:prebeta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bhr-4rv_firmware:2.42:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bhr-4rv_firmware:2.46:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:bhr-4rv_firmware:2.48:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:fs-g54_firmware:2.07:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.00:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.01:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.02:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.03:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.10:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.12:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.12:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-a54g54_firmware:1.13:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-ag54_firmware:1.04:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-ag54_firmware:1.12:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-ag54_firmware:1.12:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-am54g54_firmware:1.11:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-am54g54_firmware:1.12:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-am54g54_firmware:1.12:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-am54g54_firmware:1.13:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-am54g54_firmware:1.14:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-amg54_firmware:1.11:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-amg54_firmware:1.12:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wer-amg54_firmware:1.14:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-am54g54_firmware:1.30:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-am54g54_firmware:1.38:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-am54g54_firmware:1.40:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-am54g54_firmware:1.42:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-amg54_firmware:1.31:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-amg54_firmware:1.38:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-amg54_firmware:1.40:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-amg54_firmware:1.42:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-ampg_firmware:1.46:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g_firmware:1.46:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g54s_firmware:1.20:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g54s_firmware:1.21:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g54s_firmware:1.23:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g54s_firmware:1.38:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g54s_firmware:1.40:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-g54s_firmware:1.42:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-ampg_firmware:1.32:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g_firmware:1.46:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g54_firmware:1.20:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g54_firmware:1.21:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g54_firmware:1.23:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g54_firmware:1.38:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g54_firmware:1.40:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:whr-hp-g54_firmware:1.42:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-ampg144nh_firmware:1.47:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-ampg144nh_firmware:1.48:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-ampg300nh_firmware:1.48:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144n_firmware:1.45:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144n_firmware:1.46:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144n_firmware:1.47:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144n_firmware:1.47:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144nh_firmware:1.45:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144nh_firmware:1.47:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144nh_firmware:1.47:beta:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr-g144nh_firmware:1.48:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr2-g300n_firmware:1.48:*:*:*:*:*:*:*
+	cpe:2.3:a:buffalotech:wzr2-g300n_firmware:1.50:beta:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:as-100:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:bbr-4hg:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:bbr-4mg:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:bhr-4rv:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:fs-g54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wer-a54g54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wer-ag54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wer-am54g54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wer-amg54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-am54g54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-amg54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-ampg:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-g:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-g54s:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-hp-ampg:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-hp-g:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:whr-hp-g54:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wzr-ampg144nh:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wzr-ampg300nh:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wzr-g144n:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wzr-g144nh:*:*:*:*:*:*:*:*
+	cpe:2.3:h:buffalotech:wzr2-g300n:*:*:*:*:*:*:*:*",,NVD,MEDIUM,8.6,4.9,False,False,False,False,True,AV:N/AC:M/Au:N/C:N/I:P/A:P,NETWORK,MEDIUM,NONE,NONE,PARTIAL,PARTIAL,5.8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-1547,MITRE,Deferred,2011-05-09T19:55:03.553,2025-04-11T00:51:21.963,,,,,,,,,"Multiple stack consumption vulnerabilities in the kernel in NetBSD 4.0, 5.0 before 5.0.3, and 5.1 before 5.1.1, when IPsec is enabled, allow remote attackers to cause a denial of service (memory corruption and panic) or possibly have unspecified other impact via a crafted (1) IPv4 or (2) IPv6 packet with nested IPComp headers.","http://ftp.netbsd.org/pub/NetBSD/security/advisories/NetBSD-SA2011-004.txt.asc: MITRE (Vendor Advisory), CVE (Vendor Advisory)
+http://lists.grok.org.uk/pipermail/full-disclosure/2011-April/080031.html: MITRE, CVE
+http://www.kb.cert.org/vuls/id/668220: MITRE (US Government Resource), CVE (US Government Resource)",CWE-119: NVD,"Config 1
+OR
+	cpe:2.3:o:netbsd:netbsd:4.0:*:*:*:*:*:*:*
+	cpe:2.3:o:netbsd:netbsd:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:netbsd:netbsd:5.0.1:*:*:*:*:*:*:*
+	cpe:2.3:o:netbsd:netbsd:5.0.2:*:*:*:*:*:*:*
+	cpe:2.3:o:netbsd:netbsd:5.1:*:*:*:*:*:*:*",,NVD,MEDIUM,8.6,6.4,False,False,False,False,False,AV:N/AC:M/Au:N/C:P/I:P/A:P,NETWORK,MEDIUM,NONE,PARTIAL,PARTIAL,PARTIAL,6.8,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-1745,Red Hat Inc.,Deferred,2011-05-09T19:55:03.710,2025-04-11T00:51:21.963,,,,,,,,,Integer overflow in the agp_generic_insert_memory function in drivers/char/agp/generic.c in the Linux kernel before 2.6.38.5 allows local users to gain privileges or cause a denial of service (system crash) via a crafted AGPIOC_BIND agp_ioctl ioctl call.,"http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=194b3da873fd334ef183806db751473512af29ce: Red Hat Inc., CVE
+http://openwall.com/lists/oss-security/2011/04/21/4: Red Hat Inc. (Mailing List, Patch), CVE (Mailing List, Patch)
+http://openwall.com/lists/oss-security/2011/04/22/7: Red Hat Inc. (Mailing List, Patch, Third Party Advisory), CVE (Mailing List, Patch, Third Party Advisory)
+http://rhn.redhat.com/errata/RHSA-2011-0927.html: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.38.5: Red Hat Inc. (Release Notes, Vendor Advisory), CVE (Release Notes, Vendor Advisory)
+http://www.securityfocus.com/bid/47534: Red Hat Inc. (Third Party Advisory, VDB Entry), CVE (Third Party Advisory, VDB Entry)
+https://bugzilla.redhat.com/show_bug.cgi?id=698996: Red Hat Inc. (Issue Tracking, Patch, Third Party Advisory), CVE (Issue Tracking, Patch, Third Party Advisory)
+https://lkml.org/lkml/2011/4/14/293: Red Hat Inc. (Patch, Third Party Advisory), CVE (Patch, Third Party Advisory)",CWE-190: NVD,"Config 1
+OR
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+Config 2
+OR
+	cpe:2.3:o:redhat:enterprise_linux:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_aus:5.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_desktop:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:5.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_workstation:5.0:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,False,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-1746,Red Hat Inc.,Deferred,2011-05-09T19:55:03.757,2025-04-11T00:51:21.963,,,,,,,,,"Multiple integer overflows in the (1) agp_allocate_memory and (2) agp_create_user_memory functions in drivers/char/agp/generic.c in the Linux kernel before 2.6.38.5 allow local users to trigger buffer overflows, and consequently cause a denial of service (system crash) or possibly have unspecified other impact, via vectors related to calls that specify a large number of memory pages.","http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=b522f02184b413955f3bc952e3776ce41edc6355: Red Hat Inc., CVE
+http://openwall.com/lists/oss-security/2011/04/21/4: Red Hat Inc. (Mailing List, Patch, Third Party Advisory), CVE (Mailing List, Patch, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/7: Red Hat Inc. (Mailing List, Patch, Third Party Advisory), CVE (Mailing List, Patch, Third Party Advisory)
+http://rhn.redhat.com/errata/RHSA-2011-0927.html: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.38.5: Red Hat Inc. (Release Notes, Vendor Advisory), CVE (Release Notes, Vendor Advisory)
+http://www.securityfocus.com/bid/47535: Red Hat Inc. (Third Party Advisory, VDB Entry), CVE (Third Party Advisory, VDB Entry)
+https://bugzilla.redhat.com/show_bug.cgi?id=698998: Red Hat Inc. (Issue Tracking, Patch, Third Party Advisory), CVE (Issue Tracking, Patch, Third Party Advisory)
+https://lkml.org/lkml/2011/4/14/294: Red Hat Inc. (Patch, Third Party Advisory), CVE (Patch, Third Party Advisory)
+https://lkml.org/lkml/2011/4/19/400: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)",CWE-189: NVD,"Config 1
+OR
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+Config 2
+OR
+	cpe:2.3:o:redhat:enterprise_linux:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_aus:5.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_desktop:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:5.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_workstation:5.0:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,False,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-1747,Red Hat Inc.,Deferred,2011-05-09T19:55:03.803,2025-04-11T00:51:21.963,,,,,,,,,"The agp subsystem in the Linux kernel 2.6.38.5 and earlier does not properly restrict memory allocation by the (1) AGPIOC_RESERVE and (2) AGPIOC_ALLOCATE ioctls, which allows local users to cause a denial of service (memory consumption) by making many calls to these ioctls.","http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=b522f02184b413955f3bc952e3776ce41edc6355: Red Hat Inc., CVE
+http://openwall.com/lists/oss-security/2011/04/21/4: Red Hat Inc. (Mailing List, Third Party Advisory), CVE (Mailing List, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/10: Red Hat Inc. (Mailing List, Third Party Advisory), CVE (Mailing List, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/11: Red Hat Inc. (Mailing List, Third Party Advisory), CVE (Mailing List, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/7: Red Hat Inc. (Mailing List, Third Party Advisory), CVE (Mailing List, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/8: Red Hat Inc. (Mailing List, Third Party Advisory), CVE (Mailing List, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/9: Red Hat Inc. (Mailing List, Third Party Advisory), CVE (Mailing List, Third Party Advisory)
+http://securitytracker.com/id?1025441: Red Hat Inc. (Third Party Advisory, VDB Entry), CVE (Third Party Advisory, VDB Entry)
+http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.38.5: Red Hat Inc. (Release Notes, Vendor Advisory), CVE (Release Notes, Vendor Advisory)
+http://www.securityfocus.com/bid/47832: Red Hat Inc. (Third Party Advisory, VDB Entry), CVE (Third Party Advisory, VDB Entry)
+https://bugzilla.redhat.com/show_bug.cgi?id=698999: Red Hat Inc. (Issue Tracking, Third Party Advisory), CVE (Issue Tracking, Third Party Advisory)
+https://lkml.org/lkml/2011/4/14/294: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)",CWE-399: NVD,"Config 1
+OR
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,6.9,False,False,False,False,False,AV:L/AC:M/Au:N/C:N/I:N/A:C,LOCAL,MEDIUM,NONE,NONE,NONE,COMPLETE,4.7,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-2022,MITRE,Deferred,2011-05-09T19:55:03.850,2025-04-11T00:51:21.963,,,,,,,,,"The agp_generic_remove_memory function in drivers/char/agp/generic.c in the Linux kernel before 2.6.38.5 does not validate a certain start parameter, which allows local users to gain privileges or cause a denial of service (system crash) via a crafted AGPIOC_UNBIND agp_ioctl ioctl call, a different vulnerability than CVE-2011-1745.","http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git%3Ba=commit%3Bh=194b3da873fd334ef183806db751473512af29ce: MITRE, CVE
+http://openwall.com/lists/oss-security/2011/04/21/4: MITRE (Mailing List, Patch, Third Party Advisory), CVE (Mailing List, Patch, Third Party Advisory)
+http://openwall.com/lists/oss-security/2011/04/22/7: MITRE (Mailing List, Patch, Third Party Advisory), CVE (Mailing List, Patch, Third Party Advisory)
+http://rhn.redhat.com/errata/RHSA-2011-0927.html: MITRE (Third Party Advisory), CVE (Third Party Advisory)
+http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.38.5: MITRE (Release Notes, Vendor Advisory), CVE (Release Notes, Vendor Advisory)
+http://www.securityfocus.com/bid/47843: MITRE (Third Party Advisory, VDB Entry), CVE (Third Party Advisory, VDB Entry)
+https://bugzilla.redhat.com/show_bug.cgi?id=698996: MITRE (Issue Tracking, Patch, Third Party Advisory), CVE (Issue Tracking, Patch, Third Party Advisory)
+https://lkml.org/lkml/2011/4/14/293: MITRE (Patch, Third Party Advisory), CVE (Patch, Third Party Advisory)",CWE-20: NVD,"Config 1
+OR
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+Config 2
+OR
+	cpe:2.3:o:redhat:enterprise_linux:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_aus:5.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_desktop:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:5.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server:5.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_workstation:5.0:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,False,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2010-4284,CERT/CC,Deferred,2011-05-09T22:55:01.007,2025-04-11T00:51:21.963,,,,,,,,,SQL injection vulnerability in the authentication form in the integrated web server in the Data Management Server (DMS) before 1.4.3 in Samsung Integrated Management System allows remote attackers to execute arbitrary SQL commands via unspecified vectors.,"http://www.kb.cert.org/vuls/id/236668: CERT/CC (Patch, US Government Resource), CVE (Patch, US Government Resource)
+http://www.us-cert.gov/control_systems/pdf/ICSA-11-069-01.pdf: CERT/CC (Patch, US Government Resource), CVE (Patch, US Government Resource)",CWE-89: NVD,"Config 1
+OR
+	cpe:2.3:a:samsung:data_management_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:samsung:data_management_server:1.3.3:*:*:*:*:*:*:*
+	cpe:2.3:a:samsung:data_management_server:1.4.1:*:*:*:*:*:*:*",,NVD,HIGH,10.0,6.4,False,False,False,False,False,AV:N/AC:L/Au:N/C:P/I:P/A:P,NETWORK,LOW,NONE,PARTIAL,PARTIAL,PARTIAL,7.5,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-0426,MITRE,Deferred,2011-05-09T22:55:01.333,2025-04-11T00:51:21.963,,,,,,,,,"Directory traversal vulnerability in vCenter Server in VMware vCenter 4.0 before Update 3 and 4.1 before Update 1, and VMware VirtualCenter 2.5 before Update 6a, allows remote attackers to read arbitrary files via unspecified vectors.","http://lists.vmware.com/pipermail/security-announce/2011/000137.html: MITRE (Vendor Advisory), CVE (Vendor Advisory)
+http://securitytracker.com/id?1025502: MITRE, CVE
+http://www.vmware.com/security/advisories/VMSA-2011-0008.html: MITRE (Vendor Advisory), CVE (Vendor Advisory)",CWE-22: NVD,"Config 1
+OR
+	cpe:2.3:a:vmware:vcenter:4.0:*:*:*:*:*:*:*
+	cpe:2.3:a:vmware:vcenter:4.0:update_1:*:*:*:*:*:*
+	cpe:2.3:a:vmware:vcenter:4.0:update_2:*:*:*:*:*:*
+	cpe:2.3:a:vmware:vcenter:4.1:*:*:*:*:*:*:*
+	cpe:2.3:a:vmware:virtualcenter:2.5:update_1:*:*:*:*:*:*
+	cpe:2.3:a:vmware:virtualcenter:2.5:update_2:*:*:*:*:*:*
+	cpe:2.3:a:vmware:virtualcenter:2.5:update_3:*:*:*:*:*:*
+	cpe:2.3:a:vmware:virtualcenter:2.5:update_4:*:*:*:*:*:*
+	cpe:2.3:a:vmware:virtualcenter:2.5:update_5:*:*:*:*:*:*
+	cpe:2.3:a:vmware:virtualcenter:2.5:update_6:*:*:*:*:*:*",,NVD,MEDIUM,8.6,2.9,False,False,False,False,False,AV:N/AC:M/Au:N/C:P/I:N/A:N,NETWORK,MEDIUM,NONE,PARTIAL,NONE,NONE,4.3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2011-1015,Red Hat Inc.,Deferred,2011-05-09T22:55:01.677,2025-04-11T00:51:21.963,,,,,,,,,"The is_cgi method in CGIHTTPServer.py in the CGIHTTPServer module in Python 2.5, 2.6, and 3.0 allows remote attackers to read script source code via an HTTP GET request that lacks a / (slash) character at the beginning of the URI.","http://bugs.python.org/issue2254: Red Hat Inc. (Exploit, Patch), CVE (Exploit, Patch)
+http://hg.python.org/cpython/rev/c6c4398293bd/: Red Hat Inc. (Patch), CVE (Patch)
+http://openwall.com/lists/oss-security/2011/02/23/27: Red Hat Inc. (Exploit, Patch), CVE (Exploit, Patch)
+http://openwall.com/lists/oss-security/2011/02/24/10: Red Hat Inc. (Exploit, Patch), CVE (Exploit, Patch)
+http://secunia.com/advisories/50858: Red Hat Inc., CVE
+http://secunia.com/advisories/51024: Red Hat Inc., CVE
+http://secunia.com/advisories/51040: Red Hat Inc., CVE
+http://securitytracker.com/id?1025489: Red Hat Inc., CVE
+http://svn.python.org/view?view=revision&revision=71303: Red Hat Inc. (Patch), CVE (Patch)
+http://www.mandriva.com/security/advisories?name=MDVSA-2011:096: Red Hat Inc., CVE
+http://www.securityfocus.com/bid/46541: Red Hat Inc., CVE
+http://www.ubuntu.com/usn/USN-1596-1: Red Hat Inc., CVE
+http://www.ubuntu.com/usn/USN-1613-1: Red Hat Inc., CVE
+http://www.ubuntu.com/usn/USN-1613-2: Red Hat Inc., CVE
+https://bugzilla.redhat.com/show_bug.cgi?id=680094: Red Hat Inc. (Exploit, Patch), CVE (Exploit, Patch)",CWE-200: NVD,"Config 1
+OR
+	cpe:2.3:a:python:python:3.0:*:*:*:*:*:*:*",,NVD,MEDIUM,10.0,2.9,False,False,False,False,False,AV:N/AC:L/Au:N/C:P/I:N/A:N,NETWORK,LOW,NONE,PARTIAL,NONE,NONE,5.0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2014-9767,MITRE,Deferred,2016-05-22T01:59:00.163,2025-04-12T10:46:40.837,,,,,,,,,"Directory traversal vulnerability in the ZipArchive::extractTo function in ext/zip/php_zip.c in PHP before 5.4.45, 5.5.x before 5.5.29, and 5.6.x before 5.6.13 and ext/zip/ext_zip.cpp in HHVM before 3.12.1 allows remote attackers to create arbitrary empty directories via a crafted ZIP archive.","http://lists.opensuse.org/opensuse-security-announce/2016-04/msg00052.html: MITRE, CVE
+http://lists.opensuse.org/op
+CVE-2019-5988,JPCERT/CC,Modified,2020-01-06T06:15:11.127,2024-11-21T04:45:51.800,,,,,,,,,Stored cross-site scripting vulnerability in Access analysis CGI An-Analyzer released in 2019 June 24 and earlier allows remote attackers to inject arbitrary web script or HTML via the Management Page.,"https://jvn.jp/en/jp/JVN37230341/index.html: JPCERT/CC (Third Party Advisory), CVE (Third Party Advisory)
+https://www.anglers-net.com/anlog/update/index.html: JPCERT/CC (Exploit, Vendor Advisory), CVE (Exploit, Vendor Advisory)",CWE-79: NVD,"Config 1
+OR
+	cpe:2.3:a:anglers-net:cgi_an-anlyzer:*:*:*:*:*:*:*:*",,NVD,MEDIUM,8.6,2.9,False,False,False,False,True,AV:N/AC:M/Au:N/C:N/I:P/A:N,NETWORK,MEDIUM,NONE,NONE,PARTIAL,NONE,4.3,NVD,2.8,2.7,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,NETWORK,LOW,NONE,REQUIRED,CHANGED,LOW,LOW,NONE,6.1,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2019-19861,Apache Software Foundation,Rejected,2020-01-06T18:15:23.247,2023-11-07T03:07:49.800,,,,,,,,,Rejected reason: DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: none. Reason: The CNA or individual who requested this candidate did not associate it with any vulnerability during 2019. Notes: none,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2021-28707,Xen Project,Modified,2021-11-24T01:15:08.170,2024-11-21T06:00:11.210,,,,,,,,,"PoD operations on misaligned GFNs T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] x86 HVM and PVH guests may be started in populate-on-demand (PoD) mode, to provide a way for them to later easily have more memory assigned. Guests are permitted to control certain P2M aspects of individual pages via hypercalls. These hypercalls may act on ranges of pages specified via page orders (resulting in a power-of-2 number of pages). The implementation of some of these hypercalls for PoD does not enforce the base page frame number to be suitably aligned for the specified order, yet some code involved in PoD handling actually makes such an assumption. These operations are XENMEM_decrease_reservation (CVE-2021-28704) and XENMEM_populate_physmap (CVE-2021-28707), the latter usable only by domains controlling the guest, i.e. a de-privileged qemu or a stub domain. (Patch 1, combining the fix to both these two issues.) In addition handling of XENMEM_decrease_reservation can also trigger a host crash when the specified page order is neither 4k nor 2M nor 1G (CVE-2021-28708, patch 2).","https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT/: Xen Project, CVE
+https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF/: Xen Project, CVE
+https://security.gentoo.org/glsa/202402-07: Xen Project, CVE
+https://www.debian.org/security/2021/dsa-5017: Xen Project (Third Party Advisory), CVE (Third Party Advisory)
+https://xenbits.xenproject.org/xsa/advisory-388.txt: Xen Project (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:o:xen:xen:*:*:*:*:*:*:x86:*
+Config 2
+OR
+	cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*
+Config 3
+OR
+	cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*
+	cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,False,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,NVD,2.0,6.0,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H,LOCAL,LOW,LOW,NONE,CHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2021-28708,Xen Project,Modified,2021-11-24T01:15:08.217,2024-11-21T06:00:11.320,,,,,,,,,"PoD operations on misaligned GFNs T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] x86 HVM and PVH guests may be started in populate-on-demand (PoD) mode, to provide a way for them to later easily have more memory assigned. Guests are permitted to control certain P2M aspects of individual pages via hypercalls. These hypercalls may act on ranges of pages specified via page orders (resulting in a power-of-2 number of pages). The implementation of some of these hypercalls for PoD does not enforce the base page frame number to be suitably aligned for the specified order, yet some code involved in PoD handling actually makes such an assumption. These operations are XENMEM_decrease_reservation (CVE-2021-28704) and XENMEM_populate_physmap (CVE-2021-28707), the latter usable only by domains controlling the guest, i.e. a de-privileged qemu or a stub domain. (Patch 1, combining the fix to both these two issues.) In addition handling of XENMEM_decrease_reservation can also trigger a host crash when the specified page order is neither 4k nor 2M nor 1G (CVE-2021-28708, patch 2).","https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT/: Xen Project, CVE
+https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF/: Xen Project, CVE
+https://security.gentoo.org/glsa/202402-07: Xen Project, CVE
+https://www.debian.org/security/2021/dsa-5017: Xen Project (Third Party Advisory), CVE (Third Party Advisory)
+https://xenbits.xenproject.org/xsa/advisory-388.txt: Xen Project (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:o:xen:xen:*:*:*:*:*:*:x86:*
+Config 2
+OR
+	cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*
+Config 3
+OR
+	cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*
+	cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,False,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,NVD,2.0,6.0,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H,LOCAL,LOW,LOW,NONE,CHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2021-42297,Microsoft Corporation,Modified,2021-11-24T01:15:08.310,2024-11-21T06:27:33.083,,,,,,,,,Windows 10 Update Assistant Elevation of Privilege Vulnerability,"https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-42297: Microsoft Corporation (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)
+https://www.zerodayinitiative.com/advisories/ZDI-21-1334/: Microsoft Corporation (Exploit, Third Party Advisory, VDB Entry), CVE (Exploit, Third Party Advisory, VDB Entry)",CWE-59: NVD,"Config 1
+OR
+	cpe:2.3:a:microsoft:windows_10_update_assistant:-:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,True,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,Microsoft Corporation,1.3,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:R/S:U/C:N/I:N/A:H,LOCAL,LOW,LOW,REQUIRED,UNCHANGED,NONE,NONE,HIGH,5.0,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2021-42306,Microsoft Corporation,Modified,2021-11-24T01:15:08.363,2024-11-21T06:27:34.237,,,,,,,,,"An information disclosure vulnerability manifests when a user or an application uploads unprotected private key data as part of an authentication certificate keyCredential  on an Azure AD Application or Service Principal (which is not recommended). This vulnerability allows a user or service in the tenant with application read access to read the private key data that was added to the application.
+Azure AD addressed this vulnerability by preventing disclosure of any private key values added to the application.
+Microsoft has identified services that could manifest this vulnerability, and steps that customers should take to be protected. Refer to the FAQ section for more information.
+For more details on this issue, please refer to the MSRC Blog Entry.
+","https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2021-42306: Microsoft Corporation (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",CWE-522: NVD,"Config 1
+OR
+	cpe:2.3:a:microsoft:azure_active_directory:*:*:*:*:*:*:*:*
+	cpe:2.3:a:microsoft:azure_active_site_recovery:*:*:*:*:*:*:*:*
+	cpe:2.3:a:microsoft:azure_automation:*:*:*:*:*:*:*:*
+	cpe:2.3:a:microsoft:azure_migrate:*:*:*:*:*:*:*:*",,NVD,MEDIUM,8.0,2.9,False,False,False,False,False,AV:N/AC:L/Au:S/C:P/I:N/A:N,NETWORK,LOW,SINGLE,PARTIAL,NONE,NONE,4.0,Microsoft Corporation,2.8,5.2,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,NONE,8.1,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2021-28705,Xen Project,Modified,2021-11-24T02:15:06.687,2024-11-21T06:00:10.953,,,,,,,,,"issues with partially successful P2M updates on x86 T[his CNA information record relates to multiple CVEs; the text explains which aspects/vulnerabilities correspond to which CVE.] x86 HVM and PVH guests may be started in populate-on-demand (PoD) mode, to provide a way for them to later easily have more memory assigned. Guests are permitted to control certain P2M aspects of individual pages via hypercalls. These hypercalls may act on ranges of pages specified via page orders (resulting in a power-of-2 number of pages). In some cases the hypervisor carries out the requests by splitting them into smaller chunks. Error handling in certain PoD cases has been insufficient in that in particular partial success of some operations was not properly accounted for. There are two code paths affected - page removal (CVE-2021-28705) and insertion of new pages (CVE-2021-28709). (We provide one patch which combines the fix to both issues.)","https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/I7ZGWVVRI4XY2XSTBI3XEMWBXPDVX6OT/: Xen Project, CVE
+https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/PXUI4VMD52CH3T7YXAG3J2JW7ZNN3SXF/: Xen Project, CVE
+https://security.gentoo.org/glsa/202402-07: Xen Project, CVE
+https://www.debian.org/security/2021/dsa-5017: Xen Project (Third Party Advisory), CVE (Third Party Advisory)
+https://xenbits.xenproject.org/xsa/advisory-389.txt: Xen Project (Patch, Vendor Advisory), CVE (Patch, Vendor Advisory)",CWE-755: NVD,"Config 1
+OR
+	cpe:2.3:o:xen:xen:*:*:*:*:*:*:x86:*
+	cpe:2.3:o:xen:xen:*:*:*:*:*:*:x86:*
+	cpe:2.3:o:xen:xen:*:*:*:*:*:*:x86:*
+	cpe:2.3:o:xen:xen:4.15.0:*:*:*:*:*:x86:*
+	cpe:2.3:o:xen:xen:4.15.1:*:*:*:*:*:x86:*
+Config 2
+OR
+	cpe:2.3:o:fedoraproject:fedora:34:*:*:*:*:*:*:*
+	cpe:2.3:o:fedoraproject:fedora:35:*:*:*:*:*:*:*
+Config 3
+OR
+	cpe:2.3:o:debian:debian_linux:11.0:*:*:*:*:*:*:*",,NVD,MEDIUM,3.4,10.0,False,False,False,False,False,AV:L/AC:M/Au:N/C:C/I:C/A:C,LOCAL,MEDIUM,NONE,COMPLETE,COMPLETE,COMPLETE,6.9,NVD,1.8,5.9,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,7.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-6156,Checkmk GmbH,Modified,2023-11-22T17:15:22.537,2024-11-21T08:43:16.090,,,,,,,,,"Improper neutralization of livestatus command delimiters in the availability timeline in Checkmk <= 2.0.0p39, < 2.1.0p37, and < 2.2.0p15 allows arbitrary livestatus command execution for authorized users.","https://checkmk.com/werk/16221: Checkmk GmbH (Vendor Advisory), CVE (Vendor Advisory)",CWE-140: Checkmk GmbH,"Config 1
+OR
+	cpe:2.3:a:checkmk:checkmk:2.0.0:-:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:i1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p10:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p11:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p12:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p13:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p14:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p15:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p16:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p17:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p18:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p19:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p20:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p21:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p22:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p23:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p24:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p25:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p26:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p27:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p28:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p29:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p30:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p31:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p32:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p33:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p34:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p35:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p36:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p37:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p38:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p39:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p9:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:-:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b9:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p10:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p11:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p12:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p13:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p14:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p15:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p16:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p17:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p18:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p19:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p20:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p21:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p22:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p23:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p24:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p25:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p26:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p27:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p28:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p29:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p30:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p31:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p32:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p33:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p34:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p35:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p36:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p9:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:-:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:i1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p10:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p11:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p12:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p13:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p14:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p9:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-6157,Checkmk GmbH,Modified,2023-11-22T17:15:22.847,2024-11-21T08:43:16.270,,,,,,,,,"Improper neutralization of livestatus command delimiters in ajax_search in Checkmk <= 2.0.0p39, < 2.1.0p37, and < 2.2.0p15 allows arbitrary livestatus command execution for authorized users.","https://checkmk.com/werk/16221: Checkmk GmbH (Vendor Advisory), CVE (Vendor Advisory)",CWE-140: Checkmk GmbH,"Config 1
+OR
+	cpe:2.3:a:checkmk:checkmk:2.0.0:-:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:b8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:i1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p10:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p11:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p12:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p13:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p14:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p15:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p16:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p17:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p18:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p19:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p20:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p21:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p22:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p23:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p24:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p25:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p26:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p27:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p28:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p29:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p30:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p31:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p32:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p33:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p34:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p35:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p36:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p37:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p38:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p39:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.0.0:p9:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:-:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:b9:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p10:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p11:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p12:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p13:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p14:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p15:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p16:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p17:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p18:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p19:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p20:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p21:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p22:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p23:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p24:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p25:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p26:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p27:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p28:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p29:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p30:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p31:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p32:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p33:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p34:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p35:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p36:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.1.0:p9:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:-:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:b8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:i1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p1:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p10:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p11:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p12:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p13:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p14:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p2:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p3:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p4:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p5:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p6:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p7:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p8:*:*:*:*:*:*
+	cpe:2.3:a:checkmk:checkmk:2.2.0:p9:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-25986,Patchstack,Modified,2023-11-22T18:15:08.087,2024-11-21T07:50:34.397,,,,,,,,,Cross-Site Request Forgery (CSRF) vulnerability in WattIsIt PayGreen – Ancienne version plugin <= 4.10.2 versions.,"https://patchstack.com/database/vulnerability/paygreen-woocommerce/wordpress-paygreen-plugin-4-10-2-cross-site-request-forgery-csrf-vulnerability?_s_id=cve: Patchstack (Third Party Advisory), CVE (Third Party Advisory)",CWE-352: Patchstack,"Config 1
+OR
+	cpe:2.3:a:paygreen:paygreen_-_ancienne:*:*:*:*:*:wordpress:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-25987,Patchstack,Modified,2023-11-22T18:15:08.283,2024-11-21T07:50:34.520,,,,,,,,,Cross-Site Request Forgery (CSRF) vulnerability in Aleksandar Urošević My YouTube Channel plugin <= 3.23.3 versions.,"https://patchstack.com/database/vulnerability/youtube-channel/wordpress-my-youtube-channel-plugin-3-23-3-cross-site-request-forgery-csrf-vulnerability?_s_id=cve: Patchstack (Third Party Advisory), CVE (Third Party Advisory)",CWE-352: Patchstack,"Config 1
+OR
+	cpe:2.3:a:urosevic:my_youtube_channel:*:*:*:*:*:wordpress:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-43887,MITRE,Modified,2023-11-22T18:15:08.747,2024-11-21T08:24:57.787,,,,,,,,,Libde265 v1.0.12 was discovered to contain multiple buffer overflows via the num_tile_columns and num_tile_row parameters in the function pic_parameter_set::dump.,"https://github.com/strukturag/libde265/commit/63b596c915977f038eafd7647d1db25488a8c133: MITRE (Patch), CVE (Patch)
+https://github.com/strukturag/libde265/issues/418: MITRE (Exploit, Issue Tracking, Patch), CVE (Exploit, Issue Tracking, Patch)
+https://lists.debian.org/debian-lts-announce/2023/11/msg00032.html: MITRE, CVE",CWE-120: NVD,"Config 1
+OR
+	cpe:2.3:a:struktur:libde265:1.0.12:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.2,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,NONE,HIGH,8.1,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-46357,MITRE,Modified,2023-11-22T18:15:08.797,2024-11-21T08:28:21.710,,,,,,,,,"In the module ""Cross Selling in Modal Cart"" (motivationsale) < 3.5.0 from MyPrestaModules for PrestaShop, a guest can perform SQL injection. The method `motivationsaleDataModel::getProductsByIds()` has sensitive SQL calls that can be executed with a trivial http call and exploited to forge a SQL injection.","https://addons.prestashop.com/fr/ventes-croisees-packs-produits/16122-cross-selling-in-modal-cart.html: MITRE (Product), CVE (Product)
+https://security.friendsofpresta.org/modules/2023/11/21/motivationsale.html: MITRE (Patch, Third Party Advisory), CVE (Patch, Third Party Advisory)",CWE-89: NVD,"Config 1
+OR
+	cpe:2.3:a:myprestamodules:cross_selling_in_modal_cart:*:*:*:*:*:prestashop:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47014,MITRE,Modified,2023-11-22T18:15:08.840,2024-11-21T08:29:37.330,,,,,,,,,A Cross-Site Request Forgery (CSRF) vulnerability in Sourcecodester Sticky Notes App Using PHP with Source Code v.1.0 allows a local attacker to obtain sensitive information via a crafted payload to add-note.php.,"https://github.com/emirhanerdogu/CVE-2023-47014-Sticky-Notes-App-Using-PHP-with-Source-Code-v1.0-CSRF-to-CORS/blob/main/README.md: MITRE (Exploit, Third Party Advisory), CVE (Exploit, Third Party Advisory)",CWE-352: NVD,"Config 1
+OR
+	cpe:2.3:a:remyandrade:sticky_notes_app:1.0:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,NONE,NONE,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47250,MITRE,Modified,2023-11-22T18:15:08.883,2024-11-21T08:30:02.823,,,,,,,,,"In mprivacy-tools before 2.0.406g in m-privacy TightGate-Pro Server, broken Access Control on X11 server sockets allows authenticated attackers (with access to a VNC session) to access the X11 desktops of other users by specifying their DISPLAY ID. This allows complete control of their desktop, including the ability to inject keystrokes and perform a keylogging attack.","http://packetstormsecurity.com/files/175949/m-privacy-TightGate-Pro-Code-Execution-Insecure-Permissions.html: MITRE (Exploit, Third Party Advisory, VDB Entry), CVE (Exploit, Third Party Advisory, VDB Entry)
+http://seclists.org/fulldisclosure/2023/Nov/13: MITRE (Exploit, Mailing List, Third Party Advisory), CVE (Exploit, Mailing List, Third Party Advisory)
+https://sec-consult.com/en/vulnerability-lab/advisories/index.html: MITRE (Third Party Advisory), CVE (Third Party Advisory)
+https://sec-consult.com/vulnerability-lab/advisory/multiple-vulnerabilities-in-m-privacy-tightgate-pro/: MITRE (Third Party Advisory), CVE (Third Party Advisory)
+https://www.m-privacy.de/en/tightgate-pro-safe-surfing/: MITRE (Product), CVE (Product)",CWE-276: NVD,"Config 1
+OR
+	cpe:2.3:a:m-privacy:mprivacy-tools:*:*:*:*:*:*:*:*
+	cpe:2.3:a:m-privacy:rsbac-policy-tgpro:*:*:*:*:*:*:*:*
+	cpe:2.3:a:m-privacy:tightgatevnc:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47251,MITRE,Modified,2023-11-22T18:15:08.930,2024-11-21T08:30:03.013,,,,,,,,,"In mprivacy-tools before 2.0.406g in m-privacy TightGate-Pro Server, a Directory Traversal in the print function of the VNC service allows authenticated attackers (with access to a VNC session) to automatically transfer malicious PDF documents by moving them into the .spool directory, and then sending a signal to the VNC service, which automatically transfers them to the connected VNC client's filesystem.","http://packetstormsecurity.com/files/175949/m-privacy-TightGate-Pro-Code-Execution-Insecure-Permissions.html: MITRE (Exploit, Third Party Advisory, VDB Entry), CVE (Exploit, Third Party Advisory, VDB Entry)
+http://seclists.org/fulldisclosure/2023/Nov/13: MITRE (Exploit, Mailing List, Third Party Advisory), CVE (Exploit, Mailing List, Third Party Advisory)
+https://sec-consult.com/en/vulnerability-lab/advisories/index.html: MITRE (Third Party Advisory), CVE (Third Party Advisory)
+https://sec-consult.com/vulnerability-lab/advisory/multiple-vulnerabilities-in-m-privacy-tightgate-pro/: MITRE (Third Party Advisory), CVE (Third Party Advisory)
+https://www.m-privacy.de/en/tightgate-pro-safe-surfing/: MITRE (Product), CVE (Product)",CWE-22: NVD,"Config 1
+OR
+	cpe:2.3:a:m-privacy:mprivacy-tools:*:*:*:*:*:*:*:*
+	cpe:2.3:a:m-privacy:tightgatevnc:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,NONE,HIGH,NONE,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47467,MITRE,Modified,2023-11-22T18:15:08.980,2024-11-21T08:30:19.783,,,,,,,,,Directory Traversal vulnerability in jeecg-boot v.3.6.0 allows a remote privileged attacker to obtain sensitive information via the file directory structure.,"https://www.yuque.com/u2479829/tegvu8/dvmfdl5fssfen05q: MITRE (Broken Link), CVE (Broken Link)",CWE-22: NVD,"Config 1
+OR
+	cpe:2.3:a:jeecg:jeecg-boot:3.6.0:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47755,Patchstack,Modified,2023-11-22T18:15:09.037,2024-11-21T08:30:45.633,,,,,,,,,Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in AazzTech WooCommerce Product Carousel Slider plugin <= 3.3.5 versions.,"https://patchstack.com/database/vulnerability/product-carousel-slider-for-woocommerce/wordpress-woocommerce-product-carousel-slider-plugin-3-3-5-cross-site-scripting-xss-vulnerability?_s_id=cve: Patchstack (Third Party Advisory), CVE (Third Party Advisory)",CWE-79: Patchstack,"Config 1
+OR
+	cpe:2.3:a:aazztech:woocommerce_product_carousel_slider:*:*:*:*:*:wordpress:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,2.7,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,NETWORK,LOW,NONE,REQUIRED,CHANGED,LOW,LOW,NONE,6.1,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47758,Patchstack,Modified,2023-11-22T18:15:09.253,2024-11-21T08:30:45.943,,,,,,,,,Cross-Site Request Forgery (CSRF) vulnerability in Mondula GmbH Multi Step Form plugin <= 1.7.11 versions.,"https://patchstack.com/database/vulnerability/multi-step-form/wordpress-multi-step-form-plugin-1-7-11-cross-site-request-forgery-csrf-vulnerability?_s_id=cve: Patchstack (Third Party Advisory), CVE (Third Party Advisory)",CWE-352: Patchstack,"Config 1
+OR
+	cpe:2.3:a:mondula:multi_step_form:*:*:*:*:*:wordpress:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-47765,Patchstack,Modified,2023-11-22T18:15:09.440,2024-11-21T08:30:46.200,,,,,,,,,Cross-Site Request Forgery (CSRF) vulnerability in CodeBard CodeBard's Patron Button and Widgets for Patreon plugin <= 2.1.9 versions.,"https://patchstack.com/database/vulnerability/patron-button-and-widgets-by-codebard/wordpress-codebard-s-patron-button-and-widgets-for-patreon-plugin-2-1-9-cross-site-request-forgery-csrf-vulnerability?_s_id=cve: Patchstack (Third Party Advisory), CVE (Third Party Advisory)",CWE-352: Patchstack,"Config 1
+OR
+	cpe:2.3:a:codebard:codebard\'s_patron_button_and_widgets_for_patreon:*:*:*:*:*:wordpress:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-48106,MITRE,Modified,2023-11-22T18:15:09.630,2024-11-21T08:31:06.143,,,,,,,,,Buffer Overflow vulnerability in zlib-ng minizip-ng v.4.0.2 allows an attacker to execute arbitrary code via a crafted file to the mz_path_resolve function in the mz_os.c file.,"https://github.com/zlib-ng/minizip-ng/issues/740: MITRE (Exploit, Issue Tracking, Patch), CVE (Exploit, Issue Tracking, Patch)",CWE-787: NVD,"Config 1
+OR
+	cpe:2.3:a:zlib-ng:minizip-ng:4.0.2:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-5870,Red Hat Inc.,Modified,2023-12-10T18:15:07.643,2025-11-04T20:17:14.013,,,,,,,,,"A flaw was found in PostgreSQL involving the pg_cancel_backend role that signals background workers, including the logical replication launcher, autovacuum workers, and the autovacuum launcher. Successful exploitation requires a non-core extension with a less-resilient background worker and would affect that specific background worker only. This issue may allow a remote high privileged user to launch a denial of service (DoS) attack.","https://access.redhat.com/errata/RHSA-2023:7545: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7579: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7580: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7581: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7616: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7656: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7666: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7667: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7694: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7695: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7714: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7770: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7772: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://access.redhat.com/errata/RHSA-2023:7784: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2023:7785: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2023:7883: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2023:7884: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2023:7885: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2024:0304: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2024:0332: Red Hat Inc., CVE
+https://access.redhat.com/errata/RHSA-2024:0337: Red Hat Inc., CVE
+https://access.redhat.com/security/cve/CVE-2023-5870: Red Hat Inc. (Third Party Advisory), CVE (Third Party Advisory)
+https://bugzilla.redhat.com/show_bug.cgi?id=2247170: Red Hat Inc. (Issue Tracking), CVE (Issue Tracking)
+https://www.postgresql.org/about/news/postgresql-161-155-1410-1313-1217-and-1122-released-2749/: Red Hat Inc. (Release Notes), CVE (Release Notes)
+https://www.postgresql.org/support/security/CVE-2023-5870/: Red Hat Inc. (Vendor Advisory), CVE (Vendor Advisory)
+https://lists.debian.org/debian-lts-announce/2023/11/msg00007.html: CVE
+https://security.netapp.com/advisory/ntap-20240119-0003/: CVE",CWE-400: Red Hat Inc.,"Config 1
+OR
+	cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+	cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+	cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+	cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+	cpe:2.3:a:postgresql:postgresql:*:*:*:*:*:*:*:*
+	cpe:2.3:a:postgresql:postgresql:16.0:*:*:*:*:*:*:*
+Config 2
+OR
+	cpe:2.3:a:redhat:codeready_linux_builder_eus:9.2:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_eus_for_power_little_endian_eus:9.0_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_eus_for_power_little_endian_eus:9.2_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_arm64_eus:8.6_aarch64:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_arm64_eus:9.0_aarch64:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_arm64_eus:9.2_aarch64:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_ibm_z_systems_eus:9.0_s390x:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_ibm_z_systems_eus:9.2_s390x:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_power_little_endian_eus:9.0_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:codeready_linux_builder_for_power_little_endian_eus:9.2_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:a:redhat:software_collections:1.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux:9.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:8.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:8.8:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:9.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_eus:9.2:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_arm_64:8.0:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_arm_64:8.8_aarch64:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_ibm_z_systems:8.0_s390x:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_ibm_z_systems_eus:8.6_s390x:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_ibm_z_systems_eus:8.8_s390x:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_ibm_z_systems_eus:9.0_s390x:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_ibm_z_systems_eus:9.2_s390x:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_power_little_endian:8.0_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_power_little_endian_eus:8.6_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_power_little_endian_eus:8.8_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_power_little_endian_eus:9.0_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_for_power_little_endian_eus:9.2_ppc64le:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_aus:8.2:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_aus:8.4:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_aus:8.6:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_aus:9.2:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_tus:8.2:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_tus:8.4:*:*:*:*:*:*:*
+	cpe:2.3:o:redhat:enterprise_linux_server_tus:8.6:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,0.7,3.6,CVSS:3.1/AV:N/AC:H/PR:H/UI:N/S:U/C:N/I:N/A:H,NETWORK,HIGH,HIGH,NONE,UNCHANGED,NONE,NONE,HIGH,4.4,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2022-48614,MITRE,Modified,2023-12-10T19:15:07.410,2024-11-21T07:33:36.300,,,,,,,,,Special:Ask in Semantic MediaWiki before 4.0.2 allows Reflected XSS.,"https://github.com/SemanticMediaWiki/SemanticMediaWiki/issues/5262: MITRE (Issue Tracking), CVE (Issue Tracking)
+https://www.semantic-mediawiki.org/wiki/Semantic_MediaWiki_4.0.2: MITRE (Release Notes), CVE (Release Notes)",CWE-79: NVD,"Config 1
+OR
+	cpe:2.3:a:semantic-mediawiki:semantic_mediawiki:*:*:*:*:*:mediawiki:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,2.7,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,NETWORK,LOW,NONE,REQUIRED,CHANGED,LOW,LOW,NONE,6.1,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-6656,VulDB,Modified,2023-12-10T21:15:07.093,2024-11-21T08:44:18.137,,,,,,,,unsupported-when-assigned: VulDB,** UNSUPPORTED WHEN ASSIGNED ** A vulnerability was found in DeepFaceLab pretrained DF.wf.288res.384.92.72.22. It has been rated as critical. Affected by this issue is some unknown functionality of the file DFLIMG/DFLJPG.py. The manipulation leads to deserialization. The attack may be launched remotely. The complexity of an attack is rather high. The exploitation is known to be difficult. The identifier of this vulnerability is VDB-247364. NOTE: This vulnerability only affects products that are no longer supported by the maintainer.,"https://github.com/bayuncao/vul-cve-1: VulDB (Broken Link), CVE (Broken Link)
+https://vuldb.com/?ctiid.247364: VulDB (Permissions Required), CVE (Permissions Required)
+https://vuldb.com/?id.247364: VulDB (Third Party Advisory), CVE (Third Party Advisory)",CWE-502: VulDB,"Config 1
+OR
+	cpe:2.3:a:iperov:deepfacelab:df.wf.288res.384.92.72.22:*:*:*:*:*:*:*",,VulDB,MEDIUM,4.9,6.4,False,False,False,False,False,AV:N/AC:H/Au:N/C:P/I:P/A:P,NETWORK,HIGH,NONE,PARTIAL,PARTIAL,PARTIAL,5.1,NVD,1.6,5.9,CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,HIGH,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,7.5,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49584,SAP SE,Modified,2023-12-12T02:15:08.147,2024-11-21T08:33:36.410,,,,,,,,,"SAP Fiori launchpad - versions SAP_UI 750, SAP_UI 754, SAP_UI 755, SAP_UI 756, SAP_UI 757, SAP_UI 758, UI_700 200, SAP_BASIS 793, allows an attacker to use HTTP verb POST on read-only service causing low impact on Confidentiality of the application.
+
+","https://me.sap.com/notes/3406786: SAP SE (Permissions Required), CVE (Permissions Required)
+https://www.sap.com/documents/2022/02/fa865ea4-167e-0010-bca6-c68f7e60039b.html: SAP SE (Vendor Advisory), CVE (Vendor Advisory)",CWE-444: SAP SE,"Config 1
+OR
+	cpe:2.3:a:sap:fiori_launchpad:200:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:700:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:750:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:754:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:755:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:756:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:757:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:758:*:*:*:*:*:*:*
+	cpe:2.3:a:sap:fiori_launchpad:793:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,1.4,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,LOW,NONE,NONE,4.3,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49587,SAP SE,Modified,2023-12-12T02:15:08.370,2024-11-21T08:33:36.567,,,,,,,,,"SAP Solution Manager - version 720, allows an authorized attacker to execute certain deprecated function modules which can read or modify data of same or other component without user interaction over the network.
+
+","https://me.sap.com/notes/3395306: SAP SE (Permissions Required), CVE (Permissions Required)
+https://www.sap.com/documents/2022/02/fa865ea4-167e-0010-bca6-c68f7e60039b.html: SAP SE (Vendor Advisory), CVE (Vendor Advisory)","CWE-77: SAP SE, NVD","Config 1
+OR
+	cpe:2.3:a:sap:solution_manager:720:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.1,2.7,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N,NETWORK,LOW,LOW,NONE,CHANGED,LOW,LOW,NONE,6.4,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-50422,SAP SE,Modified,2023-12-12T02:15:08.587,2024-11-21T08:36:57.380,,,,,,,,,"SAP BTP Security Services Integration Library ([Java] cloud-security-services-integration-library) - versions below 2.17.0 and versions from 3.0.0 to before 3.3.0, allow under certain conditions an escalation of privileges. On successful exploitation, an unauthenticated attacker can obtain arbitrary permissions within the application.","https://blogs.sap.com/2023/12/12/unveiling-critical-security-updates-sap-btp-security-note-3411067/: SAP SE (Vendor Advisory), CVE (Vendor Advisory)
+https://github.com/SAP/cloud-security-services-integration-library/: SAP SE (Product), CVE (Product)
+https://github.com/SAP/cloud-security-services-integration-library/security/advisories/GHSA-59c9-pxq8-9c73: SAP SE (Vendor Advisory), CVE (Vendor Advisory)
+https://me.sap.com/notes/3411067: SAP SE (Permissions Required), CVE (Permissions Required)
+https://me.sap.com/notes/3413475: SAP SE, CVE
+https://mvnrepository.com/artifact/com.sap.cloud.security.xsuaa/spring-xsuaa: SAP SE (Product), CVE (Product)
+https://mvnrepository.com/artifact/com.sap.cloud.security/java-security: SAP SE (Product), CVE (Product)
+https://mvnrepository.com/artifact/com.sap.cloud.security/spring-security: SAP SE (Product), CVE (Product)
+https://www.sap.com/documents/2022/02/fa865ea4-167e-0010-bca6-c68f7e60039b.html: SAP SE (Vendor Advisory), CVE (Vendor Advisory)",CWE-749: SAP SE,"Config 1
+OR
+	cpe:2.3:a:sap:cloud-security-services-integration-library:*:*:*:*:*:java:*:*
+	cpe:2.3:a:sap:cloud-security-services-integration-library:*:*:*:*:*:java:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-50423,SAP SE,Modified,2023-12-12T02:15:08.797,2024-11-21T08:36:57.623,,,,,,,,,"SAP BTP Security Services Integration Library ([Python] sap-xssec) - versions < 4.1.0, allow under certain conditions an escalation of privileges. On successful exploitation, an unauthenticated attacker can obtain arbitrary permissions within the application.","https://blogs.sap.com/2023/12/12/unveiling-critical-security-updates-sap-btp-security-note-3411067/: SAP SE (Vendor Advisory), CVE (Vendor Advisory)
+https://github.com/SAP/cloud-pysec/: SAP SE (Product), CVE (Product)
+https://github.com/SAP/cloud-pysec/security/advisories/GHSA-6mjg-37cp-42x5: SAP SE (Vendor Advisory), CVE (Vendor Advisory)
+https://me.sap.com/notes/3411067: SAP SE (Permissions Required), CVE (Permissions Required)
+https://pypi.org/project/sap-xssec/: SAP SE (Product), CVE (Product)
+https://www.sap.com/documents/2022/02/fa865ea4-167e-0010-bca6-c68f7e60039b.html: SAP SE (Vendor Advisory), CVE (Vendor Advisory)",CWE-749: SAP SE,"Config 1
+OR
+	cpe:2.3:a:sap:sap-xssec:*:*:*:*:*:python:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-5536,Canonical Ltd.,Modified,2023-12-12T02:15:09.003,2024-11-21T08:41:57.660,,,,,,,,,"A feature in LXD (LP#1829071), affects the default configuration of Ubuntu Server which allows privileged users in the lxd group to escalate their privilege to root without requiring a sudo password.","https://bugs.launchpad.net/ubuntu/+source/lxd/+bug/1829071: Canonical Ltd. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-5536: Canonical Ltd. (Third Party Advisory), CVE (Third Party Advisory)
+https://discourse.ubuntu.com/t/easy-multi-user-lxd-setup/26215/4: Canonical Ltd. (Vendor Advisory), CVE (Vendor Advisory)
+https://ubuntu.com/security/CVE-2023-5536: Canonical Ltd. (Vendor Advisory), CVE (Vendor Advisory)",CWE-276: NVD,"Config 1
+OR
+	cpe:2.3:o:canonical:ubuntu_linux:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,0.5,5.9,CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H,LOCAL,HIGH,HIGH,NONE,UNCHANGED,HIGH,HIGH,HIGH,6.4,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-6542,SAP SE,Modified,2023-12-12T02:15:09.347,2024-11-21T08:44:03.740,,,,,,,,,"Due to lack of proper authorization checks in Emarsys SDK for Android, an attacker can call a particular activity and can forward himself web pages and/or deep links without any validation directly from the host application. On successful attack, an attacker could navigate to arbitrary URL including application deep links on the device.
+
+","https://me.sap.com/notes/3406244: SAP SE (Permissions Required, Vendor Advisory), CVE (Permissions Required, Vendor Advisory)
+https://www.sap.com/documents/2022/02/fa865ea4-167e-0010-bca6-c68f7e60039b.html: SAP SE (Vendor Advisory), CVE (Vendor Advisory)","CWE-863: SAP SE, NVD","Config 1
+OR
+	cpe:2.3:a:sap:emarsys_sdk:3.6.2:*:*:*:*:android:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,5.2,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,NONE,7.1,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-50424,SAP SE,Modified,2023-12-12T03:15:07.100,2024-11-21T08:36:57.780,,,,,,,,,"SAP BTP Security Services Integration Library ([Golang] github.com/sap/cloud-security-client-go) - versions < 0.17.0, allow under certain conditions an escalation of privileges. On successful exploitation, an unauthenticated attacker can obtain arbitrary permissions within the application.","https://blogs.sap.com/2023/12/12/unveiling-critical-security-updates-sap-btp-security-note-3411067/: SAP SE (Vendor Advisory), CVE (Vendor Advisory)
+https://github.com/SAP/cloud-security-client-go: SAP SE (Product), CVE (Product)
+https://github.com/SAP/cloud-security-services-integration-library/security/advisories/GHSA-59c9-pxq8-9c73: SAP SE (Not Applicable), CVE (Not Applicable)
+https://me.sap.com/notes/3411067: SAP SE (Permissions Required), CVE (Permissions Required)
+https://pkg.go.dev/github.com/sap/cloud-security-client-go@v0.17.0: SAP SE (Product), CVE (Product)
+https://www.sap.com/documents/2022/02/fa865ea4-167e-0010-bca6-c68f7e60039b.html: SAP SE (Vendor Advisory), CVE (Vendor Advisory)",CWE-749: SAP SE,"Config 1
+OR
+	cpe:2.3:a:sap:cloud-security-client-go:*:*:*:*:*:go:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-6709,huntr.dev,Modified,2023-12-12T04:15:07.083,2024-11-21T08:44:24.410,,,,,,,,,Improper Neutralization of Special Elements Used in a Template Engine in GitHub repository mlflow/mlflow prior to 2.9.2.,"https://github.com/mlflow/mlflow/commit/432b8ccf27fd3a76df4ba79bb1bec62118a85625: huntr.dev (Patch), CVE (Patch)
+https://huntr.com/bounties/9e4cc07b-6fff-421b-89bd-9445ef61d34d: huntr.dev (Exploit, Issue Tracking, Mitigation, Patch, Third Party Advisory), CVE (Exploit, Issue Tracking, Mitigation, Patch, Third Party Advisory)",CWE-1336: huntr.dev,"Config 1
+OR
+	cpe:2.3:a:lfprojects:mlflow:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41113,MITRE,Modified,2023-12-12T07:15:42.150,2024-11-21T08:20:36.903,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It allows an authenticated user to to obtain information about whether certain files exist on disk, what errors if any occur when attempting to read them, and some limited information about their contents (regardless of permissions). This can occur when a superuser has configured one or more directories for filesystem access via CREATE DIRECTORY and adopted certain non-default settings for log_line_prefix and log_connections.","https://www.enterprisedb.com/docs/security/advisories/cve202341113/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,1.4,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,LOW,NONE,NONE,4.3,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41114,MITRE,Modified,2023-12-12T07:15:43.307,2024-11-21T08:20:37.070,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It contains the functions get_url_as_text and get_url_as_bytea that are publicly executable, thus permitting an authenticated user to read any file from the local filesystem or remote system regardless of that user's permissions.","https://www.enterprisedb.com/docs/security/advisories/cve202341114/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41115,MITRE,Modified,2023-12-12T07:15:43.780,2024-11-21T08:20:37.260,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. When using UTL_ENCODE, an authenticated user can read any large object, regardless of that user's permissions.","https://www.enterprisedb.com/docs/security/advisories/cve202341115/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41116,MITRE,Modified,2023-12-12T07:15:44.267,2024-11-21T08:20:37.433,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It allows an authenticated user to refresh any materialized view, regardless of that user's permissions.","https://www.enterprisedb.com/docs/security/advisories/cve202341116/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,1.4,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,NONE,LOW,NONE,4.3,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41117,MITRE,Modified,2023-12-12T07:15:44.727,2025-05-27T15:15:30.430,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It contain packages, standalone packages, and functions that run SECURITY DEFINER but are inadequately secured against search_path attacks.","https://www.enterprisedb.com/docs/security/advisories/cve202341117/: MITRE (Vendor Advisory), CVE (Vendor Advisory)","CWE-427: NVD, CISA-ADP","Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41118,MITRE,Modified,2023-12-12T07:15:45.220,2024-11-21T08:20:37.750,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It may allow an authenticated user to bypass authorization requirements and access underlying implementation functions. When a superuser has configured file locations using CREATE DIRECTORY, these functions allow users to take a wide range of actions, including read, write, copy, rename, and delete.","https://www.enterprisedb.com/docs/security/advisories/cve202341118/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41119,MITRE,Modified,2023-12-12T07:15:45.387,2024-11-21T08:20:37.900,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It contains the function _dbms_aq_move_to_exception_queue that may be used to elevate a user's privileges to superuser. This function accepts the OID of a table, and then accesses that table as the superuser by using SELECT and DML commands.","https://www.enterprisedb.com/docs/security/advisories/cve202341119/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",CWE-269: NVD,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41120,MITRE,Modified,2023-12-12T07:15:45.860,2024-11-21T08:20:38.050,,,,,,,,,"An issue was discovered in EnterpriseDB Postgres Advanced Server (EPAS) before 11.21.32, 12.x before 12.16.20, 13.x before 13.12.16, 14.x before 14.9.0, and 15.x before 15.4.0. It permits an authenticated user to use DBMS_PROFILER to remove all accumulated profiling data on a system-wide basis, regardless of that user's permissions.","https://www.enterprisedb.com/docs/security/advisories/cve202341120/: MITRE (Vendor Advisory), CVE (Vendor Advisory)",CWE-668: NVD,"Config 1
+OR
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:enterprisedb:postgres_advanced_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,NONE,HIGH,NONE,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2022-48615,Huawei Technologies,Modified,2023-12-12T08:15:06.937,2024-11-21T07:33:36.450,,,,,,,,,An improper access control vulnerability exists in a Huawei datacom product. Attackers can exploit this vulnerability to obtain partial device information.,"https://wr3nchsr.github.io/huawei-netengine-ar617vw-auth-root-rce/: Huawei Technologies (Exploit, Third Party Advisory), CVE (Exploit, Third Party Advisory)",CWE-284: Huawei Technologies,"Config 1 (AND)
+OR
+	cpe:2.3:o:huawei:ar617vw_firmware:v300r21c00spc200:*:*:*:*:*:*:*
+OR
+	cpe:2.3:h:huawei:ar617vw:-:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,4.2,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:H/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,LOW,HIGH,NONE,7.1,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2022-48616,Huawei Technologies,Modified,2023-12-12T08:15:07.377,2024-11-21T07:33:36.577,,,,,,,,,A Huawei data communication product has a command injection vulnerability. Successful exploitation of this vulnerability may allow attackers to gain higher privileges.,"https://wr3nchsr.github.io/huawei-netengine-ar617vw-auth-root-rce/: Huawei Technologies (Exploit, Third Party Advisory), CVE (Exploit, Third Party Advisory)","CWE-78: Huawei Technologies, NVD","Config 1 (AND)
+OR
+	cpe:2.3:o:huawei:ar617vw_firmware:v300r21c00spc200:*:*:*:*:*:*:*
+OR
+	cpe:2.3:h:huawei:ar617vw:-:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.6,5.9,CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,HIGH,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,7.5,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-48641,MITRE,Modified,2023-12-12T08:15:07.693,2024-11-21T08:32:09.843,,,,,,,,,"Archer Platform 6.x before 6.14 P1 HF2 (6.14.0.1.2) contains an insecure direct object reference vulnerability. An authenticated malicious user in a multi-instance installation could potentially exploit this vulnerability by manipulating application resource references in user requests to bypass authorization checks, in order to gain execute access to AWF application resources.","https://www.archerirm.community/t5/platform-announcements/archer-update-for-multiple-vulnerabilities/ta-p/711859: MITRE (Vendor Advisory), CVE (Vendor Advisory)","CWE-639: NVD, CISA-ADP","Config 1
+OR
+	cpe:2.3:a:archerirm:archer:*:*:*:*:*:*:*:*
+Config 2
+OR
+	cpe:2.3:a:archerirm:archer:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-48642,MITRE,Modified,2023-12-12T08:15:07.980,2024-11-21T08:32:10.027,,,,,,,,,"Archer Platform 6.x before 6.13 P2 (6.13.0.2) contains an authenticated HTML content injection vulnerability. A remote authenticated malicious Archer user could potentially exploit this to store malicious HTML code in a trusted application data store. When victim users access the data store through their browsers, the malicious code gets executed by the web browser in the context of the vulnerable application. 6.14 (6.14.0) is also a fixed release.","https://www.archerirm.community/t5/platform-announcements/archer-update-for-multiple-vulnerabilities/ta-p/711859: MITRE (Vendor Advisory), CVE (Vendor Advisory)",CWE-79: NVD,"Config 1
+OR
+	cpe:2.3:a:archerirm:archer:*:*:*:*:*:*:*:*
+Config 2
+OR
+	cpe:2.3:a:archerirm:archer:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.3,2.7,CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N,NETWORK,LOW,LOW,REQUIRED,CHANGED,LOW,LOW,NONE,5.4,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-41623,MITRE,Modified,2023-12-12T09:15:07.520,2024-11-21T08:21:22.557,,,,,,,,,Emlog version pro2.1.14 was discovered to contain a SQL injection vulnerability via the uid parameter at /admin/media.php.,"https://github.com/GhostBalladw/wuhaozhe-s-CVE/blob/main/CVE-2023-41623: MITRE (Exploit, Third Party Advisory), CVE (Exploit, Third Party Advisory)",CWE-89: NVD,"Config 1
+OR
+	cpe:2.3:a:emlog:emlog:2.1.14:*:*:*:pro:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.2,5.9,CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,HIGH,NONE,UNCHANGED,HIGH,HIGH,HIGH,7.2,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-45316,Mattermost Inc.,Modified,2023-12-12T09:15:07.740,2024-11-21T08:26:43.897,,,,,,,,,"Mattermost fails to validate if a relative path is passed in /plugins/playbooks/api/v0/telemetry/run/<telem_run_id> as a telemetry run ID, allowing an attacker to use a path traversal payload that points to a different endpoint leading to a CSRF attack.
+
+","https://mattermost.com/security-updates: Mattermost Inc. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)","CWE-352: Mattermost Inc., NVD
+CWE-22: NVD","Config 1
+OR
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,8.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-45847,Mattermost Inc.,Modified,2023-12-12T09:15:07.983,2024-11-21T08:27:28.717,,,,,,,,,"Mattermost fails to to check the length when setting the title in a run checklist in Playbooks, allowing an attacker to send a specially crafted request and crash the Playbooks plugin
+
+","https://mattermost.com/security-updates: Mattermost Inc. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)","CWE-400: Mattermost Inc., NVD","Config 1
+OR
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,3.6,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,NONE,NONE,HIGH,7.5,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-46701,Mattermost Inc.,Modified,2023-12-12T09:15:08.180,2024-11-21T08:29:06.583,,,,,,,,,"Mattermost fails to perform authorization checks in the  /plugins/playbooks/api/v0/runs/add-to-timeline-dialog endpoint of the Playbooks plugin allowing an attacker to get limited information about a post if they know the post ID
+
+","https://mattermost.com/security-updates: Mattermost Inc. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)","CWE-200: Mattermost Inc.
+CWE-639: NVD","Config 1
+OR
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,1.4,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N,NETWORK,LOW,NONE,NONE,UNCHANGED,LOW,NONE,NONE,5.3,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-48677,Acronis International GmbH,Modified,2023-12-12T09:15:08.383,2025-06-04T14:15:25.697,,,,,,,,,"Local privilege escalation due to DLL hijacking vulnerability. The following products are affected: Acronis Cyber Protect Home Office (Windows) before build 40901, Acronis Cyber Protect Cloud Agent (Windows) before build 39378, Acronis Cyber Protect 16 (Windows) before build 39938.","https://security-advisory.acronis.com/advisories/SEC-5620: Acronis International GmbH (Vendor Advisory), CVE (Vendor Advisory)",CWE-427: Acronis International GmbH,"Config 1 (AND)
+OR
+	cpe:2.3:a:acronis:cyber_protect_home_office:*:*:*:*:*:*:*:*
+OR
+	cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,5.9,CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,LOCAL,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,7.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49563,MITRE,Modified,2023-12-12T09:15:08.600,2024-11-21T08:33:33.980,,,,,,,,,Cross Site Scripting (XSS) in Voltronic Power SNMP Web Pro v.1.1 allows an attacker to execute arbitrary code via a crafted script within a request to the webserver.,"https://gist.github.com/ph4nt0mbyt3/b237bfb06b2bff405ab47e4ea52c0bd2: MITRE (Exploit, Third Party Advisory), CVE (Exploit, Third Party Advisory)",CWE-79: NVD,"Config 1
+OR
+	cpe:2.3:a:voltronicpower:snmp_web_pro:1.1:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,2.7,CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N,NETWORK,LOW,NONE,REQUIRED,CHANGED,LOW,LOW,NONE,6.1,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49607,Mattermost Inc.,Modified,2023-12-12T09:15:08.757,2024-11-21T08:33:37.887,,,,,,,,,"Mattermost fails to validate the type of the ""reminder"" body request parameter allowing an attacker to crash the Playbook Plugin when updating the status dialog.
+
+","https://mattermost.com/security-updates: Mattermost Inc. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)","CWE-754: Mattermost Inc., NVD","Config 1
+OR
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:9.1.1:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,3.6,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,NONE,NONE,HIGH,7.5,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49695,JPCERT/CC,Modified,2023-12-12T09:15:08.950,2024-11-21T08:33:43.130,,,,,,,,,"OS command injection vulnerability in WRC-X3000GSN v1.0.2, WRC-X3000GS v1.0.24 and earlier, and WRC-X3000GSA v1.0.24 and earlier allows a network-adjacent attacker with an administrative privilege to execute an arbitrary OS command by sending a specially crafted request to the product.","https://jvn.jp/en/vu/JVNVU97499577/: JPCERT/CC (Third Party Advisory), CVE (Third Party Advisory)
+https://www.elecom.co.jp/news/security/20231212-01/: JPCERT/CC (Vendor Advisory), CVE (Vendor Advisory)","CWE-78: NVD, CISA-ADP","Config 1 (AND)
+OR
+	cpe:2.3:o:elecom:wrc-x3000gsn_firmware:1.0.2:*:*:*:*:*:*:*
+OR
+	cpe:2.3:h:elecom:wrc-x3000gsn:-:*:*:*:*:*:*:*
+Config 2 (AND)
+OR
+	cpe:2.3:o:elecom:wrc-x3000gs_firmware:*:*:*:*:*:*:*:*
+OR
+	cpe:2.3:h:elecom:wrc-x3000gs:-:*:*:*:*:*:*:*
+Config 3 (AND)
+OR
+	cpe:2.3:o:elecom:wrc-x3000gsa_firmware:*:*:*:*:*:*:*:*
+OR
+	cpe:2.3:h:elecom:wrc-x3000gsa:-:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,0.9,5.9,CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H,ADJACENT_NETWORK,LOW,HIGH,NONE,UNCHANGED,HIGH,HIGH,HIGH,6.8,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49809,Mattermost Inc.,Modified,2023-12-12T09:15:09.110,2024-11-21T08:33:53.100,,,,,,,,,"Mattermost fails to handle a null request body in the /add endpoint, allowing a simple member to send a request with null request body to that endpoint and make it crash. After a few repetitions, the plugin is disabled. 
+
+","https://mattermost.com/security-updates: Mattermost Inc. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)","CWE-400: Mattermost Inc., NVD","Config 1
+OR
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,3.6,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H,NETWORK,LOW,LOW,NONE,UNCHANGED,NONE,NONE,HIGH,6.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2023-49874,Mattermost Inc.,Modified,2023-12-12T09:15:09.310,2024-11-21T08:33:58.347,,,,,,,,,"Mattermost fails to check whether a user is a guest when updating the tasks of a private playbook run allowing a guest to update the tasks of a private playbook run if they know the run ID.
+
+","https://mattermost.com/security-updates: Mattermost Inc. (Issue Tracking, Vendor Advisory), CVE (Issue Tracking, Vendor Advisory)",CWE-284: Mattermost Inc.,"Config 1
+OR
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*
+	cpe:2.3:a:mattermost:mattermost_server:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,2.8,1.4,CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N,NETWORK,LOW,LOW,NONE,UNCHANGED,NONE,LOW,NONE,4.3,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20965,Samsung Mobile,Analyzed,2025-05-07T09:15:16.757,2025-07-18T15:54:54.210,,,,,,,,,Improper handling of insufficient permission in Bixby wakeup prior to version 2.3.74.8 allows local attackers to access sensitive data.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),,"Config 1
+OR
+	cpe:2.3:a:samsung:bixby:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,5.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20966,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:16.890,2025-05-07T14:13:20.483,,,,,,,,,"Improper access control in Samsung Gallery prior to version 14.5.10.3 in Global Android 13, 14.5.09.3 in China Android 13, and 15.5.04.5 in Android 14 allows physical attackers to access data across multiple user profiles.",https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,0.9,3.6,CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N,PHYSICAL,LOW,NONE,NONE,UNCHANGED,HIGH,NONE,NONE,4.6,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20967,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:17.027,2025-05-07T14:13:20.483,,,,,,,,,"Improper access control in Samsung Gallery prior to version 14.5.10.3 in Global Android 13, 14.5.09.3 in China Android 13, and 15.5.04.5 in Android 14 allows attackers to read and write arbitrary file with the privilege of Samsung Gallery.",https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,2.5,2.5,CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N,LOCAL,LOW,NONE,NONE,UNCHANGED,LOW,LOW,NONE,5.1,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20968,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:17.153,2025-05-07T14:13:20.483,,,,,,,,,"Improper access control in Samsung Gallery prior to version 14.5.10.3 in Global Android 13, 14.5.09.3 in China Android 13, and 15.5.04.5 in Android 14 allows remote attackers to access data and perform internal operations within Samsung Gallery.",https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,3.9,2.7,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:L/A:N,NETWORK,LOW,NONE,NONE,CHANGED,LOW,LOW,NONE,7.2,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20969,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:17.280,2025-05-07T14:13:20.483,,,,,,,,,"Improper input validation in Samsung Gallery prior to version 14.5.10.3 in Global Android 13, 14.5.09.3 in China Android 13, and 15.5.04.5 in Android 14 allows local attackers to access data within Samsung Gallery.",https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,1.8,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,5.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20970,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:17.420,2025-05-07T14:13:20.483,,,,,,,,,"Improper access control in Bixby Vision prior to version 3.8.1 in Android 13, 3.8.3 in Android 14, 3.8.21 in Android 15 allows local attackers to access image files with Bixby Vision privilege.",https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,2.5,3.6,CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N,LOCAL,LOW,NONE,NONE,UNCHANGED,NONE,HIGH,NONE,6.2,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20971,Samsung Mobile,Analyzed,2025-05-07T09:15:17.560,2025-07-16T19:33:58.123,,,,,,,,,Improper input validation in Samsung Flow prior to version 4.9.17.6 allows local attackers to access data within Samsung Flow.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),,"Config 1
+OR
+	cpe:2.3:a:samsung:flow:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,Samsung Mobile,1.8,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,5.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20972,Samsung Mobile,Analyzed,2025-05-07T09:15:17.683,2025-07-16T16:53:26.360,,,,,,,,,Improper verification of intent by broadcast receiver in Samsung Flow prior to version 4.9.17.6 allows local attackers to modify Samsung Flow configuration.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),,"Config 1
+OR
+	cpe:2.3:a:samsung:flow:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,NONE,HIGH,NONE,5.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20973,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:17.813,2025-05-07T14:13:20.483,,,,,,,,,"Improper authentication in Secure Folder prior to version 1.8.12.0 in Android 13, and 1.9.21.00 in Android 14 allows physical attackers to reset the lock type of Secure Folder.",https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,0.2,5.2,CVSS:3.1/AV:P/AC:L/PR:H/UI:R/S:U/C:H/I:H/A:N,PHYSICAL,LOW,HIGH,REQUIRED,UNCHANGED,HIGH,HIGH,NONE,5.4,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20974,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:17.940,2025-05-07T14:13:20.483,,,,,,,,,Improper handling of insufficient permission in PackageInstallerCN prior to version 15.0.11.0 allows local attacker to bypass user interaction for requested installation.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,1.8,4.2,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:L/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,LOW,NONE,6.1,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20975,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:18.080,2025-05-07T14:13:20.483,,,,,,,,,Improper Export of Android Application Components in AODService prior to version 8.8.28.12 allows local attackers to launch arbitrary activity with systemui privilege.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,1.8,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,NONE,5.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20976,Samsung Mobile,Analyzed,2025-05-07T09:15:18.207,2025-07-17T00:41:37.687,,,,,,,,,Out-of-bounds read in applying binary of text content in Samsung Notes prior to version 4.4.29.23 allows attackers to read out-of-bounds memory.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),CWE-125: NVD,"Config 1
+OR
+	cpe:2.3:a:samsung:notes:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,3.6,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,NONE,NONE,7.5,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20977,Samsung Mobile,Analyzed,2025-05-07T09:15:18.330,2025-07-16T19:33:45.010,,,,,,,,,Use of implicit intent for sensitive communication in translation in Samsung Notes prior to version 4.4.29.23 allows local attackers to get sensitive information. User interaction is required for triggering this vulnerability.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),,"Config 1
+OR
+	cpe:2.3:a:samsung:notes:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,Samsung Mobile,1.8,1.4,CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:N/A:N,LOCAL,LOW,NONE,REQUIRED,UNCHANGED,LOW,NONE,NONE,3.3,LOW,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20978,Samsung Mobile,Awaiting Analysis,2025-05-07T09:15:18.443,2025-05-07T14:13:20.483,,,,,,,,,Improper access control in PENUP prior to version 3.9.19.32 allows local attackers to access files with PENUP privilege.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile,,,,,,,,,,,,,,,,,,,,,Samsung Mobile,2.5,3.6,CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N,LOCAL,LOW,NONE,NONE,UNCHANGED,NONE,HIGH,NONE,6.2,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20979,Samsung Mobile,Analyzed,2025-05-07T09:15:18.560,2025-10-02T16:22:34.370,,,,,,,,,Out-of-bounds write in libsavscmn prior to Android 15 allows local attackers to execute arbitrary code.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),CWE-787: NVD,"Config 1
+OR
+	cpe:2.3:o:google:android:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,5.9,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,HIGH,HIGH,7.8,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-20980,Samsung Mobile,Analyzed,2025-05-07T09:15:18.690,2025-10-02T16:42:20.797,,,,,,,,,Out-of-bounds write in libsavscmn prior to Android 15 allows local attackers to cause memory corruption.,https://security.samsungmobile.com/serviceWeb.smsb?year=2025&month=05: Samsung Mobile (Vendor Advisory),CWE-787: NVD,"Config 1
+OR
+	cpe:2.3:o:google:android:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,3.6,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H,LOCAL,LOW,LOW,NONE,UNCHANGED,NONE,NONE,HIGH,5.5,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-27533,Apache Software Foundation,Modified,2025-05-07T09:15:18.820,2025-11-03T20:18:02.323,,,,,,,,,"Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ.
+
+During unmarshalling of OpenWire commands the size value of buffers was not properly validated which could lead to excessive memory allocation and be exploited to cause a denial of service (DoS) by depleting process memory, thereby affecting applications and services that rely on the availability of the ActiveMQ broker when not using mutual TLS connections.
+This issue affects Apache ActiveMQ: from 6.0.0 before 6.1.6, from 5.18.0 before 5.18.7, from 5.17.0 before 5.17.7, before 5.16.8. ActiveMQ 5.19.0 is not affected.
+
+Users are recommended to upgrade to version 6.1.6+, 5.19.0+,  5.18.7+, 5.17.7, or 5.16.8 or which fixes the issue.
+
+Existing users may implement mutual TLS to mitigate the risk on affected brokers.","https://lists.apache.org/thread/8hcm25vf7mchg4zbbhnlx2lc5bs705hg: Apache Software Foundation (Mailing List, Vendor Advisory)
+http://www.openwall.com/lists/oss-security/2025/05/06/1: CVE (Mailing List, Third Party Advisory)
+https://lists.debian.org/debian-lts-announce/2025/06/msg00020.html: CVE",CWE-789: Apache Software Foundation,"Config 1
+OR
+	cpe:2.3:a:apache:activemq:*:*:*:*:*:*:*:*
+	cpe:2.3:a:apache:activemq:*:*:*:*:*:*:*:*
+	cpe:2.3:a:apache:activemq:*:*:*:*:*:*:*:*
+	cpe:2.3:a:apache:activemq:*:*:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,3.6,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,NONE,NONE,HIGH,7.5,HIGH,Apache Software Foundation,CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:H/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:Y/R:A/V:D/RE:M/U:Red,6.9,MEDIUM,NETWORK,LOW,PRESENT,HIGH,NONE,NONE,NONE,HIGH,NONE,NONE,HIGH,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,YES,AUTOMATIC,DIFFUSE,MODERATE,RED
+CVE-2025-39361,Patchstack,Analyzed,2025-05-07T09:15:19.017,2025-07-11T15:12:04.520,,,,,,,,,Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WProyal Royal Elementor Addons allows Stored XSS.This issue affects Royal Elementor Addons: from n/a through 1.7.1017.,https://patchstack.com/database/wordpress/plugin/royal-elementor-addons/vulnerability/wordpress-royal-elementor-addons-plugin-1-7-1017-cross-site-scripting-xss-vulnerability?_s_id=cve: Patchstack (Third Party Advisory),CWE-79: Patchstack,"Config 1
+OR
+	cpe:2.3:a:royal-elementor-addons:royal_elementor_addons:*:*:*:*:*:wordpress:*:*",,,,,,,,,,,,,,,,,,,NVD,2.3,2.7,CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N,NETWORK,LOW,LOW,REQUIRED,CHANGED,LOW,LOW,NONE,5.4,MEDIUM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-4104,Wordfence,Awaiting Analysis,2025-05-07T10:15:15.360,2025-05-07T14:13:20.483,,,,,,,,,"The Frontend Dashboard plugin for WordPress is vulnerable to Privilege Escalation due to a missing capability check on the fed_wp_ajax_fed_login_form_post() function in versions 1.0 to 2.2.6. This makes it possible for unauthenticated attackers to reset the administrator’s email and password, and elevate their privileges to that of an administrator.","https://plugins.trac.wordpress.org/browser/frontend-dashboard/tags/2.2.6/includes/frontend/request/login/index.php#L21: Wordfence
+https://plugins.trac.wordpress.org/browser/frontend-dashboard/tags/2.2.6/includes/frontend/request/login/register.php#L16: Wordfence
+https://plugins.trac.wordpress.org/browser/frontend-dashboard/tags/2.2.7/includes/frontend/request/login/validation.php: Wordfence
+https://plugins.trac.wordpress.org/changeset/3288562/: Wordfence
+https://wordpress.org/plugins/frontend-dashboard/#developers: Wordfence
+https://www.wordfence.com/threat-intel/vulnerabilities/id/31e518a9-316b-40a4-ada7-317fb2c16766?source=cve: Wordfence",CWE-285: Wordfence,,,,,,,,,,,,,,,,,,,,Wordfence,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-33093,IBM Corporation,Analyzed,2025-05-07T11:15:52.610,2025-11-13T19:31:04.970,,,,,,,,,"IBM Sterling Partner Engagement Manager 6.1.0, 6.2.0, 6.2.2 JWT secret is stored in public Helm Charts and is not stored as a Kubernetes secret.",https://www.ibm.com/support/pages/node/7232762: IBM Corporation (Vendor Advisory),"CWE-260: IBM Corporation
+CWE-522: NVD","Config 1
+OR
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.1.0:*:*:*:essentials:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.1.0:*:*:*:standard:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.1.2:*:*:*:essentials:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.1.2:*:*:*:standard:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.2.0:*:*:*:essentials:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.2.0:*:*:*:standard:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.2.2:*:*:*:essentials:*:*:*
+	cpe:2.3:a:ibm:sterling_partner_engagement_manager:6.2.2:*:*:*:standard:*:*:*",,,,,,,,,,,,,,,,,,,IBM Corporation,3.9,3.6,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,NONE,NONE,7.5,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2020-36791,kernel.org,Analyzed,2025-05-07T14:15:28.513,2025-11-10T17:34:55.777,,,,,,,,,"In the Linux kernel, the following vulnerability has been resolved:
+
+net_sched: keep alloc_hash updated after hash allocation
+
+In commit 599be01ee567 (""net_sched: fix an OOB access in cls_tcindex"")
+I moved cp->hash calculation before the first
+tcindex_alloc_perfect_hash(), but cp->alloc_hash is left untouched.
+This difference could lead to another out of bound access.
+
+cp->alloc_hash should always be the size allocated, we should
+update it after this tcindex_alloc_perfect_hash().","https://blog.cdthoughts.ch/2021/03/16/syzbot-bug.html: kernel.org (Third Party Advisory)
+https://git.kernel.org/stable/c/0d1c3530e1bd38382edef72591b78e877e0edcd3: kernel.org (Patch)
+https://git.kernel.org/stable/c/557d015ffb27b672e24e6ad141fd887783871dc2: kernel.org (Patch)
+https://git.kernel.org/stable/c/9f8b6c44be178c2498a00b270872a6e30e7c8266: kernel.org (Patch)
+https://git.kernel.org/stable/c/bd3ee8fb6371b45c71c9345cc359b94da2ddefa9: kernel.org (Patch)
+https://git.kernel.org/stable/c/c4453d2833671e3a9f6bd52f0f581056c3736386: kernel.org (Patch)
+https://git.kernel.org/stable/c/d23faf32e577922b6da20bf3740625c1105381bf: kernel.org (Patch)
+https://git.kernel.org/stable/c/d6cdc5bb19b595486fb2e6661e5138d73a57f454: kernel.org (Patch)
+https://syzkaller.appspot.com/bug?id=ea260693da894e7b078d18fca2c9c0a19b457534: kernel.org (Issue Tracking)",CWE-125: NVD,"Config 1
+OR
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc1:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc2:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc3:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc4:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc5:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc6:*:*:*:*:*:*
+	cpe:2.3:o:linux:linux_kernel:5.6:rc7:*:*:*:*:*:*",,,,,,,,,,,,,,,,,,,NVD,1.8,5.2,CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:H,LOCAL,LOW,LOW,NONE,UNCHANGED,HIGH,NONE,HIGH,7.1,HIGH,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-2776,VulnCheck,Analyzed,2025-05-07T15:15:57.573,2025-10-27T16:58:51.230,,,,2025-07-22,2025-08-12,"Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable.",SysAid On-Prem Improper Restriction of XML External Entity Reference Vulnerability,,"SysAid On-Prem versions <= 23.3.40 are vulnerable to an unauthenticated XML External Entity (XXE) vulnerability in the Server URL processing functionality, allowing for administrator account takeover and file read primitives.","https://documentation.sysaid.com/docs/24-40-60: VulnCheck (Release Notes)
+https://labs.watchtowr.com/sysowned-your-friendly-rce-support-ticket/: VulnCheck (Exploit, Third Party Advisory)
+https://www.cisa.gov/known-exploited-vulnerabilities-catalog?field_cve=CVE-2025-2776: CISA-ADP (US Government Resource)",CWE-611: VulnCheck,"Config 1
+OR
+	cpe:2.3:a:sysaid:sysaid:*:*:*:*:on-premises:*:*:*",,,,,,,,,,,,,,,,,,,NVD,3.9,5.9,CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H,NETWORK,LOW,NONE,NONE,UNCHANGED,HIGH,HIGH,HIGH,9.8,CRITICAL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-40116,kernel.org,Awaiting Analysis,2025-11-12T11:15:40.877,2025-11-12T16:19:12.850,,,,,,,,,"In the Linux kernel, the following vulnerability has been resolved:
+
+usb: host: max3421-hcd: Fix error pointer dereference in probe cleanup
+
+The kthread_run() function returns error pointers so the
+max3421_hcd->spi_thread pointer can be either error pointers or NULL.
+Check for both before dereferencing it.","https://git.kernel.org/stable/c/186e8f2bdba551f3ae23396caccd452d985c23e3: kernel.org
+https://git.kernel.org/stable/c/3723c3dda1cc82c9bbca08fcbd46705a361bfd56: kernel.org
+https://git.kernel.org/stable/c/3facf69a735e730ae36387f18780fe420708aa91: kernel.org
+https://git.kernel.org/stable/c/89838fe5c6c010ff8d3924f22afd9c18c5c95310: kernel.org
+https://git.kernel.org/stable/c/b0439e3762ac9ea580f714e1504a1827d1ad32f5: kernel.org
+https://git.kernel.org/stable/c/b682ce44bf20ada752a2f6ce70d5a575c56f6a35: kernel.org
+https://git.kernel.org/stable/c/e0e0ce06f3571be9b26790e4df56ba37b1de8543: kernel.org
+https://git.kernel.org/stable/c/e68ea6de1d0551f90d7a2c75f82cb3ebe5e397dc: kernel.org",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-40117,kernel.org,Awaiting Analysis,2025-11-12T11:15:41.003,2025-11-12T16:19:12.850,,,,,,,,,"In the Linux kernel, the following vulnerability has been resolved:
+
+misc: pci_endpoint_test: Fix array underflow in pci_endpoint_test_ioctl()
+
+Commit eefb83790a0d (""misc: pci_endpoint_test: Add doorbell test case"")
+added NO_BAR (-1) to the pci_barno enum which, in practical terms,
+changes the enum from an unsigned int to a signed int.  If the user
+passes a negative number in pci_endpoint_test_ioctl() then it results in
+an array underflow in pci_endpoint_test_bar().","https://git.kernel.org/stable/c/1ad82f9db13d85667366044acdfb02009d576c5a: kernel.org
+https://git.kernel.org/stable/c/6df3687922570f753574c40b35e83b26b32292d0: kernel.org",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-40118,kernel.org,Awaiting Analysis,2025-11-12T11:15:41.117,2025-11-12T16:19:12.850,,,,,,,,,"In the Linux kernel, the following vulnerability has been resolved:
+
+scsi: pm80xx: Fix array-index-out-of-of-bounds on rmmod
+
+Since commit f7b705c238d1 (""scsi: pm80xx: Set phy_attached to zero when
+device is gone"") UBSAN reports:
+
+  UBSAN: array-index-out-of-bounds in drivers/scsi/pm8001/pm8001_sas.c:786:17
+  index 28 is out of range for type 'pm8001_phy [16]'
+
+on rmmod when using an expander.
+
+For a direct attached device, attached_phy contains the local phy id.
+For a device behind an expander, attached_phy contains the remote phy
+id, not the local phy id.
+
+I.e. while pm8001_ha will have pm8001_ha->chip->n_phy local phys, for a
+device behind an expander, attached_phy can be much larger than
+pm8001_ha->chip->n_phy (depending on the amount of phys of the
+expander).
+
+E.g. on my system pm8001_ha has 8 phys with phy ids 0-7.  One of the
+ports has an expander connected.  The expander has 31 phys with phy ids
+0-30.
+
+The pm8001_ha->phy array only contains the phys of the HBA.  It does not
+contain the phys of the expander.  Thus, it is wrong to use attached_phy
+to index the pm8001_ha->phy array for a device behind an expander.
+
+Thus, we can only clear phy_attached for devices that are directly
+attached.","https://git.kernel.org/stable/c/251be2f6037fb7ab399f68cd7428ff274133d693: kernel.org
+https://git.kernel.org/stable/c/45acbf154befedd9bc135f5e031fe7855d1e6493: kernel.org
+https://git.kernel.org/stable/c/83ced3c206c292458e47c7fac54223abc7141585: kernel.org
+https://git.kernel.org/stable/c/9326a1541e1b7ed3efdbab72061b82cf01c6477a: kernel.org
+https://git.kernel.org/stable/c/9c671d4dbfbfb0d73cfdfb706afb36d9ad60a582: kernel.org
+https://git.kernel.org/stable/c/d94be0a6ae9ade706d4270e740bdb4f79953a7fc: kernel.org
+https://git.kernel.org/stable/c/e62251954a128a2d0fcbc19e5fa39e08935bb628: kernel.org
+https://git.kernel.org/stable/c/eef5ef400893f8e3dbb09342583be0cdc716d566: kernel.org",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+CVE-2025-53524,ICS-CERT,Received,2025-12-17T01:15:59.930,2025-12-17T01:15:59.930,,,,,,,,,"Fuji Electric Monitouch V-SFT-6 is vulnerable to an out-of-bounds write 
+while processing a specially crafted project file, which may allow an 
+attacker to execute arbitrary code.","https://felib.fujielectric.co.jp/en/document_search?tab=software&document1%5B1%5D=M10009&document2%5B1%5D=M20104&product1%5B1%5D=P10003&product2%5B1%5D=P20023&product3%5B1%5D=P30623&product4%5B1%5D=S11133&discontinued%5B1%5D=0&count=20&sort=en_title&page=1&region=en-glb: ICS-CERT
+https://github.com/cisagov/CSAF/blob/develop/csaf_files/OT/white/2025/icsa-25-308-01.json: ICS-CERT
+https://www.cisa.gov/news-events/ics-advisories/icsa-25-308-01: ICS-CERT",CWE-787: ICS-CERT,,,,,,,,,,,,,,,,,,,,ICS-CERT,1.8,5.9,CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H,LOCAL,LOW,NONE,REQUIRED,UNCHANGED,HIGH,HIGH,HIGH,7.8,HIGH,ICS-CERT,CVSS:4.0/AV:L/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X,8.4,HIGH,LOCAL,LOW,NONE,NONE,ACTIVE,HIGH,HIGH,HIGH,NONE,NONE,NONE,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED,NOT_DEFINED

@@ -56,6 +56,12 @@ python nvddownload args.txt
 
 For easy storage and retrieval of configuration info, including API keys, it's recommendedto read arguments from a file instead of the command line. Example argument files are included for common output scenarios.
 
+### Get Help and Command Line Arguments
+
+```bash
+python nvddownload -h
+```
+
 ## Getting an NVD API Key
 
 Visit [NVD API Key Request](https://nvd.nist.gov/developers/request-an-api-key)
@@ -211,14 +217,6 @@ See root folder for a sample CSV with all columns formatted, and a sample log.
 
 4.  **Duplicate CVEs**: If duplicate rows for the same CVE are present, check the logs for retried downloads. The script may duplicate rows if a portion of the download failed and had to be retried. To fix, remove duplicates or perform the download again.
 
-### Getting Help
-
-Run the script with `-h` for command-line help:
-
-```bash
-python nvddownload -h
-```
-
 ## Support and Contributions
 
 There's no framework right now for contributions. Start a discussion or log an issue as needed. This will remain open-ended unless significant additions are made by the community.
@@ -226,6 +224,7 @@ There's no framework right now for contributions. Start a discussion or log an i
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

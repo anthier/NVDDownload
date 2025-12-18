@@ -56,7 +56,7 @@ python nvddownload args.txt
 
 For easy storage and retrieval of configuration info, including API keys, it's recommendedto read arguments from a file instead of the command line. Example argument files are included for common output scenarios.
 
-### Get Help and Command Line Arguments
+### Get Help and Available Command Line Arguments
 
 ```bash
 python nvddownload -h
@@ -224,6 +224,7 @@ There's no framework right now for contributions. Start a discussion or log an i
 ## License
 
 See LICENSE file for this python script. Please respect the NVD API terms of service.
+
 
 
 

@@ -19,8 +19,7 @@ def comma_separated_list(arg_string):
 
 def parse_args_from_file(parser: argparse.ArgumentParser, file_path: str) -> argparse.Namespace:
     with open(file_path, 'r', encoding='utf-8') as f:
-        # Split on whitespace – this mimics how the shell parses arguments.
-        # If you need quoted strings or comments, use shlex.split instead.
+        # Split on whitespace – this mimics how the shell parses arguments
         raw_args = f.read().split()
     return parser.parse_args(raw_args)
 
@@ -107,7 +106,7 @@ def main():
             handler = logging.FileHandler('nvd_cve_downloader.log')
             handler.setLevel(logging.INFO)
             handler.setFormatter(formatter)
-            logging.getLogger().addHandler(handler) # add to root            
+            logging.getLogger().addHandler(handler)
         
         # Validate inputs and download CVEs
         if NVDDownloader.validate_inputs(columns=args.columns, formatters=args.formatters, output_opts=args.output_opts):
